@@ -9,5 +9,6 @@ namespace project.DAL.Entities
         public string email { get; set; }
         public string name { get; set; }
         public string passwd { get; set; }
+        public ICollection<Team> teams { get; set; }
     }
 }
