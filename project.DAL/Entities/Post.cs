@@ -8,7 +8,7 @@ namespace project.DAL.Entities
     {
         public string title { get; set; }
         public string text { get; set; }
-        public Student author { get; set; }
+        public User author { get; set; }
         public DateTime post_time { get; set; }
         public ICollection<Commentary> commentaries { get; set; }
     }
