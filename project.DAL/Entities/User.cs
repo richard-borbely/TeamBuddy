@@ -5,7 +5,7 @@ using project.DAL.Enumerations;
 
 namespace project.DAL.Entities
 {
-    public class Student: EntityBase
+    public class User: EntityBase
     {
         public string email { get; set; }
         public string name { get; set; }
