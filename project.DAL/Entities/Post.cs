@@ -10,6 +10,6 @@ namespace project.DAL.Entities
         public string Text { get; set; }
         public User Author { get; set; }
         public DateTime Time_of_post { get; set; }
-        public ICollection<Commentary> Comments { get; set; }
+        public ICollection<Comment> Comments { get; set; }
     }
 }
