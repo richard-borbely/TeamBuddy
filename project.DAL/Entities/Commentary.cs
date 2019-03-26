@@ -6,8 +6,8 @@ namespace project.DAL.Entities
 {
     public class Commentary: EntityBase
     {
-        public string text { get; set; }
-        public User author { get; set; }
-        public DateTime commentary_time { get; set; }
+        public string Text { get; set; }
+        public User Author { get; set; }
+        public DateTime Time_of_comment { get; set; }
     }
 }

@@ -6,10 +6,10 @@ namespace project.DAL.Entities
 {
     public class Post: EntityBase
     {
-        public string title { get; set; }
-        public string text { get; set; }
-        public User author { get; set; }
-        public DateTime post_time { get; set; }
-        public ICollection<Commentary> commentaries { get; set; }
+        public string Title { get; set; }
+        public string Text { get; set; }
+        public User Author { get; set; }
+        public DateTime Time_of_post { get; set; }
+        public ICollection<Commentary> Comments { get; set; }
     }
 }

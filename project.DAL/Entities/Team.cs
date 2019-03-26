@@ -6,9 +6,9 @@ namespace project.DAL.Entities
 {
     public class Team: EntityBase
     {
-        public string name { get; set; }
-        public string description { get; set; }
-        public ICollection<User> students { get; set; }
-        public ICollection<Post> posts { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public ICollection<User> Students { get; set; }
+        public ICollection<Post> Posts { get; set; }
     }
 }
