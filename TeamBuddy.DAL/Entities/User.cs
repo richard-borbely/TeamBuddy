@@ -13,7 +13,7 @@ namespace TeamBuddy.DAL.Entities
         public Gender Gender { get; set; }
         public string Email { get; set; }
         public Status Status { get; set; }
-        public ICollection<Team> Teams { get; set; }
+        //public ICollection<Team> Teams { get; set; }
         public ICollection<Post> Posts { get; set; }
         public ICollection<Comment> Comments { get; set; }
         public ICollection<UserTeam> TeamOfUsers { get; set; }

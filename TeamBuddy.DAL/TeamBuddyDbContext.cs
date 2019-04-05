@@ -15,6 +15,7 @@ namespace TeamBuddy.DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Post>()
                 .HasMany(c => c.Comments)
                 .WithOne(c => c.Post)
@@ -43,7 +44,7 @@ namespace TeamBuddy.DAL
                 .HasForeignKey(ut => ut.UserId);
             modelBuilder.Entity<UserTeam>()
                 .HasOne(ut => ut.Team)
-                .WithMany(u => u.UserInTeam)
+                .WithMany(t => t.UserInTeam)
                 .HasForeignKey(ut => ut.TeamId);
 
         }
