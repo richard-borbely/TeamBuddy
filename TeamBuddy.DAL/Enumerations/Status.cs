@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace project.DAL.Enumerations
+namespace TeamBuddy.DAL.Enumerations
 {
     public enum Status
     {
+        Offline,
         Online,
         Idle,
         DoNotDisturb,

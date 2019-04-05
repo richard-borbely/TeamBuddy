@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace project.DAL.Entities
+namespace TeamBuddy.DAL.Entities.Base
 {
     public interface IEntity
     {
