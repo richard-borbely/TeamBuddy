@@ -9,10 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\TeamBuddy.DAL\TeamBuddy.DAL.csproj" />
   </ItemGroup>
 
