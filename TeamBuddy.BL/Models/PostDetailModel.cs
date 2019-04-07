@@ -9,7 +9,7 @@ namespace TeamBuddy.BL.Models
     {
         public string Title { get; set; }
         public string Text { get; set; }
-        public DateTime Time_of_post { get; set; }
+        public DateTime PostAdditionTime { get; set; }
         public UserDetailModel User { get; set; }
     }
 }
