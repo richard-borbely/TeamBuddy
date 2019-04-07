@@ -8,6 +8,7 @@ namespace TeamBuddy.DAL.Entities
 {
     public class User : EntityBase
     {
+        public string Username { get; set; }
         public string Name { get; set; }
         public string Passwd { get; set; }
         public Gender Gender { get; set; }
