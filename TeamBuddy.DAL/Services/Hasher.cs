@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
 namespace TeamBuddy.DAL.Services
 {
-    public class Hasher : IHasher
+    public abstract class Hasher
     {
-        public string GetHash(string input)
+        public static string GetHash(string input)
         {
             byte[] salt = new byte[128 / 8];
             using (var rng = RandomNumberGenerator.Create())
