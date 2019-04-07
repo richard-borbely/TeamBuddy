@@ -77,14 +77,14 @@ namespace TeamBuddy.DAL.Tests
             var comment = new Comment
             {
                 Text = "Hello World! This is just testing comment.",
-                Time_of_comment = DateTime.Now,
+                CommentAdditionTime = DateTime.Now,
                 User = user
             };
             var post = new Post
             {
                 Title = "Our First Post",
                 Text = "Hello World! This is just testing post.",
-                Time_of_post = DateTime.Now,
+                PostAdditionTime = DateTime.Now,
                 User = user,
                 Team = team
 
@@ -186,7 +186,7 @@ namespace TeamBuddy.DAL.Tests
             {
                 Title = "Our First Post",
                 Text = "Hello World! This is just testing post.",
-                Time_of_post = DateTime.Now,
+                PostAdditionTime = DateTime.Now,
                 User = user,
                 Team = team
             };
@@ -194,7 +194,7 @@ namespace TeamBuddy.DAL.Tests
             {
                 Title = "Our First Post",
                 Text = "Hello World! This is just testing post.",
-                Time_of_post = DateTime.Now,
+                PostAdditionTime = DateTime.Now,
                 User = user,
                 Team = team
             };
@@ -202,35 +202,35 @@ namespace TeamBuddy.DAL.Tests
             {
                 Title = "Our First Post",
                 Text = "Hello World! This is just testing post.",
-                Time_of_post = DateTime.Now,
+                PostAdditionTime = DateTime.Now,
                 User = user,
                 Team = team
             };
             var comment1 = new Comment
             {
                 Text = "Hello World! This is just testing comment.",
-                Time_of_comment = DateTime.Now,
+                CommentAdditionTime = DateTime.Now,
                 User = user,
                 Post = post1
             };
             var comment2 = new Comment
             {
                 Text = "Hello World! This is just testing Second comment.",
-                Time_of_comment = DateTime.Now,
+                CommentAdditionTime = DateTime.Now,
                 User = user,
                 Post = post1
             };
             var comment3 = new Comment
             {
                 Text = "Hello World! This is just testing comment.",
-                Time_of_comment = DateTime.Now,
+                CommentAdditionTime = DateTime.Now,
                 User = user,
                 Post = post1
             };
             var comment4 = new Comment
             {
                 Text = "Hello World! This is just testing Second comment.",
-                Time_of_comment = DateTime.Now,
+                CommentAdditionTime = DateTime.Now,
                 User = user,
                 Post = post2
             };
@@ -287,7 +287,7 @@ namespace TeamBuddy.DAL.Tests
             {
                 Title = "Our First Post",
                 Text = "Hello World! This is just testing post.",
-                Time_of_post = DateTime.Now,
+                PostAdditionTime = DateTime.Now,
                 User = new User
                 {
                     Name = "Dimitrij Orlov",
@@ -364,7 +364,7 @@ namespace TeamBuddy.DAL.Tests
             var comment = new Comment
             {
                 Text = "Hello World! This is just testing comment.",
-                Time_of_comment = DateTime.Now,
+                CommentAdditionTime = DateTime.Now,
                 User = user2
 
             };
@@ -372,7 +372,7 @@ namespace TeamBuddy.DAL.Tests
             {
                 Title = "Our First Post",
                 Text = "Hello World! This is just testing post.",
-                Time_of_post = DateTime.Now,
+                PostAdditionTime = DateTime.Now,
                 Comments = new List<Comment> {comment},
                 Team = team,
                 User = user1
@@ -429,7 +429,7 @@ namespace TeamBuddy.DAL.Tests
             var comment = new Comment
             {
                 Text = "Hello World! This is just testing comment.",
-                Time_of_comment = DateTime.Now,
+                CommentAdditionTime = DateTime.Now,
                 User = new User
                 {
                     Name = "Dimitrij Orlov",
@@ -441,7 +441,7 @@ namespace TeamBuddy.DAL.Tests
                 {
                     Title = "Our First Post",
                     Text = "Hello World! This is just testing post.",
-                    Time_of_post = DateTime.Now,
+                    PostAdditionTime = DateTime.Now,
                     User = new User
                     {
                         Name = "Dimitrij Orlov",
@@ -515,14 +515,14 @@ namespace TeamBuddy.DAL.Tests
             {
                 Title = "Our First Post",
                 Text = "Hello World! This is just testing post.",
-                Time_of_post = DateTime.Now,
+                PostAdditionTime = DateTime.Now,
                 User = user,
                 Team = team
             };
             var comment = new Comment
             {
                 Text = "Hello World! This is just testing comment.",
-                Time_of_comment = DateTime.Now,
+                CommentAdditionTime = DateTime.Now,
                 User = user,
                 Post = post
             };

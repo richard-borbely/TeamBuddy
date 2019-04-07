@@ -9,7 +9,7 @@ namespace TeamBuddy.DAL.Entities
     {
         public string Title { get; set; }
         public string Text { get; set; }
-        public DateTime Time_of_post { get; set; }
+        public DateTime PostAdditionTime { get; set; }
         public User User { get; set; }
         public Team Team { get; set; }
         public ICollection<Comment> Comments { get; set; } = new List<Comment>();

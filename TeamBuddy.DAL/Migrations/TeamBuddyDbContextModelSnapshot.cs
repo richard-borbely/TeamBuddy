@@ -24,12 +24,12 @@ namespace TeamBuddy.DAL.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("CommentAdditionTime");
+
                     b.Property<Guid?>("PostId");
 
                     b.Property<string>("Text")
                         .IsRequired();
-
-                    b.Property<DateTime>("Time_of_comment");
 
                     b.Property<Guid?>("UserId");
 
@@ -47,12 +47,12 @@ namespace TeamBuddy.DAL.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("PostAdditionTime");
+
                     b.Property<Guid?>("TeamId");
 
                     b.Property<string>("Text")
                         .IsRequired();
-
-                    b.Property<DateTime>("Time_of_post");
 
                     b.Property<string>("Title")
                         .IsRequired();

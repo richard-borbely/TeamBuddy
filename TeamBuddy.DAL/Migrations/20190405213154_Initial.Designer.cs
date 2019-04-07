@@ -30,7 +30,7 @@ namespace TeamBuddy.DAL.Migrations
 
                     b.Property<string>("Text");
 
-                    b.Property<DateTime>("Time_of_comment");
+                    b.Property<DateTime>("CommentAdditionTime");
 
                     b.Property<Guid?>("UserId");
 
@@ -52,7 +52,7 @@ namespace TeamBuddy.DAL.Migrations
 
                     b.Property<string>("Text");
 
-                    b.Property<DateTime>("Time_of_post");
+                    b.Property<DateTime>("PostAdditionTime");
 
                     b.Property<string>("Title");
 

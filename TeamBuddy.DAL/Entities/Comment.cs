@@ -8,7 +8,7 @@ namespace TeamBuddy.DAL.Entities
     public class Comment : EntityBase
     {
         public string Text { get; set; }
-        public DateTime Time_of_comment { get; set; }
+        public DateTime CommentAdditionTime { get; set; }
         public User User { get; set; }
         public Post Post { get; set; }
     }
