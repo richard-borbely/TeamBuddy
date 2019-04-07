@@ -13,6 +13,8 @@ namespace TeamBuddy.BL.Tests
 {
     public class TeamBuddyRepositoryTests
     {
+        private readonly IMapper _mapper = new Mapper.Mapper();
+
         [Fact]
         public void FindTeamByName_ExistingItem_ReturnsItsModel()
         {
@@ -239,12 +241,127 @@ namespace TeamBuddy.BL.Tests
             }
         }
 
-        
+        [Fact]
+        public void AddUser_WithValidData_AddsUserToTeam()
+        {
+            //Arrange
+            var sut = CreateSUT();
+            var userModel = new UserDetailModel()
+            {
+                Username = "xlavro00",
+                Name = "Sergey Lavrov",
+                Passwd = "StrongRussia42",
+                Gender = Gender.Male,
+                Email = "lavrov@duma.gov.ru"
+            };
+            var teamModel = new TeamDetailModel()
+            {
+                Name = "IFJ projects",
+                Description = "This team is dedicated for users, " +
+                              "who are working on IFJ projects."
+            };
 
+            var createdTeamModel = sut.Create(teamModel);
+            var teamEntity = _mapper.MapTeamToEntity(createdTeamModel);
+            try
+            {
+                //Act
+                sut.AddUserToTeam(userModel, createdTeamModel.Id);
+
+                //Assert
+                Assert.Equal(0,teamEntity.UserInTeam.Count);
+            }
+            finally
+            {
+                //Teardown
+                if (createdTeamModel != null)
+                {
+                    sut.DeleteTeam(createdTeamModel.Id);
+                }
+            }
+        }
+
+        [Fact]
+        public void UpdateUser_WithValidData_ChangesUsersProperty()
+        {
+            //Arrange
+            var sut = CreateSUT();
+            var model = new UserDetailModel()
+            {
+                Username = "xlavro00",
+                Name = "Sergey Lavrov",
+                Passwd = "StrongRussia42",
+                Gender = Gender.Male,
+                Email = "lavrov@duma.gov.ru",
+                Status = Status.Online
+            };
+
+            var createdModel = sut.Create(model);
+            try
+            {
+                //Act
+                createdModel.Status = Status.DoNotDisturb;
+                sut.UpdateUser(createdModel);
+
+                //Assert
+                Assert.Equal(Status.DoNotDisturb, createdModel.Status);
+            }
+            finally
+            {
+                //Teardown
+                if (createdModel != null)
+                {
+                    sut.DeleteUser(createdModel.Id);
+                }
+            }
+        }
+
+        [Fact]
+        public void RemoveUser_ExistingItem_RemovesUser()
+        {
+            //Arrange
+            var sut = CreateSUT();
+            var model = new UserDetailModel
+            {
+                Username = "xmedved00",
+                Name = "Dmitry Medvedev",
+                Passwd = "StrongRussiaNo1",
+                Gender = Gender.Male,
+                Email = "medved@duma.gov.ru",
+                Status = Status.DoNotDisturb
+            };
+            var createdModel = sut.Create(model);
+
+            //Act
+            sut.DeleteUser(createdModel.Id);
+
+            //Assert
+            Assert.Null(sut.GetByEmail(createdModel.Email));
+        }
+
+        [Fact]
+        public void RemoveTeam_ExistingItem_RemovesTeam()
+        {
+            //Arrange
+            var sut = CreateSUT();
+            var model = new TeamDetailModel
+            {
+                Name = "IFJ projects",
+                Description = "This team is dedicated for users, " +
+                              "who are working on IFJ projects."
+            };
+            var createdModel = sut.Create(model);
+
+            //Act
+            sut.DeleteTeam(createdModel.Id);
+
+            //Assert
+            Assert.Null(sut.GetByEmail(createdModel.Name));
+        }
 
         private ITeamBuddyRepository CreateSUT()
         {
-            return new TeamBuddyRepository(new InMemoryDbContextFactory(), new Mapper.Mapper());
+            return new TeamBuddyRepository(new InMemoryDbContextFactory(), _mapper);
         }
     }
 }
