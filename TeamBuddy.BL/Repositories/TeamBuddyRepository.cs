@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using TeamBuddy.BL.Mapper;
@@ -16,6 +17,34 @@ namespace TeamBuddy.BL.Repositories
         {
             this._dbContextFactory = dbContextFactory;
             this._mapper = mapper;
+        }
+
+        public IEnumerable<TeamListModel> GetAllTeams()
+        {
+            return _dbContextFactory.CreateDbContext()
+                .Teams
+                .Select(_mapper.MapTeamListModelFromEntity);
+        }
+
+        public IEnumerable<UserListModel> GetAllUsers()
+        {
+            return _dbContextFactory.CreateDbContext()
+                .Users
+                .Select(_mapper.MapUserListModelFromEntity);
+        }
+
+        public IEnumerable<PostDetailModel> GetAllPosts()
+        {
+            return _dbContextFactory.CreateDbContext()
+                .Posts
+                .Select(_mapper.MaPostDetailModelFromEntity);
+        }
+
+        public IEnumerable<CommentDetailModel> GetAllComments()
+        {
+            return _dbContextFactory.CreateDbContext()
+                .Comments
+                .Select(_mapper.MapCommentDetailModelFromEntity);
         }
 
         public TeamDetailModel GetByName(string name)

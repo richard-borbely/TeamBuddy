@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using TeamBuddy.BL.Models;
 
 namespace TeamBuddy.BL.Repositories
 {
     public interface ITeamBuddyRepository
     {
+        IEnumerable<TeamListModel> GetAllTeams();
+        IEnumerable<UserListModel> GetAllUsers();
+        IEnumerable<PostDetailModel> GetAllPosts();
+        IEnumerable<CommentDetailModel> GetAllComments();
         TeamDetailModel GetByName(string name);
         UserDetailModel GetByEmail(string email);
         UserDetailModel GetByUsername(string username);
