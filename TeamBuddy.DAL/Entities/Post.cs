@@ -12,6 +12,6 @@ namespace TeamBuddy.DAL.Entities
         public DateTime Time_of_post { get; set; }
         public User User { get; set; }
         public Team Team { get; set; }
-        public ICollection<Comment> Comments { get; set; }
+        public ICollection<Comment> Comments { get; set; } = new List<Comment>();
     }
 }

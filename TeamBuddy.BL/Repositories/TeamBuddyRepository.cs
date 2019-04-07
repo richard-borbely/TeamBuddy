@@ -9,82 +9,82 @@ namespace TeamBuddy.BL.Repositories
 {
     public class TeamBuddyRepository : ITeamBuddyRepository
     {
-        private readonly IDbContextFactory dbContextFactory;
-        private readonly IMapper mapper;
+        private readonly IDbContextFactory _dbContextFactory;
+        private readonly IMapper _mapper;
         public TeamBuddyRepository(IDbContextFactory dbContextFactory, IMapper mapper)
         {
-            this.dbContextFactory = dbContextFactory;
-            this.mapper = mapper;
+            this._dbContextFactory = dbContextFactory;
+            this._mapper = mapper;
         }
 
         public TeamDetailModel GetByName(string name)
         {
-            var foundEntity = dbContextFactory
+            var foundEntity = _dbContextFactory
                 .CreateDbContext()
                 .Teams
                 .Include(t => t.Posts)
                 .FirstOrDefault(t => t.Name == name);
-            return foundEntity == null ? null : mapper.MapTeamDetailModelFromEntity(foundEntity);
+            return foundEntity == null ? null : _mapper.MapTeamDetailModelFromEntity(foundEntity);
         }
 
         public UserDetailModel GetByEmail(string email)
         {
-            var foundEntity = dbContextFactory
+            var foundEntity = _dbContextFactory
                 .CreateDbContext()
                 .Users
                 .FirstOrDefault(t => t.Email == email);
-            return foundEntity == null ? null : mapper.MapUserDetailModelFromEntity(foundEntity);
+            return foundEntity == null ? null : _mapper.MapUserDetailModelFromEntity(foundEntity);
         }
 
         public TeamDetailModel Create(TeamDetailModel team)
         {
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
-                var entity = mapper.MapTeamToEntity(team);
+                var entity = _mapper.MapTeamToEntity(team);
                 dbContext.Teams.Add(entity);
                 dbContext.SaveChanges();
-                return mapper.MapTeamDetailModelFromEntity(entity);
+                return _mapper.MapTeamDetailModelFromEntity(entity);
             }
         }
 
         public UserDetailModel Create(UserDetailModel user)
         {
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
-                var entity = mapper.MapUserToEntity(user);
+                var entity = _mapper.MapUserToEntity(user);
                 dbContext.Users.Add(entity);
                 dbContext.SaveChanges();
-                return mapper.MapUserDetailModelFromEntity(entity);
+                return _mapper.MapUserDetailModelFromEntity(entity);
             }
         }
 
         public PostDetailModel Create(PostDetailModel post)
         {
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
-                var entity = mapper.MapPostToEntity(post);
+                var entity = _mapper.MapPostToEntity(post);
                 dbContext.Posts.Add(entity);
                 dbContext.SaveChanges();
-                return mapper.MaPostDetailModelFromEntity(entity);
+                return _mapper.MaPostDetailModelFromEntity(entity);
             }
         }
 
         public CommentDetailModel Create(CommentDetailModel comment)
         {
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
-                var entity = mapper.MapCommentToEntity(comment);
+                var entity = _mapper.MapCommentToEntity(comment);
                 dbContext.Comments.Add(entity);
                 dbContext.SaveChanges();
-                return mapper.MapCommentDetailModelFromEntity(entity);
+                return _mapper.MapCommentDetailModelFromEntity(entity);
             }
         }
 
         public void UpdateUser(UserDetailModel user)
         {
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
-                var entity = mapper.MapUserToEntity(user);
+                var entity = _mapper.MapUserToEntity(user);
                 dbContext.Users.Update(entity);
                 dbContext.SaveChanges();
             }
@@ -92,7 +92,7 @@ namespace TeamBuddy.BL.Repositories
 
         public void DeleteTeam(Guid id)
         {
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
                 var entity = dbContext.Teams.First(t => t.Id == id);
                 dbContext.Teams.Remove(entity);
@@ -102,7 +102,7 @@ namespace TeamBuddy.BL.Repositories
 
         public void DeleteUser(Guid id)
         {
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
                 var entity = dbContext.Users.First(t => t.Id == id);
                 dbContext.Users.Remove(entity);
@@ -112,7 +112,7 @@ namespace TeamBuddy.BL.Repositories
 
         public void DeletePost(Guid id)
         {
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
                 var entity = dbContext.Posts.First(t => t.Id == id);
                 dbContext.Posts.Remove(entity);
@@ -122,7 +122,7 @@ namespace TeamBuddy.BL.Repositories
 
         public void DeleteComment(Guid id)
         {
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
                 var entity = dbContext.Comments.First(t => t.Id == id);
                 dbContext.Comments.Remove(entity);
