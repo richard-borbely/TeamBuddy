@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Xunit;
 using TeamBuddy.DAL.Entities;
 using TeamBuddy.DAL.Enumerations;
@@ -13,11 +11,11 @@ namespace TeamBuddy.DAL.Tests
 {
     public class TeamBuddyDbContextTests
     {
-        private readonly IDbContextFactory dbContextFactory;
+        private readonly IDbContextFactory _dbContextFactory;
 
         public TeamBuddyDbContextTests()
         {
-            dbContextFactory = new InMemoryDbContextFactory();
+            _dbContextFactory = new InMemoryDbContextFactory();
         }
 
         [Fact]
@@ -33,14 +31,14 @@ namespace TeamBuddy.DAL.Tests
             };
 
             //Act
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
                 dbContext.Users.Add(user);
                 dbContext.SaveChanges();
             }
 
             //Assert
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
                 User retrievedUser = null;
                 try
@@ -68,19 +66,19 @@ namespace TeamBuddy.DAL.Tests
                 Name = "TeamBuddy",
                 Description = "The first team of this app."
             };
+            var user = new User
+            {
+                Name = "Alexander Ovechkin",
+                Passwd = "veryStrongPass13",
+                Gender = Gender.Male,
+                Email = "ovechkin.alex@gmail.com",
+                Status = Status.Offline,
+            };
             var comment = new Comment
             {
                 Text = "Hello World! This is just testing comment.",
                 Time_of_comment = DateTime.Now,
-
-            };
-            
-            var user = new User
-            {
-                Name = "Alexander Ovechkin",
-                Gender = Gender.Male,
-                Email = "ovechkin.alex@gmail.com",
-                Status = Status.Offline,
+                User = user
             };
             var post = new Post
             {
@@ -91,8 +89,9 @@ namespace TeamBuddy.DAL.Tests
                 Team = team
 
             };
+
             //Act
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
                 dbContext.Users.Add(user);
                 dbContext.Teams.Add(team);
@@ -102,20 +101,31 @@ namespace TeamBuddy.DAL.Tests
             }
 
             //Act
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
                 dbContext.Users.Remove(user);
                 dbContext.SaveChanges();
             }
 
             //Assert
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
-                var retrievedUser = dbContext.Users.FirstOrDefault(u => u.Id == post.Id);
-                Assert.Null(retrievedUser);
-                Assert.Null(post.User);
-                Assert.Null(comment.User);
-
+                User retrievedUser = null;
+                try
+                {
+                    retrievedUser = dbContext.Users.FirstOrDefault(u => u.Id == post.Id);
+                    Assert.Null(retrievedUser);
+                    Assert.Null(post.User);
+                    Assert.Null(comment.User);
+                }
+                finally
+                {
+                    //Teardown
+                    if (retrievedUser != null)
+                    {
+                        dbContext.Users.Remove(retrievedUser);
+                    }
+                }
             }
         }
 
@@ -130,14 +140,14 @@ namespace TeamBuddy.DAL.Tests
             };
 
             //Act
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
                 dbContext.Teams.Add(team);
                 dbContext.SaveChanges();
             }
 
             //Assert
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
                 Team retrievedTeam = null;
                 try
@@ -172,20 +182,7 @@ namespace TeamBuddy.DAL.Tests
                 Name = "TeamBuddy",
                 Description = "The first team of this app."
             };
-            var team2 = new Team
-            {
-                Name = "TeamBuddy",
-                Description = "The first team of this app."
-            };
-            var post3 = new Post
-            {
-                Title = "Our First Post",
-                Text = "Hello World! This is just testing post.",
-                Time_of_post = DateTime.Now,
-                User = user,
-                Team = team2
-            };
-            var post = new Post
+            var post1 = new Post
             {
                 Title = "Our First Post",
                 Text = "Hello World! This is just testing post.",
@@ -201,26 +198,34 @@ namespace TeamBuddy.DAL.Tests
                 User = user,
                 Team = team
             };
-            var comment = new Comment
+            var post3 = new Post
+            {
+                Title = "Our First Post",
+                Text = "Hello World! This is just testing post.",
+                Time_of_post = DateTime.Now,
+                User = user,
+                Team = team
+            };
+            var comment1 = new Comment
             {
                 Text = "Hello World! This is just testing comment.",
                 Time_of_comment = DateTime.Now,
                 User = user,
-                Post = post
+                Post = post1
             };
             var comment2 = new Comment
             {
                 Text = "Hello World! This is just testing Second comment.",
                 Time_of_comment = DateTime.Now,
                 User = user,
-                Post = post
+                Post = post1
             };
             var comment3 = new Comment
             {
                 Text = "Hello World! This is just testing comment.",
                 Time_of_comment = DateTime.Now,
                 User = user,
-                Post = post2
+                Post = post1
             };
             var comment4 = new Comment
             {
@@ -229,37 +234,48 @@ namespace TeamBuddy.DAL.Tests
                 User = user,
                 Post = post2
             };
-            using (var dbContext = dbContextFactory.CreateDbContext())
+
+            //Act
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
                 dbContext.Users.Add(user);
-                dbContext.Posts.Add(post);
+                dbContext.Posts.Add(post1);
                 dbContext.Posts.Add(post2);
                 dbContext.Posts.Add(post3);
-                dbContext.Comments.Add(comment);
+                dbContext.Comments.Add(comment1);
                 dbContext.Comments.Add(comment2);
                 dbContext.Comments.Add(comment3);
                 dbContext.Comments.Add(comment4);
                 dbContext.Teams.Add(team);
-                dbContext.Teams.Add(team2);
                 dbContext.SaveChanges();
             }
 
             //Act
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
                 dbContext.Teams.Remove(team);
-                dbContext.Teams.Remove(team2);
                 dbContext.SaveChanges();
             }
 
             //Assert
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
-                var retrievedTeam = dbContext.Teams.FirstOrDefault(t => t.Id == team.Id);
-                Assert.Null(retrievedTeam);
-                Assert.True(user.Posts.Count == 0);
-                Assert.True(user.Comments.Count == 0);
-
+                Team retrievedTeam = null;
+                try
+                {
+                    retrievedTeam = dbContext.Teams.FirstOrDefault(t => t.Id == team.Id);
+                    Assert.Null(retrievedTeam);
+                    Assert.Equal(0, user.Posts.Count);
+                    Assert.Equal(0, user.Comments.Count);
+                }
+                finally
+                {
+                    //Teardown
+                    if (retrievedTeam != null)
+                    {
+                        dbContext.Teams.Remove(retrievedTeam);
+                    }
+                }
             }
         }
 
@@ -287,30 +303,28 @@ namespace TeamBuddy.DAL.Tests
             };
 
             //Act
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
                 dbContext.Posts.Add(post);
                 dbContext.SaveChanges();
             }
 
             //Assert
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
                 Post retrievedPost = null;
                 try
                 {
                     retrievedPost = dbContext.Posts
-                        .Include(p => p.User)
-                        .Include(p => p.Team)
+                        .Include(u => u.User)
+                        .Include(t => t.Team)
                         .First(p => p.Id == post.Id);
                     Assert.NotNull(retrievedPost);
                     Assert.NotNull(retrievedPost.User);
                     Assert.NotNull(retrievedPost.Team);
-                    var retrievedUser = dbContext.Users
-                        .First(u => u.Id == post.User.Id);
+                    var retrievedUser = dbContext.Users.First(u => u.Id == post.User.Id);
                     Assert.NotNull(retrievedUser);
-                    var retrievedTeam = dbContext.Teams
-                        .First(t => t.Id == post.Team.Id);
+                    var retrievedTeam = dbContext.Teams.First(t => t.Id == post.Team.Id);
                     Assert.NotNull(retrievedTeam);
                 }
                 finally
@@ -328,7 +342,7 @@ namespace TeamBuddy.DAL.Tests
         void RemovePostTest()
         {
             //Arrange
-            var user = new User
+            var user1 = new User
             {
                 Name = "Dimitrij Orlov",
                 Gender = Gender.Male,
@@ -351,7 +365,7 @@ namespace TeamBuddy.DAL.Tests
             {
                 Text = "Hello World! This is just testing comment.",
                 Time_of_comment = DateTime.Now,
-                User =  user2
+                User = user2
 
             };
             var post = new Post
@@ -361,13 +375,13 @@ namespace TeamBuddy.DAL.Tests
                 Time_of_post = DateTime.Now,
                 Comments = new List<Comment> {comment},
                 Team = team,
-                User = user
+                User = user1
             };
             
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
                 
-                dbContext.Users.Add(user);
+                dbContext.Users.Add(user1);
                 dbContext.Users.Add(user2);
                 dbContext.Teams.Add(team);
                 dbContext.Comments.Add(comment);
@@ -376,24 +390,35 @@ namespace TeamBuddy.DAL.Tests
             }
 
             //Act
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
                 dbContext.Posts.Remove(post);
                 dbContext.SaveChanges();
             }
 
             //Assert
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
-
-                var retrievedPost = dbContext.Posts.FirstOrDefault(p => p.Id == post.Id);
+                Post retrievedPost = null;
+                try
+                {
+                retrievedPost = dbContext.Posts.FirstOrDefault(p => p.Id == post.Id);
                 Assert.Null(retrievedPost);
                 var retrievedComment = dbContext.Comments.FirstOrDefault(c => c.Id == user2.Id);
                 Assert.Null(retrievedComment);
-                var retrievedUser = dbContext.Users.FirstOrDefault(u => u.Id == user.Id);
+                var retrievedUser = dbContext.Users.FirstOrDefault(u => u.Id == user1.Id);
                 Assert.NotNull(retrievedUser);
                 var retrievedTeam = dbContext.Teams.FirstOrDefault(t => t.Id == team.Id);
                 Assert.NotNull(retrievedTeam);
+                }
+                finally
+                {
+                    //Teardown
+                    if (retrievedPost != null)
+                    {
+                        dbContext.Posts.Remove(retrievedPost);
+                    }
+                }
             }
         }
 
@@ -431,15 +456,16 @@ namespace TeamBuddy.DAL.Tests
                     }
                 }
             };
+
             //Act
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
                 dbContext.Comments.Add(comment);
                 dbContext.SaveChanges();
             }
 
             //Assert
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
                 Comment retrievedComment = null;
                 try
@@ -465,14 +491,14 @@ namespace TeamBuddy.DAL.Tests
                     {
                         dbContext.Comments.Remove(retrievedComment);
                     }
-                } 
-
+                }
             }
         }
 
         [Fact]
         public void RemoveCommentTest()
         {
+            //Act
             var user = new User
             {
                 Name = "Dimitrij Orlov",
@@ -500,7 +526,7 @@ namespace TeamBuddy.DAL.Tests
                 User = user,
                 Post = post
             };
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
                 dbContext.Users.Add(user);
                 dbContext.Teams.Add(team);
@@ -509,23 +535,29 @@ namespace TeamBuddy.DAL.Tests
                 dbContext.SaveChanges();
             }
             //Act
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
                 dbContext.Comments.Remove(comment);
                 dbContext.SaveChanges();
 
             }
             //Asserts
-            using (var dbContext = dbContextFactory.CreateDbContext())
+            using (var dbContext = _dbContextFactory.CreateDbContext())
             {
-                var retrievedUser = dbContext.Users.FirstOrDefault(u => u.Id == user.Id);
-                Assert.NotNull(retrievedUser);
-                var retrievedTeam = dbContext.Teams.FirstOrDefault(t => t.Id == team.Id);
-                Assert.NotNull(retrievedTeam);
-                var retrievedPost = dbContext.Posts.FirstOrDefault(p => p.Id == post.Id);
-                Assert.NotNull(retrievedPost);
-                var retrievedComment = dbContext.Comments.FirstOrDefault(c => c.Id == comment.Id);
-                Assert.Null(retrievedComment);
+                Comment retrievedComment = null;
+                try
+                {
+                    retrievedComment = dbContext.Comments.FirstOrDefault(c => c.Id == comment.Id);
+                    Assert.Null(retrievedComment);
+                }
+                finally
+                {
+                    //Teardown
+                    if (retrievedComment != null)
+                    {
+                        dbContext.Comments.Remove(retrievedComment);
+                    }
+                }
             }
         }
     }
