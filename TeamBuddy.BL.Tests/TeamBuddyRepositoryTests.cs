@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TeamBuddy.BL.Mapper;
 using TeamBuddy.BL.Models;
@@ -14,6 +15,143 @@ namespace TeamBuddy.BL.Tests
     public class TeamBuddyRepositoryTests
     {
         private readonly IMapper _mapper = new Mapper.Mapper();
+
+        [Fact]
+        public void GetAllTeams_WithNeededData_ReturnsCollectionOfTeams()
+        {
+            //Arrange
+            var sut = CreateSUT();
+            var modelTeam1 = new TeamDetailModel
+            {
+                Name = "ICS project 2019",
+                Description = "This team is dedicated for users, " +
+                              "who are working on ICS projects."
+            };
+            var modelTeam2 = new TeamDetailModel
+            {
+                Name = "IFJ project 2019",
+                Description = "This team is dedicated for users, " +
+                              "who are working on IFJ projects."
+            };
+            sut.Create(modelTeam1);
+            sut.Create(modelTeam2);
+            
+            //Act
+            var allTeamsModel = sut.GetAllTeams();
+
+            //Assert
+            Assert.Equal(2,allTeamsModel.ToList().Count);
+        }
+
+        [Fact]
+        public void GetAllUsers_WithNeededData_ReturnsCollectionOfUsers()
+        {
+            //Arrange
+            var sut = CreateSUT();
+            var modelUser1 = new UserDetailModel
+            {
+                Username = "xorlov00",
+                Name = "Dimitrij Orlov",
+                Passwd = "StrongPass13",
+                Gender = Gender.Male,
+                Email = "dima.orlov@vk.com"
+            };
+            var modelUser2 = new UserDetailModel
+            {
+                Username = "xshoyg01",
+                Name = "Sergey Shoygu",
+                Passwd = "StrongRussia",
+                Gender = Gender.Male,
+                Email = "shoygu@duma.gov.ru"
+            };
+            sut.Create(modelUser1);
+            sut.Create(modelUser2);
+
+            //Act
+            var allUsersModel = sut.GetAllUsers();
+
+            //Assert
+            Assert.NotNull(allUsersModel.ToList());
+        }
+
+        [Fact]
+        public void GetAllPosts_WithNeededData_ReturnsCollectionOfPosts()
+        {
+            //Arrange
+            var sut = CreateSUT();
+            var modelUser = new UserDetailModel
+            {
+                Username = "xshoyg01",
+                Name = "Sergey Shoygu",
+                Passwd = "StrongRussia",
+                Gender = Gender.Male,
+                Email = "shoygu@duma.gov.ru"
+            };
+            var modelPost1 = new PostDetailModel()
+            {
+                Title = "The first post in this Team!",
+                Text = "Some post text.",
+                PostAdditionTime = DateTime.Now,
+                User = modelUser
+            };
+            var modelPost2 = new PostDetailModel()
+            {
+                Title = "The Second post in this Team!",
+                Text = "Some post text.",
+                PostAdditionTime = DateTime.Now,
+                User = modelUser
+            };
+            sut.Create(modelUser);
+            sut.Create(modelPost1);
+            sut.Create(modelPost2);
+
+            //Act
+            var allPostsModel = sut.GetAllPosts();
+
+            //Assert
+            Assert.Equal(2, allPostsModel.ToList().Count);
+        }
+
+        [Fact]
+        public void GetAllComments_WithNeededData_ReturnsCollectionOfComments()
+        {
+            //Arrange
+            var sut = CreateSUT();
+            var modelComment1 = new CommentDetailModel()
+            {
+                Text = "Some comment1 text.",
+                CommentAdditionTime = DateTime.Now,
+                User = new UserDetailModel
+                {
+                    Username = "xorlov00",
+                    Name = "Dimitrij Orlov",
+                    Passwd = "StrongPass13",
+                    Gender = Gender.Male,
+                    Email = "dima.orlov@vk.com"
+                }
+            };
+            var modelComment2 = new CommentDetailModel()
+            {
+                Text = "Some comment2 text.",
+                CommentAdditionTime = DateTime.Now,
+                User = new UserDetailModel
+                {
+                    Username = "xlavro00",
+                    Name = "Sergey Lavrov",
+                    Passwd = "StrongRussia42",
+                    Gender = Gender.Male,
+                    Email = "lavrov@duma.gov.ru"
+                }
+            };
+            sut.Create(modelComment1);
+            sut.Create(modelComment2);
+
+            //Act
+            var allCommentsModel = sut.GetAllComments();
+
+            //Assert
+            Assert.Equal(2,allCommentsModel.ToList().Count);
+        }
 
         [Fact]
         public void FindTeamByName_ExistingItem_ReturnsItsModel()

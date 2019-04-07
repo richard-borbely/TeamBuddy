@@ -37,6 +37,7 @@ namespace TeamBuddy.BL.Repositories
         {
             return _dbContextFactory.CreateDbContext()
                 .Posts
+                .Include(u => u.User)
                 .Select(_mapper.MaPostDetailModelFromEntity);
         }
 
@@ -44,6 +45,7 @@ namespace TeamBuddy.BL.Repositories
         {
             return _dbContextFactory.CreateDbContext()
                 .Comments
+                .Include(u => u.User)
                 .Select(_mapper.MapCommentDetailModelFromEntity);
         }
 
