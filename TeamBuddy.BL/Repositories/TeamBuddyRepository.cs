@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using TeamBuddy.BL.Mapper;
 using TeamBuddy.BL.Models;
 using TeamBuddy.DAL;
+using TeamBuddy.DAL.Entities;
 
 namespace TeamBuddy.BL.Repositories
 {
@@ -33,6 +34,15 @@ namespace TeamBuddy.BL.Repositories
                 .CreateDbContext()
                 .Users
                 .FirstOrDefault(t => t.Email == email);
+            return foundEntity == null ? null : _mapper.MapUserDetailModelFromEntity(foundEntity);
+        }
+
+        public UserDetailModel GetByUsername(string username)
+        {
+            var foundEntity = _dbContextFactory
+                .CreateDbContext()
+                .Users
+                .FirstOrDefault(t => t.Username == username);
             return foundEntity == null ? null : _mapper.MapUserDetailModelFromEntity(foundEntity);
         }
 
@@ -77,6 +87,22 @@ namespace TeamBuddy.BL.Repositories
                 dbContext.Comments.Add(entity);
                 dbContext.SaveChanges();
                 return _mapper.MapCommentDetailModelFromEntity(entity);
+            }
+        }
+
+        public void AddUserToTeam(UserDetailModel user, Guid teamId)
+        {
+            using (var dbContext = _dbContextFactory.CreateDbContext())
+            {
+                var entity = _mapper.MapUserToEntity(user);
+                dbContext.Teams
+                    .First(t => t.Id == teamId)
+                    .UserInTeam
+                    .Add(new UserTeam()
+                    {
+                        User = entity
+                    });
+                dbContext.SaveChanges();
             }
         }
 
@@ -129,6 +155,5 @@ namespace TeamBuddy.BL.Repositories
                 dbContext.SaveChanges();
             }
         }
-
     }
 }

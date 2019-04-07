@@ -7,6 +7,7 @@ namespace TeamBuddy.BL.Models
 {
     public class UserDetailModel : BaseModel
     {
+        public string Username { get; set; }
         public string Name { get; set; }
         public string Passwd { get; set; }
         public Gender Gender { get; set; }

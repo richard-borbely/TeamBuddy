@@ -44,6 +44,7 @@ namespace TeamBuddy.BL.Mapper
             return new User
             {
                 Id = user.Id,
+                Username = user.Username,
                 Name = user.Name,
                 Passwd = Hasher.GetHash(user.Passwd),
                 Gender = user.Gender,
@@ -99,6 +100,7 @@ namespace TeamBuddy.BL.Mapper
             return new UserDetailModel
             {
                 Id = user.Id,
+                Username = user.Username,
                 Name = user.Name,
                 Passwd = user.Passwd,
                 Gender = user.Gender,
@@ -112,7 +114,7 @@ namespace TeamBuddy.BL.Mapper
             return new UserListModel
             {
                 Id = user.Id,
-                Name = user.Name,
+                Username = user.Username,
                 Status = user.Status
             };
         }
