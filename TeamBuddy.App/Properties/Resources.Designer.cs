@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TeamBuddy.App.Properties {
+namespace TeamBuddyUI.Properties {
     using System;
     
     

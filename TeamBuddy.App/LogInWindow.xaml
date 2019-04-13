@@ -30,10 +30,10 @@
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Width="120" Height="30" Margin="0,0,0,0" Name="ButtonSwitch1" Content="Log in" Opacity="0.6" Background="#FF999999" Click="ButtonLogIn_Click">
+            <Button Width="120" Height="30" Margin="0,0,0,0" Name="ButtonSwitch1" Content="Log in" Opacity="0.6" Background="#FFDDDDDD" Click="ButtonLogIn_Click">
             </Button>
                 
-            <Button Width="120" Height="30" Margin="0,0,0,0" Name="ButtonSwitch2" Content="Sign up" Opacity="0.6" Click="ButtonSignUp_Click"/>
+            <!--<Button Width="120"  Height="30" Margin="0,0,0,0" Name="ButtonSwitch2" Content="Sign up" Opacity="0.6" Click="ButtonSignUp_Click"/>-->
         </StackPanel>
 
         <TextBlock Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Login:" Margin="0,0,20,0" 

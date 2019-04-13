@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TeamBuddy.App.Properties {
+namespace TeamBuddyUI.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -18,8 +18,7 @@ namespace TeamBuddy.App.Properties {
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
         
         public static Settings Default {
-            get
-            {
+            get {
                 return defaultInstance;
             }
         }

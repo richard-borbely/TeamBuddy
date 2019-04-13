@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace TeamBuddyUI
 {
     /// <summary>
-    /// Interaction logic for SignInWindow.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class SignInWindow : Window
+    public partial class MainWindow : Window
     {
-        public SignInWindow()
+        public MainWindow()
         {
             InitializeComponent();
         }
@@ -40,14 +41,14 @@ namespace TeamBuddyUI
 
         private void ButtonLogIn_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            this.Close();
-        }
-
-        private void ButtonSignUp_Click(object sender, RoutedEventArgs e)
-        {
 
         }
+
+        //private void ButtonSignUp_Click(object sender, RoutedEventArgs e)
+        //{
+        //    SignInWindow signInWindow = new SignInWindow();
+        //    signInWindow.Show();
+        //    this.Close();
+        //}
     }
 }
