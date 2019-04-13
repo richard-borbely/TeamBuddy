@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:TeamBuddy.App"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
     </Application.Resources>
 </Application>
