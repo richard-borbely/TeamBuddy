@@ -1,26 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using TeamBuddy.App.Views;
 
-namespace TeamBuddyUI
+namespace TeamBuddy.App.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LogInView : MainWindow
     {
-        public MainWindow()
+        public LogInView()
         {
             InitializeComponent();
         }
@@ -39,9 +29,11 @@ namespace TeamBuddyUI
                 txtBox.Text = string.Empty;
         }
 
-        private void ButtonLogIn_Click(object sender, RoutedEventArgs e)
+        private void LogInButton_Click(object sender, RoutedEventArgs e)
         {
-
+            //MainWindow mainWindow = new MainWindow();
+            //mainWindow.Show();
+            //this.Close();
         }
 
         //private void ButtonSignUp_Click(object sender, RoutedEventArgs e)

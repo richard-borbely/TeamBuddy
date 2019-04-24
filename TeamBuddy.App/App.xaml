@@ -1,8 +1,7 @@
 ﻿<Application x:Class="TeamBuddy.App.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:TeamBuddy.App"
-             StartupUri="LogInWindow.xaml">
+             StartupUri="Views/LogInView.xaml">
     <Application.Resources>
 
     </Application.Resources>

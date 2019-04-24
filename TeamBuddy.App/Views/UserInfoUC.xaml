@@ -1,0 +1,12 @@
+<UserControl x:Class="TeamBuddy.App.Views.UserInfoUC"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel HorizontalAlignment="Left" Height="421" Grid.Row="1" VerticalAlignment="Top" Width="200" Grid.RowSpan="2"
+                Grid.Column="0">
+        <TextBlock x:Name="TextBlock1" TextWrapping="Wrap" Text="xlogin00"/>
+        <TextBlock x:Name="TextBlock1Copy" TextWrapping="Wrap" Text="Name Surname"/>
+        <TextBlock x:Name="TextBlock1Copy1" TextWrapping="Wrap" Text="Status"/>
+        <TextBlock x:Name="TextBlock1Copy2" TextWrapping="Wrap" Text="Email"/>
+        <TextBlock x:Name="TextBlock1Copy3" TextWrapping="Wrap" Text="Gender"/>
+    </StackPanel>
+</UserControl>
