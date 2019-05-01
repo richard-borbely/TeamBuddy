@@ -18,6 +18,18 @@ namespace TeamBuddy.DAL.Seed
 
         private static void SeedData(TeamBuddyDbContext dbContext)
         {
+            var userSuperser = new User
+            {
+                Id = Guid.NewGuid(),
+                Username = "Superuser",
+                Name = "Superuser",
+                Password = "f",
+                Gender = Gender.Male,
+                Email = "f",
+                Status = Status.Online
+            };
+            dbContext.Users.Add(userSuperser);
+
             var userIgorMjasojedov = new User
             {
                 Id = Guid.NewGuid(),
@@ -169,7 +181,7 @@ namespace TeamBuddy.DAL.Seed
             {
                 Id = Guid.NewGuid(),
                 Title = "Our First Post",
-                Text = "Dusan Kolar is an interesting guy",
+                Text = "Dusan Kolar is a good guy",
                 PostAdditionTime = DateTime.Now,
                 Team = teamIPP,
                 User = userAlexSporni
@@ -198,7 +210,7 @@ namespace TeamBuddy.DAL.Seed
             };
             dbContext.Posts.Add(secondPostInICS);
 
-            var commentFirstComment = new Comment
+            var firstCommentInAdmins = new Comment
             {
                 Id = Guid.NewGuid(),
                 Text = "Hello World! This is just testing comment.",
@@ -206,9 +218,67 @@ namespace TeamBuddy.DAL.Seed
                 User = userIgorMjasojedov,
                 Post = firstPostInAdmins
             };
-            dbContext.Comments.Add(commentFirstComment);
-            
+            dbContext.Comments.Add(firstCommentInAdmins);
 
+            var secondCommentInAdmins = new Comment
+            {
+                Id = Guid.NewGuid(),
+                Text = "What an amazing experience to be here.",
+                CommentAdditionTime = DateTime.Now,
+                User = userRichardBorbely,
+                Post = secondPostInAdmins
+            };
+            dbContext.Comments.Add(secondCommentInAdmins);
+
+            var firstCommentInIFJ = new Comment
+            {
+                Id = Guid.NewGuid(),
+                Text = "What an amazing experience to be here.",
+                CommentAdditionTime = DateTime.Now,
+                User = userAlexSporni,
+                Post = firstPostInIFJ
+            };
+            dbContext.Comments.Add(firstCommentInIFJ);
+
+            var secondCommentInIFJ = new Comment
+            {
+                Id = Guid.NewGuid(),
+                Text = "The weather outside is very positive.",
+                CommentAdditionTime = DateTime.Now,
+                User = userDanielWeis,
+                Post = secondPostInIFJ
+            };
+            dbContext.Comments.Add(secondCommentInIFJ);
+
+            var firstCommentInICS = new Comment
+            {
+                Id = Guid.NewGuid(),
+                Text = "The weather outside is very positive.",
+                CommentAdditionTime = DateTime.Now,
+                User = userPavelKocourek,
+                Post = firstPostInICS
+            };
+            dbContext.Comments.Add(firstCommentInICS);
+
+            var secondCommentInICS = new Comment
+            {
+                Id = Guid.NewGuid(),
+                Text = "I dont feel so good Mr. Stark",
+                CommentAdditionTime = DateTime.Now,
+                User = userIgorMjasojedov,
+                Post = secondPostInICS
+            };
+            dbContext.Comments.Add(secondCommentInICS);
+
+            var firstCommentInIPP = new Comment
+            {
+                Id = Guid.NewGuid(),
+                Text = "The Space is infinite",
+                CommentAdditionTime = DateTime.Now,
+                User = userRichardBorbely,
+                Post = firstPostInIPP
+            };
+            dbContext.Comments.Add(firstCommentInIPP);
 
             var userIgorAdmins = new UserTeam
             {
