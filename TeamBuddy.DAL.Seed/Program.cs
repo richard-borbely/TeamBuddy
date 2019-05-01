@@ -58,15 +58,14 @@ namespace TeamBuddy.DAL.Seed
                 Post = postFirstPost
             };
             dbContext.Comments.Add(commentFirstComment);
-            /*
+            
             var userTeam_First = new UserTeam
             {
-                Id = userAlexanderOvechkin.Id,
+                Id = Guid.NewGuid(),
                 User = userAlexanderOvechkin,
-                TeamId = teamTeamBuddyAdmins.Id,
                 Team = teamTeamBuddyAdmins
             };
-            */
+            dbContext.UserTeams.Add(userTeam_First);
             dbContext.SaveChanges();
         }
         
