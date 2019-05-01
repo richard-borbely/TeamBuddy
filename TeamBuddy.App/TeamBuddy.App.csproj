@@ -56,46 +56,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Views\CreateNewUserView.xaml.cs">
-      <DependentUpon>CreateNewUserView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\HomePageUC.xaml.cs">
-      <DependentUpon>HomePageUC.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UserInfoUC.xaml.cs">
-      <DependentUpon>UserInfoUC.xaml</DependentUpon>
-    </Compile>
-    <Page Include="Views\HomePageUC.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\LogInView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\LogInView.xaml.cs">
-      <DependentUpon>LogInView.xaml</DependentUpon>
-      <SubType>Code</SubType>
+    <Compile Include="Converters\NullToVisibilityCoverter.cs" />
+    <Compile Include="MainViewModel.cs" />
+    <Compile Include="MenuItem.cs" />
+    <Compile Include="Views\CreateUserUC.xaml.cs">
+      <DependentUpon>CreateUserUC.xaml</DependentUpon>
     </Compile>
-    <Page Include="Views\CreateNewUserView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\MainWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\UserInfoUC.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
+    <Compile Include="Views\LogInWindow.xaml.cs">
+      <DependentUpon>LogInWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SignUpWindow.xaml.cs">
+      <DependentUpon>SignUpWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TeamSelectionTeamList.xaml.cs">
+      <DependentUpon>TeamSelectionTeamList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TeamSelectionUserInfo.xaml.cs">
+      <DependentUpon>TeamSelectionUserInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TeamSelectionWindow.xaml.cs">
+      <DependentUpon>TeamSelectionWindow.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -124,16 +109,47 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="TBTitle.png" />
+    <Page Include="Views\CreateUserUC.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LogInWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SignUpWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TeamSelectionTeamList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TeamSelectionUserInfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TeamSelectionWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="TeamBuddyBG.png" />
+    <Resource Include="Views\Images\left_arrow.png" />
+    <Resource Include="Views\Images\TB_wall1.jpg" />
+    <Resource Include="Views\Images\TeamBuddyBG.png" />
+    <Resource Include="Views\Images\TeamBuddyIcon.ico" />
+    <Resource Include="Views\Images\TeamBuddy_logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="TeamBuddy_logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="TeamBuddyIcon.ico" />
+    <ProjectReference Include="..\TeamBuddy.BL\TeamBuddy.BL.csproj">
+      <Project>{3CDC0729-F4FD-478E-8D56-A9CC343BAB77}</Project>
+      <Name>TeamBuddy.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TeamBuddy.DAL\TeamBuddy.DAL.csproj">
+      <Project>{C712C00C-6672-4238-B35A-8503DE920762}</Project>
+      <Name>TeamBuddy.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

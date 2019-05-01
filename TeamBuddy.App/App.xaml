@@ -1,8 +1,28 @@
 ﻿<Application x:Class="TeamBuddy.App.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             StartupUri="Views/LogInView.xaml">
+             xmlns:local="clr-namespace:TeamBuddy.App"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:enumerations="clr-namespace:TeamBuddy.DAL.Enumerations;assembly=TeamBuddy.DAL"
+             xmlns:converters="clr-namespace:TeamBuddy.App.Converters"
+             StartupUri="Views/LogInWindow.xaml">
+
+
     <Application.Resources>
 
+        <!--ResourceDictionary.MergedDictionaries>
+            <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+        </-->
+
+
+
+        <local:MainViewModel x:Key="MainViewModel" />
+
+        <ObjectDataProvider x:Key="enmStatus" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enumerations:Status"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <!--local:TeamSelectionWindowVM x:Key="TeamSelectionWindowVM" /-->
     </Application.Resources>
 </Application>
