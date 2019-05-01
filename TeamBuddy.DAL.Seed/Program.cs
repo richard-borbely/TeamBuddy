@@ -86,16 +86,107 @@ namespace TeamBuddy.DAL.Seed
             };
             dbContext.Teams.Add(teamTeamBuddyAdmins);
 
-            var postFirstPost = new Post
+            var teamIFJ = new Team
+            {
+                Id = Guid.NewGuid(),
+                Name = "IFJ",
+                Description = "Members of IFJ team."
+            };
+            dbContext.Teams.Add(teamIFJ);
+
+            var teamIPP = new Team
+            {
+                Id = Guid.NewGuid(),
+                Name = "IPP",
+                Description = "Members of IPP team."
+            };
+            dbContext.Teams.Add(teamIPP);
+
+            var teamICS = new Team
+            {
+                Id = Guid.NewGuid(),
+                Name = "ICS",
+                Description = "Members of ICS team."
+            };
+            dbContext.Teams.Add(teamIPP);
+
+            var firstPostInAdmins = new Post
             {
                 Id = Guid.NewGuid(),
                 Title = "Our First Post",
-                Text = "Hello World! This is just testing post.",
+                Text = "Our first post in the admin team how amazing.",
                 PostAdditionTime = DateTime.Now,
                 Team = teamTeamBuddyAdmins,
                 User = userIgorMjasojedov
             };
-            dbContext.Posts.Add(postFirstPost);
+            dbContext.Posts.Add(firstPostInAdmins);
+
+            var secondPostInAdmins = new Post
+            {
+                Id = Guid.NewGuid(),
+                Title = "Our Second Post",
+                Text = "Our second post in the admin team how cool.",
+                PostAdditionTime = DateTime.Now,
+                Team = teamTeamBuddyAdmins,
+                User = userAlexSporni
+            };
+            dbContext.Posts.Add(secondPostInAdmins);
+
+            var thirdPostInAdmins = new Post
+            {
+                Id = Guid.NewGuid(),
+                Title = "Our Third Post",
+                Text = "Our third post in the admin team how boring.",
+                PostAdditionTime = DateTime.Now,
+                Team = teamTeamBuddyAdmins,
+                User = userDanielWeis
+            };
+            dbContext.Posts.Add(thirdPostInAdmins);
+
+            var firstPostInIFJ = new Post
+            {
+                Id = Guid.NewGuid(),
+                Title = "Our First Post",
+                Text = "This room is full of hell.",
+                PostAdditionTime = DateTime.Now,
+                Team = teamIFJ,
+                User = userRichardBorbely
+            };
+            dbContext.Posts.Add(firstPostInIFJ);
+
+            var secondPostInIFJ = new Post
+            {
+                Id = Guid.NewGuid(),
+                Title = "Our Second Post",
+                Text = "I wish I never done this project.",
+                PostAdditionTime = DateTime.Now,
+                Team = teamIFJ,
+                User = userPavelKocourek
+            };
+            dbContext.Posts.Add(secondPostInIFJ);
+
+            var firstPostInIPP = new Post
+            {
+                Id = Guid.NewGuid(),
+                Title = "Our First Post",
+                Text = "Dusan Kolar is a interesting guy",
+                PostAdditionTime = DateTime.Now,
+                Team = teamIPP,
+                User = userAlexSporni
+            };
+            dbContext.Posts.Add(firstPostInIPP);
+
+            var firstPostInICS = new Post
+            {
+                Id = Guid.NewGuid(),
+                Title = "Our First Post",
+                Text = "The most interesting project",
+                PostAdditionTime = DateTime.Now,
+                Team = teamICS,
+                User = userRichardBorbely
+            };
+            dbContext.Posts.Add(firstPostInIPP);
+
 
             var commentFirstComment = new Comment
             {
@@ -103,49 +194,131 @@ namespace TeamBuddy.DAL.Seed
                 Text = "Hello World! This is just testing comment.",
                 CommentAdditionTime = DateTime.Now,
                 User = userIgorMjasojedov,
-                Post = postFirstPost
+                Post = firstPostInAdmins
             };
             dbContext.Comments.Add(commentFirstComment);
             
-            var userTeam_First = new UserTeam
+
+
+            var userIgorAdmins = new UserTeam
             {
                 Id = Guid.NewGuid(),
                 User = userIgorMjasojedov,
                 Team = teamTeamBuddyAdmins
             };
-            dbContext.UserTeams.Add(userTeam_First);
+            dbContext.UserTeams.Add(userIgorAdmins);
 
-            var new_user_alex = new UserTeam
+            var userIgorIfj = new UserTeam
+            {
+                Id = Guid.NewGuid(),
+                User = userIgorMjasojedov,
+                Team = teamIFJ
+            };
+            dbContext.UserTeams.Add(userIgorIfj);
+
+            var userIgorIpp = new UserTeam
+            {
+                Id = Guid.NewGuid(),
+                User = userIgorMjasojedov,
+                Team = teamIPP
+            };
+            dbContext.UserTeams.Add(userIgorIpp);
+
+            var userIgorIcs = new UserTeam
+            {
+                Id = Guid.NewGuid(),
+                User = userIgorMjasojedov,
+                Team = teamICS
+            };
+            dbContext.UserTeams.Add(userIgorIcs);
+
+            var userAlexAdmins = new UserTeam
             {
                 Id = Guid.NewGuid(),
                 User = userAlexSporni,
                 Team = teamTeamBuddyAdmins
             };
-            dbContext.UserTeams.Add(new_user_alex);
-           
-            var new_user_richard = new UserTeam
+            dbContext.UserTeams.Add(userAlexAdmins);
+
+            var userAlexIpp = new UserTeam
+            {
+                Id = Guid.NewGuid(),
+                User = userAlexSporni,
+                Team = teamIPP
+            };
+            dbContext.UserTeams.Add(userAlexIpp);
+
+            var userAlexIcs = new UserTeam
+            {
+                Id = Guid.NewGuid(),
+                User = userAlexSporni,
+                Team = teamICS
+            };
+            dbContext.UserTeams.Add(userAlexIcs);
+
+            var userRichardAdmins = new UserTeam
             {
                 Id = Guid.NewGuid(),
                 User = userRichardBorbely,
                 Team = teamTeamBuddyAdmins
             };
-            dbContext.UserTeams.Add(new_user_richard);
-            
-            var new_user_daniel = new UserTeam
+            dbContext.UserTeams.Add(userRichardAdmins);
+
+            var userRichardIfj = new UserTeam
+            {
+                Id = Guid.NewGuid(),
+                User = userRichardBorbely,
+                Team = teamIFJ
+            };
+            dbContext.UserTeams.Add(userRichardIfj);
+
+            var userRichardIpp = new UserTeam
+            {
+                Id = Guid.NewGuid(),
+                User = userRichardBorbely,
+                Team = teamIPP
+            };
+            dbContext.UserTeams.Add(userRichardIpp);
+
+            var userDanielAdmins = new UserTeam
             {
                 Id = Guid.NewGuid(),
                 User = userDanielWeis,
                 Team = teamTeamBuddyAdmins
             };
-            dbContext.UserTeams.Add(new_user_daniel);
-            
-            var new_user_pavel = new UserTeam
+            dbContext.UserTeams.Add(userDanielAdmins);
+
+            var userDanielIfj = new UserTeam
+            {
+                Id = Guid.NewGuid(),
+                User = userDanielWeis,
+                Team = teamIFJ
+            };
+            dbContext.UserTeams.Add(userDanielIfj);
+
+            var userDanielIcs = new UserTeam
+            {
+                Id = Guid.NewGuid(),
+                User = userDanielWeis,
+                Team = teamICS
+            };
+            dbContext.UserTeams.Add(userDanielIcs);
+
+            var userPavelAdmins = new UserTeam
             {
                 Id = Guid.NewGuid(),
                 User = userPavelKocourek,
                 Team = teamTeamBuddyAdmins
             };
-            dbContext.UserTeams.Add(new_user_pavel);
+            dbContext.UserTeams.Add(userPavelAdmins);
+
+            var userPavelIcs = new UserTeam
+            {
+                Id = Guid.NewGuid(),
+                User = userPavelKocourek,
+                Team = teamICS
+            };
+            dbContext.UserTeams.Add(userPavelIcs);
 
             dbContext.SaveChanges();
         }
