@@ -13,7 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D50D2DB9
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamBuddy.DAL.Tests", "TeamBuddy.DAL.Tests\TeamBuddy.DAL.Tests.csproj", "{1DE25F40-1217-47D2-8AE0-C172ACBA3C13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamBuddy.BL.Tests", "TeamBuddy.BL.Tests\TeamBuddy.BL.Tests.csproj", "{12A8E7C5-6C20-45C3-BB01-4A47EE4DBDD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamBuddy.BL.Tests", "TeamBuddy.BL.Tests\TeamBuddy.BL.Tests.csproj", "{12A8E7C5-6C20-45C3-BB01-4A47EE4DBDD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamBuddy.DAL.Seed", "TeamBuddy.DAL.Seed\TeamBuddy.DAL.Seed.csproj", "{585AEEE3-62DE-4421-ADDB-7312E1CB1C11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{12A8E7C5-6C20-45C3-BB01-4A47EE4DBDD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12A8E7C5-6C20-45C3-BB01-4A47EE4DBDD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12A8E7C5-6C20-45C3-BB01-4A47EE4DBDD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{585AEEE3-62DE-4421-ADDB-7312E1CB1C11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{585AEEE3-62DE-4421-ADDB-7312E1CB1C11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{585AEEE3-62DE-4421-ADDB-7312E1CB1C11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{585AEEE3-62DE-4421-ADDB-7312E1CB1C11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
