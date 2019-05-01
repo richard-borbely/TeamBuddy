@@ -108,7 +108,7 @@ namespace TeamBuddy.DAL.Seed
                 Name = "ICS",
                 Description = "Members of ICS team."
             };
-            dbContext.Teams.Add(teamIPP);
+            dbContext.Teams.Add(teamICS);
 
             var firstPostInAdmins = new Post
             {
@@ -147,7 +147,7 @@ namespace TeamBuddy.DAL.Seed
             {
                 Id = Guid.NewGuid(),
                 Title = "Our First Post",
-                Text = "This room is full of hell.",
+                Text = "This subject is the true meaning of hell.",
                 PostAdditionTime = DateTime.Now,
                 Team = teamIFJ,
                 User = userRichardBorbely
@@ -169,7 +169,7 @@ namespace TeamBuddy.DAL.Seed
             {
                 Id = Guid.NewGuid(),
                 Title = "Our First Post",
-                Text = "Dusan Kolar is a interesting guy",
+                Text = "Dusan Kolar is an interesting guy",
                 PostAdditionTime = DateTime.Now,
                 Team = teamIPP,
                 User = userAlexSporni
@@ -185,8 +185,18 @@ namespace TeamBuddy.DAL.Seed
                 Team = teamICS,
                 User = userRichardBorbely
             };
-            dbContext.Posts.Add(firstPostInIPP);
+            dbContext.Posts.Add(firstPostInICS);
 
+            var secondPostInICS = new Post
+            {
+                Id = Guid.NewGuid(),
+                Title = "Our Second Post",
+                Text = "My fingers are starting to hurt",
+                PostAdditionTime = DateTime.Now,
+                Team = teamICS,
+                User = userDanielWeis
+            };
+            dbContext.Posts.Add(secondPostInICS);
 
             var commentFirstComment = new Comment
             {
