@@ -10,14 +10,14 @@ using TeamBuddy.DAL;
 namespace TeamBuddy.DAL.Migrations
 {
     [DbContext(typeof(TeamBuddyDbContext))]
-    [Migration("20190405213154_Initial")]
+    [Migration("20190501161506_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -26,11 +26,12 @@ namespace TeamBuddy.DAL.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("CommentAdditionTime");
+
                     b.Property<Guid?>("PostId");
 
-                    b.Property<string>("Text");
-
-                    b.Property<DateTime>("CommentAdditionTime");
+                    b.Property<string>("Text")
+                        .IsRequired();
 
                     b.Property<Guid?>("UserId");
 
@@ -48,13 +49,15 @@ namespace TeamBuddy.DAL.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<Guid?>("TeamId");
-
-                    b.Property<string>("Text");
-
                     b.Property<DateTime>("PostAdditionTime");
 
-                    b.Property<string>("Title");
+                    b.Property<Guid?>("TeamId");
+
+                    b.Property<string>("Text")
+                        .IsRequired();
+
+                    b.Property<string>("Title")
+                        .IsRequired();
 
                     b.Property<Guid?>("UserId");
 
@@ -72,9 +75,11 @@ namespace TeamBuddy.DAL.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .IsRequired();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -86,15 +91,21 @@ namespace TeamBuddy.DAL.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Email")
+                        .IsRequired();
 
                     b.Property<int>("Gender");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
-                    b.Property<string>("Passwd");
+                    b.Property<string>("Password")
+                        .IsRequired();
 
                     b.Property<int>("Status");
+
+                    b.Property<string>("Username")
+                        .IsRequired();
 
                     b.HasKey("Id");
 

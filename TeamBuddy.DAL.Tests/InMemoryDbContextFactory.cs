@@ -7,7 +7,7 @@ namespace TeamBuddy.DAL.Tests
         public TeamBuddyDbContext CreateDbContext()
         {
             var optionsBuilder = new DbContextOptionsBuilder<TeamBuddyDbContext>();
-            optionsBuilder.UseInMemoryDatabase("TeamBuddyDb");
+            optionsBuilder.UseInMemoryDatabase("TeamBuddyDB");
             return new TeamBuddyDbContext(optionsBuilder.Options);
         }
     }

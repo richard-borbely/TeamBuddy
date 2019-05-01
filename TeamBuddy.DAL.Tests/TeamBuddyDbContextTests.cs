@@ -69,7 +69,7 @@ namespace TeamBuddy.DAL.Tests
             var user = new User
             {
                 Name = "Alexander Ovechkin",
-                Passwd = "veryStrongPass13",
+                Password = "veryStrongPass13",
                 Gender = Gender.Male,
                 Email = "ovechkin.alex@gmail.com",
                 Status = Status.Offline,

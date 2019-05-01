@@ -23,7 +23,7 @@ namespace TeamBuddy.DAL.Seed
                 Id = Guid.NewGuid(),
                 Username = "xovca00",
                 Name = "Alexander Ovechkin",
-                Passwd = "veryStrongPass13",
+                Password = "veryStrongPass13",
                 Gender = Gender.Male,
                 Email = "ovechkin.alex@gmail.com",
                 Status = Status.Offline
@@ -84,7 +84,7 @@ namespace TeamBuddy.DAL.Seed
         {
             var optionsBuilder =  new DbContextOptionsBuilder<TeamBuddyDbContext>();
             optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;
-                                                        Initial Catalog = TasksDB;
+                                                        Initial Catalog = TeamBuddyDB;
                                                         MultipleActiveResultSets = True;
                                                         Integrated Security = True; ");
             return new TeamBuddyDbContext(optionsBuilder.Options);

@@ -46,7 +46,7 @@ namespace TeamBuddy.DAL
                 .Property(p => p.Name)
                 .IsRequired();
             modelBuilder.Entity<User>()
-                .Property(p => p.Passwd)
+                .Property(p => p.Password)
                 .IsRequired();
             modelBuilder.Entity<User>()
                 .Property(p => p.Email)

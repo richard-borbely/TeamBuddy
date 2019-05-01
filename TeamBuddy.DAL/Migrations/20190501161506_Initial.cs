@@ -12,8 +12,8 @@ namespace TeamBuddy.DAL.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -25,10 +25,11 @@ namespace TeamBuddy.DAL.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    Passwd = table.Column<string>(nullable: true),
+                    Username = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    Password = table.Column<string>(nullable: false),
                     Gender = table.Column<int>(nullable: false),
-                    Email = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: false),
                     Status = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -41,9 +42,9 @@ namespace TeamBuddy.DAL.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Title = table.Column<string>(nullable: true),
-                    Text = table.Column<string>(nullable: true),
-                    Time_of_post = table.Column<DateTime>(nullable: false),
+                    Title = table.Column<string>(nullable: false),
+                    Text = table.Column<string>(nullable: false),
+                    PostAdditionTime = table.Column<DateTime>(nullable: false),
                     UserId = table.Column<Guid>(nullable: true),
                     TeamId = table.Column<Guid>(nullable: true)
                 },
@@ -94,8 +95,8 @@ namespace TeamBuddy.DAL.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Text = table.Column<string>(nullable: true),
-                    Time_of_comment = table.Column<DateTime>(nullable: false),
+                    Text = table.Column<string>(nullable: false),
+                    CommentAdditionTime = table.Column<DateTime>(nullable: false),
                     UserId = table.Column<Guid>(nullable: true),
                     PostId = table.Column<Guid>(nullable: true)
                 },
