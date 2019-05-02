@@ -19,10 +19,10 @@
         <TextBlock Grid.Row="0" Text="My Teams:" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontFamily="Ink Free" FontWeight="Bold"/>
 
         <Grid Grid.Row="1" Margin="50 20 50 20">
-            <ListView Background="Transparent" HorizontalAlignment="Center" Width="500" ItemsSource="{Binding Teams}">
+            <ListView Background="Transparent" Width="500" ItemsSource="{Binding Teams}" Margin="0" Panel.ZIndex="-1">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Label Content="{Binding Name}"/>
+                        <Label Content="{Binding Name}" FontSize="18" Cursor="Hand" Opacity="0.8" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
