@@ -62,7 +62,6 @@
     </Compile>
     <Compile Include="Converters\NullToVisibilityCoverter.cs" />
     <Compile Include="MainViewModel.cs" />
-    <Compile Include="MenuItem.cs" />
     <Compile Include="Views\CreateUserUC.xaml.cs">
       <DependentUpon>CreateUserUC.xaml</DependentUpon>
     </Compile>
