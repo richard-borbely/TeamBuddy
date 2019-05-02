@@ -69,9 +69,6 @@
     <Compile Include="Views\LogInWindow.xaml.cs">
       <DependentUpon>LogInWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SignUpWindow.xaml.cs">
-      <DependentUpon>SignUpWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\TeamSelectionTeamList.xaml.cs">
       <DependentUpon>TeamSelectionTeamList.xaml</DependentUpon>
     </Compile>
@@ -114,10 +111,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\LogInWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\SignUpWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
