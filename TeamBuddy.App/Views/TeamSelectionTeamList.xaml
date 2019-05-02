@@ -19,23 +19,13 @@
         <TextBlock Grid.Row="0" Text="My Teams:" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontFamily="Ink Free" FontWeight="Bold"/>
 
         <Grid Grid.Row="1" Margin="50 20 50 20">
-   
-
-            <ListView Background="Transparent" HorizontalAlignment="Center" Width="500" ItemsSource="{Binding TeamSelectionTeamListVm}">
+            <ListView Background="Transparent" HorizontalAlignment="Center" Width="500" ItemsSource="{Binding Teams}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid HorizontalAlignment="Center">
-                            <Button Content="{Binding Name}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 0" FontSize="30" FontFamily="Ink Free"/>
-                            <Button Content="{Binding Name}" FontSize="30" FontFamily="Ink Free"/>
-                            <Button Content="{Binding Name}" FontSize="30" FontFamily="Ink Free"/>
-                            <Button Content="{Binding Name}" FontSize="30" FontFamily="Ink Free"/>
-                        </Grid>
-
+                        <Label Content="{Binding Name}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
         </Grid>
-
     </Grid>
 </UserControl>

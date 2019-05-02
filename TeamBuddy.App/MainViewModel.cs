@@ -8,21 +8,18 @@ namespace TeamBuddy.App
 {
     public class MainViewModel
     {
-        public ObservableCollection<TeamListModel> TeamSelectionTeamListVm { get; } = new ObservableCollection<TeamListModel>();
-
+        public ObservableCollection<TeamListModel> Teams { get; } =
+            new ObservableCollection<TeamListModel>
+            {
+                new TeamListModel() {Name = "IFJ Team"},
+                new TeamListModel() {Name = "IPP Team"},
+                new TeamListModel() {Name = "ICS Team"}
+            };
 
         public UserDetailModel User { get; set; }
 
-
         public MainViewModel()
         {
-
-            this.TeamSelectionTeamListVm.Add(new TeamListModel() { Name = "IFJ Team" });
-            this.TeamSelectionTeamListVm.Add(new TeamListModel() { Name = "IPP Team" });
-            this.TeamSelectionTeamListVm.Add(new TeamListModel() { Name = "ICS Team" });
-            this.TeamSelectionTeamListVm.Add(new TeamListModel() { Name = "IW5 Team" });
-
-
             this.User = new UserDetailModel
             {
                 Email = "xborbe00@stud.fit.vutbr.cz",
@@ -30,10 +27,6 @@ namespace TeamBuddy.App
                 Name = "Richard Borbely",
                 Gender = Gender.Male
             };
-
         }
-
-        public ObservableCollection<string> Name { get; set; }
     }
-
 }
