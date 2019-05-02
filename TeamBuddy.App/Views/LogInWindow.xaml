@@ -15,7 +15,6 @@
             <RowDefinition Height="45"/>
             <RowDefinition Height="45"/>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="45"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -29,18 +28,12 @@
             <Image Source="Images/TBTitle2.png"/>
         </StackPanel>
 
-        <StackPanel Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Width="120" Height="30" Margin="0,0,0,0" Name="ButtonSwitch1" Content="Log in" Opacity="0.6" Background="#FFDDDDDD" Click="ButtonLogIn_Click">
-            </Button>
-
-        </StackPanel>
-
-        <TextBlock Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Login:" Margin="0,0,20,0" 
+        <TextBlock Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Login:" Margin="0,0,20,0" 
                    Cursor="None" TextDecorations="{x:Null}" FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Foreground="#FFD4D4D4"/>
-        <TextBlock Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Password:" Margin="0,0,20,0" 
+        <TextBlock Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Password:" Margin="0,0,20,0" 
                    FontSize="20" Foreground="#FFD4D4D4" FontFamily="Ink Free" FontWeight="Bold"/>
 
-        <TextBox Name="TextBoxLogin" Grid.Row="3" Grid.Column="2" Text="xlogin00@stud.fit.vutbr.cz" Height="30" Margin="0,0,0,0" 
+        <TextBox Name="TextBoxLogin" Grid.Row="2" Grid.Column="2" Text="xlogin00@stud.fit.vutbr.cz" Height="30" Margin="0,0,0,0" 
                  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" GotKeyboardFocus="TextBoxLogin_OnGotKeyboardFocus" FontStyle="Italic" Opacity="0.6">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -49,7 +42,7 @@
             </TextBox.Resources>
         </TextBox>
 
-        <TextBox Name="TextBoxPassword" Grid.Row="4" Grid.Column="2" Text="●●●●●●●●●●●●" Height="30" Margin="0,0,0,0" 
+        <TextBox Name="TextBoxPassword" Grid.Row="3" Grid.Column="2" Text="●●●●●●●●●●●●" Height="30" Margin="0,0,0,0" 
                  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" GotKeyboardFocus="TextBoxPassword_OnGotKeyboardFocus" TextDecorations="{x:Null}" Opacity="0.6">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -58,13 +51,10 @@
             </TextBox.Resources>
         </TextBox>
 
-        <StackPanel Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Background="Transparent" BorderBrush="Transparent" Click="ButtonLogo_Click" >
-                <Image Source="Images/TeamBuddy_logo.png"/>
+        <StackPanel Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Width="120" Height="30" Margin="0,0,0,0" Name="ButtonSwitch1" Content="Log in" Opacity="0.6" Background="#FFDDDDDD" Click="ButtonLogIn_Click">
             </Button>
         </StackPanel>
-
-        
 
         <Grid.Background>
             <ImageBrush ImageSource="Images/TeamBuddyBG.png" Stretch="UniformToFill"/>
