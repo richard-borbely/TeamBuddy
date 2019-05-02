@@ -151,5 +151,11 @@
       <Name>TeamBuddy.DAL</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Images\TBTitle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Images\TBTitle2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
