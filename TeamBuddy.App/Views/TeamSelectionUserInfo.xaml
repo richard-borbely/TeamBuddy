@@ -46,9 +46,9 @@
 
         </Grid>
 
-        <Button Grid.Row="2" Margin="20,20,20,20" Content="Create Team" FontSize="20" Opacity="0.4" Background="#FFDDDDDD">
+        <Button Grid.Row="2" Margin="20,20,20,20" Content="Create Team" FontSize="20" Opacity="0.4" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFDDDDDD" Width="300" Height="58" Cursor="Hand" >
         </Button>
-        <Button Grid.Row="3" Margin="20,20,20,20" Content="Create User" FontSize="20" Opacity="0.4" Background="#FFDDDDDD">
+        <Button Grid.Row="3" Margin="20,20,20,20" Content="Create User" FontSize="20" Opacity="0.4" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFDDDDDD" Width="300" Height="58" Cursor="Hand" >
         </Button>
     </Grid>
 </UserControl>

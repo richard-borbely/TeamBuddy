@@ -22,7 +22,7 @@
             <ListView Background="Transparent" Width="500" ItemsSource="{Binding Teams}" Margin="0" Panel.ZIndex="-1">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Label Content="{Binding Name}" FontSize="18" Cursor="Hand" Opacity="0.8" />
+                        <Label Content="{Binding Name}" FontSize="30" Cursor="Hand" Opacity="0.8" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
