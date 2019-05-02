@@ -46,14 +46,7 @@ namespace TeamBuddyUI
             teamSelectionWindow.Show();
             this.Close();
         }
-        /*
-        private void ButtonSignUp_Click(object sender, RoutedEventArgs e)
-        {
-            SignInWindow signInWindow = new SignInWindow();
-            signInWindow.Show();
-            this.Close();
-        }
-        */
+       
         private void ButtonLogo_Click(object sender, RoutedEventArgs e)
         {
             

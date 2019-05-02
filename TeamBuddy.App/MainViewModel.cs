@@ -16,17 +16,15 @@ namespace TeamBuddy.App
                 new TeamListModel() {Name = "ICS Team"}
             };
 
-        public UserDetailModel User { get; set; }
-
-        public MainViewModel()
-        {
-            this.User = new UserDetailModel
+        public UserDetailModel User { get; set; } =
+            new UserDetailModel
             {
                 Email = "xborbe00@stud.fit.vutbr.cz",
                 Username = "xborbe00",
-                Name = "Richard Borbely",
+                Name = "Richard Borbély",
                 Gender = Gender.Male
             };
-        }
+
+        
     }
 }

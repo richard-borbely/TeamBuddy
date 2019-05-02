@@ -15,13 +15,7 @@
             <RowDefinition Height="5*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            
-            
         </Grid.RowDefinitions>
-
-        <Button Grid.Row="0" Background="Transparent" BorderBrush="Transparent" Margin="20 0 0 0" HorizontalAlignment="Left" >
-                <Image Source="Images/left_arrow.png"/>
-            </Button>
 
         <Grid Grid.Row="1" Margin="0 20 0 20">
             <Grid.RowDefinitions>
@@ -51,9 +45,6 @@
             <TextBlock Grid.Row="9" Text="{Binding User.Gender}" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Ink Free" ></TextBlock>
 
         </Grid>
-        
-
-
 
         <Button Grid.Row="2" Margin="20,20,20,20" Content="Create Team" FontSize="20" Opacity="0.4" Background="#FFDDDDDD">
         </Button>

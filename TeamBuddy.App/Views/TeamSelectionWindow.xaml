@@ -6,7 +6,7 @@
         xmlns:views="clr-namespace:TeamBuddy.App.Views"
         mc:Ignorable="d"
         DataContext="{StaticResource MainViewModel}"
-        Title="My Profile" Height="720" Width="1024" WindowStartupLocation="CenterScreen">
+        Title="My Profile" Height="720" Width="1024" WindowStartupLocation="CenterScreen" MinWidth="1000" MinHeight="600">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Images/TB_wall1.jpg" Stretch="UniformToFill"/>

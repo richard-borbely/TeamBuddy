@@ -24,5 +24,8 @@ namespace TeamBuddy.App.Views
         {
             InitializeComponent();
         }
+
+
+       
     }
 }
