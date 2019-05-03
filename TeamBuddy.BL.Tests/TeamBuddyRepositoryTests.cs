@@ -52,7 +52,7 @@ namespace TeamBuddy.BL.Tests
             {
                 Username = "xorlov00",
                 Name = "Dimitrij Orlov",
-                Passwd = "StrongPass13",
+                Password = "StrongPass13",
                 Gender = Gender.Male,
                 Email = "dima.orlov@vk.com"
             };
@@ -60,7 +60,7 @@ namespace TeamBuddy.BL.Tests
             {
                 Username = "xshoyg01",
                 Name = "Sergey Shoygu",
-                Passwd = "StrongRussia",
+                Password = "StrongRussia",
                 Gender = Gender.Male,
                 Email = "shoygu@duma.gov.ru"
             };
@@ -83,7 +83,7 @@ namespace TeamBuddy.BL.Tests
             {
                 Username = "xshoyg01",
                 Name = "Sergey Shoygu",
-                Passwd = "StrongRussia",
+                Password = "StrongRussia",
                 Gender = Gender.Male,
                 Email = "shoygu@duma.gov.ru"
             };
@@ -125,7 +125,7 @@ namespace TeamBuddy.BL.Tests
                 {
                     Username = "xorlov00",
                     Name = "Dimitrij Orlov",
-                    Passwd = "StrongPass13",
+                    Password = "StrongPass13",
                     Gender = Gender.Male,
                     Email = "dima.orlov@vk.com"
                 }
@@ -138,7 +138,7 @@ namespace TeamBuddy.BL.Tests
                 {
                     Username = "xlavro00",
                     Name = "Sergey Lavrov",
-                    Passwd = "StrongRussia42",
+                    Password = "StrongRussia42",
                     Gender = Gender.Male,
                     Email = "lavrov@duma.gov.ru"
                 }
@@ -189,7 +189,7 @@ namespace TeamBuddy.BL.Tests
             {
                 Username = "xorlov00",
                 Name = "Dimitrij Orlov",
-                Passwd = "StrongPass13",
+                Password = "StrongPass13",
                 Gender = Gender.Male,
                 Email = "dima.orlov@vk.com"
             };
@@ -218,7 +218,7 @@ namespace TeamBuddy.BL.Tests
             {
                 Username = "xshoyg01",
                 Name = "Sergey Shoygu",
-                Passwd = "StrongRussia",
+                Password = "StrongRussia",
                 Gender = Gender.Male,
                 Email = "shoygu@duma.gov.ru"
             };
@@ -278,7 +278,7 @@ namespace TeamBuddy.BL.Tests
             {
                 Username = "xlavro00",
                 Name = "Sergey Lavrov",
-                Passwd = "StrongRussia42",
+                Password = "StrongRussia42",
                 Gender = Gender.Male,
                 Email = "lavrov@duma.gov.ru"
             };
@@ -316,7 +316,7 @@ namespace TeamBuddy.BL.Tests
                 {
                     Username = "xshoyg01",
                     Name = "Sergey Shoygu",
-                    Passwd = "StrongRussia",
+                    Password = "StrongRussia",
                     Gender = Gender.Male,
                     Email = "shoygu@duma.gov.ru"
                 }
@@ -354,7 +354,7 @@ namespace TeamBuddy.BL.Tests
                 {
                     Username = "xlavro00",
                     Name = "Sergey Lavrov",
-                    Passwd = "StrongRussia42",
+                    Password = "StrongRussia42",
                     Gender = Gender.Male,
                     Email = "lavrov@duma.gov.ru"
                 }
@@ -388,7 +388,7 @@ namespace TeamBuddy.BL.Tests
             {
                 Username = "xlavro00",
                 Name = "Sergey Lavrov",
-                Passwd = "StrongRussia42",
+                Password = "StrongRussia42",
                 Gender = Gender.Male,
                 Email = "lavrov@duma.gov.ru"
             };
@@ -428,7 +428,7 @@ namespace TeamBuddy.BL.Tests
             {
                 Username = "xlavro00",
                 Name = "Sergey Lavrov",
-                Passwd = "StrongRussia42",
+                Password = "StrongRussia42",
                 Gender = Gender.Male,
                 Email = "lavrov@duma.gov.ru",
                 Status = Status.Online
@@ -463,7 +463,7 @@ namespace TeamBuddy.BL.Tests
             {
                 Username = "xmedved00",
                 Name = "Dmitry Medvedev",
-                Passwd = "StrongRussiaNo1",
+                Password = "StrongRussiaNo1",
                 Gender = Gender.Male,
                 Email = "medved@duma.gov.ru",
                 Status = Status.DoNotDisturb

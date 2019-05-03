@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\PropertyChanged.Fody.2.6.1\build\PropertyChanged.Fody.props" Condition="Exists('..\packages\PropertyChanged.Fody.2.6.1\build\PropertyChanged.Fody.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A87AFAB3-8A09-442A-B976-5BE8390B964B}</ProjectGuid>
+    <ProjectGuid>{25F964A7-1497-4D2E-9C54-FD8902BB6583}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>TeamBuddy.App</RootNamespace>
     <AssemblyName>TeamBuddy.App</AssemblyName>
@@ -14,6 +15,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,8 +37,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup />
   <ItemGroup>
+    <Reference Include="PropertyChanged, Version=2.6.1.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
+      <HintPath>..\packages\PropertyChanged.Fody.2.6.1\lib\net452\PropertyChanged.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -56,27 +61,68 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Converters\NullToVisibilityConverter.cs" />
+    <Compile Include="ViewModels\HomeCreateTeamViewModel.cs" />
+    <Compile Include="ViewModels\HomeCreateUserViewModel.cs" />
+    <Compile Include="ViewModels\HomeTeamListViewModel.cs" />
+    <Compile Include="ViewModels\HomeUserDetailViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="ViewModels\ViewModelLocator.cs" />
+    <Compile Include="Views\HomeCreateTeamView.xaml.cs">
+      <DependentUpon>HomeCreateTeamView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HomeCreateUserView.xaml.cs">
+      <DependentUpon>HomeCreateUserView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HomeTeamListView.xaml.cs">
+      <DependentUpon>HomeTeamListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HomeUserDetailView.xaml.cs">
+      <DependentUpon>HomeUserDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogInView.xaml.cs">
+      <DependentUpon>LogInView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\HomeCreateTeamView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Converters\NullToVisibilityCoverter.cs" />
-    <Compile Include="MainViewModel.cs" />
-    <Compile Include="Views\CreateUserUC.xaml.cs">
-      <DependentUpon>CreateUserUC.xaml</DependentUpon>
+    <Compile Include="Views\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\LogInWindow.xaml.cs">
-      <DependentUpon>LogInWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\TeamSelectionTeamList.xaml.cs">
-      <DependentUpon>TeamSelectionTeamList.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\TeamSelectionUserInfo.xaml.cs">
-      <DependentUpon>TeamSelectionUserInfo.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\TeamSelectionWindow.xaml.cs">
-      <DependentUpon>TeamSelectionWindow.xaml</DependentUpon>
-    </Compile>
+    <Page Include="Views\HomeCreateUserView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HomeTeamListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HomeUserDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogInView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -96,6 +142,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -103,35 +150,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Views\CreateUserUC.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\LogInWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\TeamSelectionTeamList.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\TeamSelectionUserInfo.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\TeamSelectionWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Views\Images\left_arrow.png" />
-    <Resource Include="Views\Images\TB_wall1.jpg" />
-    <Resource Include="Views\Images\TeamBuddyBG.png" />
-    <Resource Include="Views\Images\TeamBuddyIcon.ico" />
-    <Resource Include="Views\Images\TeamBuddy_logo.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TeamBuddy.BL\TeamBuddy.BL.csproj">
@@ -144,10 +162,20 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Views\Images\TBTitle.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <Resource Include="Views\Images\left_arrow.png" />
     <Resource Include="Views\Images\TBTitle2.png" />
+    <Resource Include="Views\Images\TB_wall1.jpg" />
+    <Resource Include="Views\Images\TeamBuddyBG.png" />
+    <Resource Include="Views\Images\TeamBuddyIcon.ico" />
+    <Resource Include="Views\Images\TeamBuddy_logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Fody.4.2.1\build\Fody.targets" Condition="Exists('..\packages\Fody.4.2.1\build\Fody.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Fody.4.2.1\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.4.2.1\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\PropertyChanged.Fody.2.6.1\build\PropertyChanged.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PropertyChanged.Fody.2.6.1\build\PropertyChanged.Fody.props'))" />
+  </Target>
 </Project>

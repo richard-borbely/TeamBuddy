@@ -16,16 +16,13 @@ using System.Windows.Shapes;
 namespace TeamBuddy.App.Views
 {
     /// <summary>
-    /// Interaction logic for TeamSelectionUserInfo.xaml
+    /// Interaction logic for LogInView.xaml
     /// </summary>
-    public partial class TeamSelectionUserInfo : UserControl
+    public partial class LogInView : UserControl
     {
-        public TeamSelectionUserInfo()
+        public LogInView()
         {
             InitializeComponent();
         }
-
-
-       
     }
 }

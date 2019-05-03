@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace TeamBuddy.App.Views
 {
     /// <summary>
-    /// Interaction logic for TeamSelectionTeamList.xaml
+    /// Interaction logic for HomeCreateTeamView.xaml
     /// </summary>
-    public partial class TeamSelectionTeamList
+    public partial class HomeCreateTeamView : UserControl
     {
-        public TeamSelectionTeamList()
+        public HomeCreateTeamView()
         {
             InitializeComponent();
-        }
-
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }

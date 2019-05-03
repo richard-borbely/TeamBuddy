@@ -1,23 +1,21 @@
-﻿<UserControl x:Class="TeamBuddy.App.Views.TeamSelectionTeamList"
+﻿<UserControl x:Class="TeamBuddy.App.Views.HomeTeamListView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TeamBuddy.App.Views"
-             xmlns:views="clr-namespace:TeamBuddy.App.Views"
-             xmlns:app="clr-namespace:TeamBuddy.App"
-             mc:Ignorable="d" 
-             d:DataContext="{d:DesignInstance app:MainViewModel}"
-             
+             xmlns:viewModels="clr-namespace:TeamBuddy.App.ViewModels"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance viewModels:HomeTeamListViewModel}"
+             DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=HomeTeamListViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="6*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Text="My Teams:" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontFamily="Ink Free" FontWeight="Bold"/>
-
         <Grid Grid.Row="1" Margin="50 20 50 20">
             <ListView Background="Transparent" Width="500" ItemsSource="{Binding Teams}" Margin="0" Panel.ZIndex="-1">
                 <ListView.ItemTemplate>

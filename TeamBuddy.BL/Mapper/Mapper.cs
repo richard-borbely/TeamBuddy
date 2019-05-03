@@ -46,7 +46,7 @@ namespace TeamBuddy.BL.Mapper
                 Id = user.Id,
                 Username = user.Username,
                 Name = user.Name,
-                Passwd = Hasher.GetHash(user.Passwd),
+                Passwd = Hasher.GetHash(user.Password),
                 Gender = user.Gender,
                 Email = user.Email,
                 Status = user.Status
@@ -102,7 +102,7 @@ namespace TeamBuddy.BL.Mapper
                 Id = user.Id,
                 Username = user.Username,
                 Name = user.Name,
-                Passwd = user.Passwd,
+                Password = user.Passwd,
                 Gender = user.Gender,
                 Email = user.Email,
                 Status = user.Status

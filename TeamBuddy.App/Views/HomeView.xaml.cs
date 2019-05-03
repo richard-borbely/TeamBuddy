@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace TeamBuddy.App.Views
 {
     /// <summary>
-    /// Interaction logic for CreateUserUC.xaml
+    /// Interaction logic for HomeView.xaml
     /// </summary>
-    public partial class CreateUserUC : UserControl
+    public partial class HomeView : UserControl
     {
-        public CreateUserUC()
+        public HomeView()
         {
             InitializeComponent();
         }

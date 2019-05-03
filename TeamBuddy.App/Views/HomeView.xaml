@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="TeamBuddy.App.Views.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TeamBuddy.App.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/TB_wall1.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2.5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <local:HomeUserDetailView Grid.Column="0" Grid.RowSpan="2" />
+        <local:HomeTeamListView Grid.Column="1" Grid.Row="0" />
+        <local:HomeCreateUserView Grid.Column="1" Grid.Row="1" />
+        <local:HomeCreateTeamView Grid.Column="1" Grid.Row="1" />
+    </Grid>
+</UserControl>

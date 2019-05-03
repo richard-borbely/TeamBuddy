@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace TeamBuddy.App.Views
 {
     /// <summary>
-    /// Interaction logic for TeamSelectionWindow.xaml
+    /// Interaction logic for HomeTeamListView.xaml
     /// </summary>
-    public partial class TeamSelectionWindow : Window
+    public partial class HomeTeamListView : UserControl
     {
-        public TeamSelectionWindow()
+        public HomeTeamListView()
         {
             InitializeComponent();
         }
