@@ -13,7 +13,7 @@ namespace TeamBuddy.DAL
             var optionsBuilder = new DbContextOptionsBuilder<TeamBuddyDbContext>();
             optionsBuilder.UseSqlServer(
                 @"Data Source=(LocalDB)\MSSQLLocalDB;
-                                Initial Catalog = TasksDB;
+                                Initial Catalog = TeamBuddyDB;
                                 MultipleActiveResultSets = True;
                                 Integrated Security = True");
             return new TeamBuddyDbContext(optionsBuilder.Options);
