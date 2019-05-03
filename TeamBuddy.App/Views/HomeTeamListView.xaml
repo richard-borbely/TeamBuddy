@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TeamBuddy.App.Views"
              xmlns:viewModels="clr-namespace:TeamBuddy.App.ViewModels"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance viewModels:HomeTeamListViewModel}"
              DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=HomeTeamListViewModel}"
@@ -17,7 +18,13 @@
 
         <TextBlock Grid.Row="0" Text="My Teams:" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontFamily="Ink Free" FontWeight="Bold"/>
         <Grid Grid.Row="1" Margin="50 20 50 20">
-            <ListView Background="Transparent" Width="500" ItemsSource="{Binding Teams}" Margin="0" Panel.ZIndex="-1">
+            <ListView x:Name="TeamsListBox" Background="Transparent" Width="500" ItemsSource="{Binding Teams}" Margin="0" Panel.ZIndex="-1">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding TeamSelectedCommand}"
+                                               CommandParameter="{Binding ElementName=TeamsListBox, Path=SelectedItem}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Label Content="{Binding Name}" FontSize="30" Cursor="Hand" Opacity="0.8" />

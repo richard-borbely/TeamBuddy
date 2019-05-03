@@ -10,6 +10,7 @@ namespace TeamBuddy.App.ViewModels
     public class ViewModelLocator
     {
         public IMediator Mediator { get; set; }
+        public HomeViewModel HomeViewModel => new HomeViewModel(Mediator);
         public HomeUserDetailViewModel HomeUserDetailViewModel => new HomeUserDetailViewModel(Mediator);
         public HomeTeamListViewModel HomeTeamListViewModel => new HomeTeamListViewModel(Mediator);
         public HomeCreateUserViewModel HomeCreateUserViewModel => new HomeCreateUserViewModel(Mediator);
