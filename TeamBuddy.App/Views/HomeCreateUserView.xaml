@@ -9,10 +9,10 @@
              d:DataContext="{d:DesignInstance viewModels:HomeCreateUserViewModel}"
              DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=HomeCreateUserViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Visibility="{Binding NewUser, Converter={StaticResource NullToVisibilityConverter}}">
+    <Grid Width="450" Margin="0 0 50 0" Visibility="{Binding NewUser, Converter={StaticResource NullToVisibilityConverter}}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="65"/>
+            <RowDefinition Height="45"/>
             <RowDefinition Height="45"/>
             <RowDefinition Height="45"/>
             <RowDefinition Height="45"/>
@@ -22,24 +22,22 @@
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.5*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Login:" Margin="0,0,20,0" 
+        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Login:" Margin="0,0,20,0" 
                    FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Foreground="#FFD4D4D4"/>
-        <TextBlock Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Full Name:" Margin="0,0,20,0" 
+        <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Full Name:" Margin="0,0,20,0" 
                    FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Foreground="#FFD4D4D4"/>
-        <TextBlock Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="E-mail:" Margin="0,0,20,0" 
+        <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="E-mail:" Margin="0,0,20,0" 
                    FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Foreground="#FFD4D4D4"/>
-        <TextBlock Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Password:" Margin="0,0,20,0" 
+        <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Password:" Margin="0,0,20,0" 
                    FontSize="20" Foreground="#FFD4D4D4" FontFamily="Ink Free" FontWeight="Bold"/>
-        <TextBlock Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Gender:" Margin="0,0,20,0" 
+        <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Gender:" Margin="0,0,20,0" 
                    FontSize="20" Foreground="#FFD4D4D4" FontFamily="Ink Free" FontWeight="Bold"/>
 
-        <TextBox Name="TextBoxLogin" Grid.Row="1" Grid.Column="2" Text="{Binding NewUser.Username}" Height="30" Margin="0,0,0,0" 
+        <TextBox Name="TextBoxLogin" Grid.Row="1" Grid.Column="1" Text="{Binding NewUser.Username}" Height="30" Margin="0,0,0,0" 
                  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  FontStyle="Italic" Opacity="0.6">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -47,7 +45,7 @@
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <TextBox Name="TextBoxFullName" Grid.Row="2" Grid.Column="2" Text="{Binding NewUser.Name}" Height="30" Margin="0,0,0,0"
+        <TextBox Name="TextBoxFullName" Grid.Row="2" Grid.Column="1" Text="{Binding NewUser.Name}" Height="30" Margin="0,0,0,0"
                  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  FontStyle="Italic" Opacity="0.6">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -55,7 +53,7 @@
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <TextBox Name="TextBoxEmail" Grid.Row="3" Grid.Column="2" Text="{Binding NewUser.Email}" Height="30" Margin="0,0,0,0" 
+        <TextBox Name="TextBoxEmail" Grid.Row="3" Grid.Column="1" Text="{Binding NewUser.Email}" Height="30" Margin="0,0,0,0" 
                  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  FontStyle="Italic" Opacity="0.6">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -63,7 +61,7 @@
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <TextBox Name="TextBoxPassword" Grid.Row="4" Grid.Column="2" Text="{Binding NewUser.Password}" Height="30" Margin="0,0,0,0" 
+        <TextBox Name="TextBoxPassword" Grid.Row="4" Grid.Column="1" Text="{Binding NewUser.Password}" Height="30" Margin="0,0,0,0" 
                  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  TextDecorations="{x:Null}" Opacity="0.6">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -72,20 +70,20 @@
             </TextBox.Resources>
         </TextBox>
 
-        <ComboBox Name="ComboBoxGender" VerticalAlignment="Center" Grid.Row="5" Grid.Column="2" SelectedIndex="0" Opacity="0.6"
+        <ComboBox Name="ComboBoxGender" VerticalAlignment="Center" Grid.Row="5" Grid.Column="1" SelectedIndex="0" Opacity="0.6"
                   Width="120" HorizontalContentAlignment="Center">
             <ComboBoxItem Content="Male"/>
             <ComboBoxItem Content="Female"/>
             <ComboBoxItem Content="Other"/>
         </ComboBox>
 
-        <StackPanel Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Width="120" Height="30" Margin="0,0,0,0" Name="ButtonSwitch2" Content="Create New User" Opacity="0.6" Background="#FFDDDDDD" 
-                    Command="{Binding CreateNewUserCommand}"/>
+        <StackPanel Grid.Column="0" Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Width="150" Height="40" Margin="20,0,0,0" Name="ButtonSwitch2" Content="Create New User" FontSize="15" Opacity="0.6" Background="#FFDDDDDD" 
+                    Command="{Binding CreateNewUserCommand}" Cursor="Hand"/>
         </StackPanel>
-        <StackPanel Grid.Column="2" Grid.ColumnSpan="1" Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Width="120" Height="30" Margin="0,0,0,0" Name="ButtonSwitch3" Content="Cancel" Opacity="0.6" Background="#FFDDDDDD" 
-                    Command="{Binding CreateNewUserCanceledCommand}"/>
+        <StackPanel Grid.Column="1" Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Width="150" Height="40" Margin="20,0,0,0" Name="ButtonSwitch3" Content="Cancel" FontSize="15" Opacity="0.6" Background="#FFDDDDDD" 
+                    Command="{Binding CreateNewUserCanceledCommand}" Cursor="Hand"/>
         </StackPanel>
     </Grid>
 </UserControl>
