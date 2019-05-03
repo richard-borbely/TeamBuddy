@@ -13,22 +13,31 @@
             <RowDefinition Height="45"/>
             <RowDefinition Height="45"/>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="45"/>
-            <RowDefinition Height="45"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.5*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Image Source="Images/TBTitle2.png"/>
+            <Image Source="Images/TBBG.png" Margin="0,0,0,-70" Width="431"/>
         </StackPanel>
 
-        <Button Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="5" Content="Login" FontSize="20" Opacity="0.4" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFDDDDDD" Width="300" Height="58" Cursor="Hand" >
+        <TextBlock Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Login:" Margin="0,0,20,0" 
+                   FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Foreground="#FFC1C1C1"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Password:" Margin="0,0,20,0" 
+                   FontSize="20" Foreground="#FFC1C1C1" FontFamily="Ink Free" FontWeight="Bold"/>
+        <TextBox Grid.Row="2" Grid.Column="2" Height="30" Width="200" Margin="0,0,0,0" 
+                 VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  FontStyle="Italic" Opacity="0.6"/>
+        <TextBox Grid.Row="3" Grid.Column="2"  Height="30" Width="200" Margin="0,0,0,0" 
+                 VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  TextDecorations="{x:Null}" Opacity="0.6"/>
+
+        <Button Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="5" Content="Login" FontSize="18" Opacity="0.4" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" Background="#FFDDDDDD" Width="300" Height="40" Cursor="Hand" >
         </Button>
 
         <Grid.Background>

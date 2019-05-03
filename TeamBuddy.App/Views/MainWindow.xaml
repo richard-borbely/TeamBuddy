@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TeamBuddy.App"
         xmlns:views="clr-namespace:TeamBuddy.App.Views"
         mc:Ignorable="d"
-        Title="My Profile" Height="720" Width="1024" WindowStartupLocation="CenterScreen" MinWidth="1000" MinHeight="600">
+        Title="My Profile" Icon="Images/TeamBuddyIcon.ico" Height="720" Width="1024" WindowStartupLocation="CenterScreen" MinWidth="1000" MinHeight="600">
     <Grid>
         <!--<views:HomeUserDetailView Grid.Column="0" />--> 
         <views:HomeView />
