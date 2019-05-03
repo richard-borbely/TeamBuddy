@@ -8,13 +8,14 @@
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance viewModels:HomeUserDetailViewModel}"
              DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=HomeUserDetailViewModel}"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="600" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="5*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="10"/>
+            
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="1" Margin="0 20 0 20">
@@ -42,11 +43,23 @@
             <!--<TextBlock Grid.Row="8" Text="Status:" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" FontFamily="Ink Free" Opacity="0.6" ></TextBlock>-->
         </Grid>
 
-        <Button Grid.Row="2" Margin="20,20,20,20" Content="Create Team" FontSize="20" Opacity="0.4" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFDDDDDD" Width="300" Height="58" Cursor="Hand"
-                Command="{Binding CreateNewTeamSelectedCommand}" >
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0" Margin="0,0,0,0" Content="Create Team" FontSize="20" Opacity="0.4" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFDDDDDD" Width="200" Height="50" Cursor="Hand"
+                    Command="{Binding CreateNewTeamSelectedCommand}" >
             </Button>
-        <Button Grid.Row="3" Margin="20,20,20,20" Content="Create User" FontSize="20" Opacity="0.4" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFDDDDDD" Width="300" Height="58" Cursor="Hand" 
-                Command="{Binding CreateNewUserSelectedCommand}" >
-            </Button>
+
+            <TextBlock Grid.Row="1" Text="OR" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" Opacity="0.6" FontStyle="Italic" FontFamily="Ink Free" />
+
+            <Button Grid.Row="2" Margin="0,0,0,0" Content="Create User" FontSize="20" Opacity="0.4" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFDDDDDD" Width="200" Height="50" Cursor="Hand" 
+                    Command="{Binding CreateNewUserSelectedCommand}" />
+
+        </Grid>
+        
     </Grid>
 </UserControl>

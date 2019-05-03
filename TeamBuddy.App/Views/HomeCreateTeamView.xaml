@@ -26,9 +26,9 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Team Name:" Margin="0,0,20,0" 
-                   FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Foreground="#FFD4D4D4"/>
+                   FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Foreground="#FF444343"/>
         <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Team Description:" Margin="0,0,20,0" 
-                   FontSize="20" Foreground="#FFD4D4D4" FontFamily="Ink Free" FontWeight="Bold"/>
+                   FontSize="20" Foreground="#FF444343" FontFamily="Ink Free" FontWeight="Bold"/>
 
         <TextBox Grid.Row="0" Grid.Column="1" Height="30" Margin="0,0,0,0" 
                  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  FontStyle="Italic" Opacity="0.6">
