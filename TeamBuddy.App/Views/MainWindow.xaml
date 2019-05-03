@@ -9,7 +9,7 @@
         Title="My Profile" Height="720" Width="1024" WindowStartupLocation="CenterScreen" MinWidth="1000" MinHeight="600">
     <Grid>
         <!--<views:HomeUserDetailView Grid.Column="0" />--> 
+        <views:TeamSelectedView />
         <views:HomeView />
-        <!--<views:TeamSelectedView />-->
     </Grid>
 </Window>

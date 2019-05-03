@@ -4,9 +4,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TeamBuddy.App.Views"
+             xmlns:viewModels="clr-namespace:TeamBuddy.App.ViewModels"
              mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance viewModels:SelectedTeamLeftBarView}"
+             DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=SelectedTeamLeftBarView}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-             
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Width="80" Height="40" Margin="20,0,0,0" Name="ButtonSwitch13" Content="Home" FontSize="15" Opacity="0.6" Background="#FFDDDDDD" 
+                    Command="{Binding BackHomeCommand}" Cursor="Hand"/>
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -12,14 +12,14 @@ namespace TeamBuddy.App.ViewModels
     public class HomeViewModel : ViewModelBase
     {
         private readonly IMediator mediator;
-        private object _showHomeView = new Object();
+        private object _showHome = new Object();
 
-        public Object ShowHomeView
+        public Object ShowHome
         {
-            get => _showHomeView;
+            get => _showHome;
             set
             {
-                _showHomeView = value;
+                _showHome = value;
                 OnPropertyChanged();
             }
         }
@@ -30,11 +30,17 @@ namespace TeamBuddy.App.ViewModels
             this.mediator = mediator;
 
             mediator.Register<TeamSelectedMessage>(HideHomeView);
+            mediator.Register<BackHomeMessage>(ShowHomeView);
         }
 
         private void HideHomeView(TeamSelectedMessage obj)
         {
-            ShowHomeView = null;
+            ShowHome = null;
+        }
+
+        private void ShowHomeView(BackHomeMessage obj)
+        {
+            ShowHome = new Object();
         }
     }
 }
