@@ -16,6 +16,11 @@ namespace TeamBuddy.App.Views
             //createNewUserView.Show();
             //this.Close();
         }
+
+        private void UserInfoUC_Loaded()
+        {
+
+        }
     }
 
 }

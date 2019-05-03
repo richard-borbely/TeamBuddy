@@ -18,5 +18,13 @@ namespace TeamBuddy.App.Views
         }
 
 
+        private void HomePageUc_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            TeamBuddy.App.ViewModel.UserViewModel userViewModelObject =
+                new TeamBuddy.App.ViewModel.UserViewModel();
+            userViewModelObject.LoadUser();
+
+            HomePageUc.DataContext = userViewModelObject;
+        }
     }
 }

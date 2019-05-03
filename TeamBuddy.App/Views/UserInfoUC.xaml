@@ -3,10 +3,20 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <StackPanel HorizontalAlignment="Left" Height="421" Grid.Row="1" VerticalAlignment="Top" Width="200" Grid.RowSpan="2"
                 Grid.Column="0">
-        <TextBlock x:Name="TextBlock1" TextWrapping="Wrap" Text="xlogin00"/>
-        <TextBlock x:Name="TextBlock1Copy" TextWrapping="Wrap" Text="Name Surname"/>
-        <TextBlock x:Name="TextBlock1Copy1" TextWrapping="Wrap" Text="Status"/>
-        <TextBlock x:Name="TextBlock1Copy2" TextWrapping="Wrap" Text="Email"/>
-        <TextBlock x:Name="TextBlock1Copy3" TextWrapping="Wrap" Text="Gender"/>
+        <ItemsControl HorizontalAlignment="Center" ItemsSource ="{Binding Path = Students}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="MessageTextBox" HorizontalAlignment="Center" Text="{Binding Path = FirstName, Mode = TwoWay}"/>
+                    <ComboBox  ItemsSource="{Binding Source={StaticResource enmStatus}}"></ComboBox>
+                    <TextBlock x:Name="TextBlock1Copy" TextWrapping="Wrap" Text=" "/>
+                    <TextBlock x:Name="TextBlock1Copy1" TextWrapping="Wrap" Text=" "/>
+                    <TextBlock x:Name="TextBlock1Copy2" TextWrapping="Wrap" Text=" "/>
+                    <TextBlock x:Name="TextBlock1Copy3" TextWrapping="Wrap" Text=" "/>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
     </StackPanel>
 </UserControl>

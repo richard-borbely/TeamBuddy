@@ -56,18 +56,37 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\StudentModel.cs" />
+    <Compile Include="converters\NullToVisibilityConverter.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="ViewModel\UserViewModel.cs" />
+    <Compile Include="Views\Content2UC.xaml.cs">
+      <DependentUpon>Content2UC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContentUC.xaml.cs">
+      <DependentUpon>ContentUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CreateNewUserView.xaml.cs">
       <DependentUpon>CreateNewUserView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HomePageUC.xaml.cs">
       <DependentUpon>HomePageUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserInfoUC.xaml.cs">
       <DependentUpon>UserInfoUC.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Content2UC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ContentUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\HomePageUC.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -134,6 +153,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="TeamBuddyIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TeamBuddy.DAL\TeamBuddy.DAL.csproj">
+      <Project>{C712C00C-6672-4238-B35A-8503DE920762}</Project>
+      <Name>TeamBuddy.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
