@@ -12,12 +12,13 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="My Teams:" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontFamily="Ink Free" FontWeight="Bold"/>
-        <Grid Grid.Row="1" Margin="50 20 50 20">
+        <TextBlock Grid.Row="1" Text="My Teams:" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontFamily="Ink Free" FontWeight="Bold"/>
+        <Grid Grid.Row="2" Margin="50 20 50 20">
             <ListBox x:Name="TeamsListBox" Background="Transparent" Width="500" ItemsSource="{Binding Teams}" Margin="0" Panel.ZIndex="-1">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
