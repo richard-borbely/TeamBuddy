@@ -20,7 +20,7 @@ namespace TeamBuddy.App.ViewModels
         {
             Email = "xborbe00@stud.fit.vutbr.cz",
             Username = "xborbe00",
-            Name = "Richard Borbely",
+            Name = "Richard Borbély",
             Gender = Gender.Male
         };
 
