@@ -15,14 +15,17 @@ namespace TeamBuddy.App.ViewModels
     public class HomeUserDetailViewModel : ViewModelBase
     {
         private readonly IMediator mediator;
+        private UserDetailModel _user;
 
-        public UserDetailModel User { get; set; } = new UserDetailModel()
+        public UserDetailModel User
         {
-            Email = "xborbe00@stud.fit.vutbr.cz",
-            Username = "xborbe00",
-            Name = "Richard Borbély",
-            Gender = Gender.Male
-        };
+            get => _user;
+            set
+            {
+                _user = value;
+                OnPropertyChanged();
+            } 
+        }
 
         public ICommand CreateNewUserSelectedCommand { get; set; }
         public ICommand CreateNewTeamSelectedCommand { get; set; }
@@ -33,6 +36,13 @@ namespace TeamBuddy.App.ViewModels
 
             CreateNewUserSelectedCommand = new RelayCommand(CreateNewUserSelected);
             CreateNewTeamSelectedCommand = new RelayCommand(CreateNewTeamSelected);
+
+            mediator.Register<LogInMessage>(ShowUserDetails);
+        }
+
+        private void ShowUserDetails(LogInMessage login)
+        {
+            User = login.SignedUser;
         }
 
         private void CreateNewTeamSelected()

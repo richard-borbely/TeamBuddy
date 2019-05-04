@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using TeamBuddy.BL.Mapper;
@@ -405,6 +407,7 @@ namespace TeamBuddy.BL.Tests
             {
                 //Act
                 sut.AddUserToTeam(userModel, createdTeamModel.Id);
+                var result = sut.GetAllMyTeams(userModel.Id);
 
                 //Assert
                 Assert.Equal(0,teamEntity.UserInTeam.Count);
