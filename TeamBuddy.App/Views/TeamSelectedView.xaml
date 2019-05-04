@@ -9,7 +9,7 @@
              d:DataContext="{d:DesignInstance viewModels:SelectedTeamViewModel}"
              DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=SelectedTeamViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid ShowGridLines="True" Visibility="{Binding ShowSelectedTeam, Converter={StaticResource NullToVisibilityConverter}}">
+    <Grid Visibility="{Binding ShowSelectedTeam, Converter={StaticResource NullToVisibilityConverter}}">
         <Grid.Background>
             <ImageBrush ImageSource="Images/TB_wall1.jpg" Stretch="UniformToFill"/>
         </Grid.Background>

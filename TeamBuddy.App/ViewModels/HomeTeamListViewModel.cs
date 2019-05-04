@@ -41,7 +41,7 @@ namespace TeamBuddy.App.ViewModels
 
         private void TeamSelected(TeamListModel team)
         {
-            mediator.Send(new TeamSelectedMessage{ Id = team.Id });
+            mediator.Send(new TeamSelectedMessage { Name = team.Name });
         }
     }
 }

@@ -27,8 +27,9 @@ namespace TeamBuddy.App.ViewModels
         public HomeCreateUserViewModel HomeCreateUserViewModel => new HomeCreateUserViewModel(mediator);
         public HomeCreateTeamViewModel HomeCreateTeamViewModel => new HomeCreateTeamViewModel(mediator);
         public SelectedTeamViewModel SelectedTeamViewModel => new SelectedTeamViewModel(mediator);
-        public SelectedTeamLeftBarView SelectedTeamLeftBarView => new SelectedTeamLeftBarView(mediator);
-
+        public SelectedTeamLeftBarViewModel SelectedTeamLeftBarViewModel => new SelectedTeamLeftBarViewModel(mediator);
+        public SelectedTeamDetailViewModel SelectedTeamDetailViewModel => new SelectedTeamDetailViewModel(mediator, teamBuddyRepository);
+        public SelectedTeamUserDetailViewModel SelectedTeamUserDetailViewModel => new SelectedTeamUserDetailViewModel(mediator, teamBuddyRepository);
         public ViewModelLocator()
         {
             mediator = new Mediator();

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace TeamBuddy.App.Views
 {
     /// <summary>
-    /// Interaction logic for SelectedTeamUserDetailView.xaml
+    /// Interaction logic for SelectedTeamPostListView.xaml
     /// </summary>
-    public partial class SelectedTeamUserDetailView : UserControl
+    public partial class SelectedTeamPostListView : UserControl
     {
-        public SelectedTeamUserDetailView()
+        public SelectedTeamPostListView()
         {
             InitializeComponent();
         }

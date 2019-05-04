@@ -167,7 +167,9 @@
     <Compile Include="ViewModels\HomeUserDetailViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\LogInViewModel.cs" />
-    <Compile Include="ViewModels\SelectedTeamLeftBarView.cs" />
+    <Compile Include="ViewModels\SelectedTeamDetailViewModel.cs" />
+    <Compile Include="ViewModels\SelectedTeamLeftBarViewModel.cs" />
+    <Compile Include="ViewModels\SelectedTeamUserDetailViewModel.cs" />
     <Compile Include="ViewModels\SelectedTeamViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
@@ -186,8 +188,8 @@
     <Compile Include="Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SelectedTeamUserDetailView.xaml.cs">
-      <DependentUpon>SelectedTeamUserDetailView.xaml</DependentUpon>
+    <Compile Include="Views\SelectedTeamPostListView.xaml.cs">
+      <DependentUpon>SelectedTeamPostListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LogInView.xaml.cs">
       <DependentUpon>LogInView.xaml</DependentUpon>
@@ -198,6 +200,12 @@
     <Compile Include="Views\SelectedTeamLeftBarView.xaml.cs">
       <DependentUpon>SelectedTeamLeftBarView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SelectedTeamUserDetailView.xaml.cs">
+      <DependentUpon>SelectedTeamUserDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SelectedTeamUserListView.xaml.cs">
+      <DependentUpon>SelectedTeamUserListView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TeamSelectedView.xaml.cs">
       <DependentUpon>TeamSelectedView.xaml</DependentUpon>
     </Compile>
@@ -205,7 +213,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SelectedTeamUserDetailView.xaml">
+    <Page Include="Views\SelectedTeamPostListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -246,6 +254,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SelectedTeamLeftBarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SelectedTeamUserDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SelectedTeamUserListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

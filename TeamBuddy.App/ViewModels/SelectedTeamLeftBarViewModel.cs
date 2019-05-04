@@ -10,13 +10,13 @@ using TeamBuddy.BL.Services;
 
 namespace TeamBuddy.App.ViewModels
 {
-    public class SelectedTeamLeftBarView : ViewModelBase
+    public class SelectedTeamLeftBarViewModel : ViewModelBase
     {
         private readonly IMediator mediator;
 
         public ICommand BackHomeCommand { get; set; }
 
-        public SelectedTeamLeftBarView(IMediator mediator)
+        public SelectedTeamLeftBarViewModel(IMediator mediator)
         {
             this.mediator = mediator;
 

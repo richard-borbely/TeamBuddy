@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:TeamBuddy.App.Views"
              xmlns:viewModels="clr-namespace:TeamBuddy.App.ViewModels"
              mc:Ignorable="d" 
-             d:DataContext="{d:DesignInstance viewModels:SelectedTeamLeftBarView}"
-             DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=SelectedTeamLeftBarView}"
+             d:DataContext="{d:DesignInstance viewModels:SelectedTeamLeftBarViewModel}"
+             DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=SelectedTeamLeftBarViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
@@ -24,32 +24,7 @@
             </Button>
         </StackPanel>
 
-        <Grid Grid.Row="1" Margin="0 20 0 20">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-            <TextBlock Grid.Row="0" Text="Username:" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" FontFamily="Ink Free" Opacity="0.6" ></TextBlock>
-            <TextBlock Grid.Row="1" Text="Username" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Ink Free" ></TextBlock>
-            <TextBlock Grid.Row="2" Text="Name:" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" FontFamily="Ink Free" Opacity="0.6"  ></TextBlock>
-            <TextBlock Grid.Row="3" Text="Name" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Ink Free" ></TextBlock>
-            <TextBlock Grid.Row="4" Text="Email:" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" FontFamily="Ink Free" Opacity="0.6" ></TextBlock>
-            <TextBlock Grid.Row="5" Text="Email" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Ink Free" ></TextBlock>
-            <TextBlock Grid.Row="6" Text="Gender:" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" FontFamily="Ink Free" Opacity="0.6"  ></TextBlock>
-            <TextBlock Grid.Row="7" Text="Gender" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Ink Free" ></TextBlock>
-            <TextBlock Grid.Row="8" Text="Status:" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" FontFamily="Ink Free" Opacity="0.6"  ></TextBlock>
-            <TextBlock Grid.Row="9" Text="Status" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Ink Free" ></TextBlock>
-
-        </Grid>
+        <local:SelectedTeamUserDetailView Grid.Row="1"/>
 
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>

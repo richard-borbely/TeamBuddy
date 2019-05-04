@@ -4,8 +4,8 @@ using System.Text;
 
 namespace TeamBuddy.BL.Messages
 {
-    public class TeamSelectedMessage
+    public class UserSelectedMessage
     {
-        public string Name { get; set; }
+        public string Username { get; set; }
     }
 }
