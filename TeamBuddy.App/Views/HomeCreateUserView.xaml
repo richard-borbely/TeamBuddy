@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TeamBuddy.App.Views"
              xmlns:viewModels="clr-namespace:TeamBuddy.App.ViewModels"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance viewModels:HomeCreateUserViewModel}"
              DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=HomeCreateUserViewModel}"
@@ -45,12 +46,7 @@
                  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  FontStyle="Italic" Opacity="0.6"/>
         <TextBox Name="TextBoxPassword" Grid.Row="4" Grid.Column="1" Text="{Binding NewUser.Password}" Height="30" Margin="0,0,0,0" 
                  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  TextDecorations="{x:Null}" Opacity="0.6"/>
-        <ComboBox Name="ComboBoxGender" VerticalAlignment="Center" Grid.Row="5" Grid.Column="1" SelectedIndex="0" Opacity="0.6"
-                  Width="120" HorizontalContentAlignment="Center">
-            <ComboBoxItem Content="Male"/>
-            <ComboBoxItem Content="Female"/>
-            <ComboBoxItem Content="Other"/>
-        </ComboBox>
+        
         <StackPanel Grid.Column="0" Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Width="150" Height="40" Margin="20,0,0,0" Name="ButtonSwitch2" Content="Create New User" FontSize="15" Opacity="0.6" Background="#FFDDDDDD" 
                     Command="{Binding CreateNewUserCommand}" Cursor="Hand"/>

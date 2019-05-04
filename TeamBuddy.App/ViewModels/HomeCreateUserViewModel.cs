@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ using TeamBuddy.App.Commands;
 using TeamBuddy.BL.Messages;
 using TeamBuddy.BL.Models;
 using TeamBuddy.BL.Services;
+using TeamBuddy.DAL.Enumerations;
 
 namespace TeamBuddy.App.ViewModels
 {
@@ -26,6 +28,7 @@ namespace TeamBuddy.App.ViewModels
             }
         }
 
+        public ICommand GenderSelectedCommand { get; set; }
         public ICommand CreateNewUserCommand { get; set; }
         public ICommand CreateNewUserCanceledCommand { get; set; }
 
@@ -33,18 +36,30 @@ namespace TeamBuddy.App.ViewModels
         {
             this.mediator = mediator;
 
-            CreateNewUserCanceledCommand = new RelayCommand(CreateNewUserCanceled);
+            GenderSelectedCommand = new RelayCommand<Gender>(GenderSelected);
+            CreateNewUserCommand = new RelayCommand(CreateNewUser);
+            CreateNewUserCanceledCommand = new RelayCommand(CreateNewUserCancel);
 
             mediator.Register<CreateNewUserSelectedMessage>(ShowCreateNewUserTab);
-            mediator.Register<CreateNewTeamSelectedMessage>(CreateNewUserCanceled);
+            mediator.Register<CreateNewTeamSelectedMessage>(CreateNewUserCancel);
         }
 
-        private void CreateNewUserCanceled(CreateNewTeamSelectedMessage obj)
+        private void GenderSelected(Gender userGender)
+        {
+            NewUser.Gender = userGender;
+        }
+
+        private void CreateNewUser()
+        {
+            
+        }
+
+        private void CreateNewUserCancel(CreateNewTeamSelectedMessage obj)
         {
             NewUser = null;
         }
 
-        private void CreateNewUserCanceled()
+        private void CreateNewUserCancel()
         {
             NewUser = null;
         }
