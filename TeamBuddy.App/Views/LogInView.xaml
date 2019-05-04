@@ -4,9 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TeamBuddy.App.Views"
-             mc:Ignorable="d" 
+             xmlns:viewModels="clr-namespace:TeamBuddy.App.ViewModels"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance viewModels:LogInViewModel}"
+             DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=LogInViewModel}"
              Height="720" Width="1024">
-    <Grid>
+    <Grid Visibility="{Binding ShowLogin, Converter={StaticResource NullToVisibilityConverter}}">
         <Grid.RowDefinitions>
             <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
@@ -23,21 +27,29 @@
             <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Image Source="Images/TBBG.png" Margin="0,0,0,146" Width="746"/>
+        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center" Margin="139,0" Width="746">
+            <Image Source="Images/TBBG.png" Margin="0,0,0,100" Width="746"/>
         </StackPanel>
 
-        <TextBlock Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Login:" Margin="0,0,20,0" 
-                   FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Foreground="#FFC1C1C1"/>
-        <TextBlock Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Password:" Margin="0,0,20,0" 
-                   FontSize="20" Foreground="#FFC1C1C1" FontFamily="Ink Free" FontWeight="Bold"/>
-        <TextBox Grid.Row="2" Grid.Column="2" Height="30" Width="200" Margin="0,0,0,0" 
+        <TextBlock Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Email:" Margin="110,17,131,23" 
+                   FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Foreground="#FFC1C1C1" Height="24" Width="52"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Password:" Margin="92,10,113,10" 
+                   FontSize="20" Foreground="#FFC1C1C1" FontFamily="Ink Free" FontWeight="Bold" Height="25" Width="88"/>
+        <TextBox Grid.Row="2" Grid.Column="2" Margin="46,20,46,19" Text="{Binding Email}"
                  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontStyle="Italic" Opacity="0.6"/>
-        <TextBox Grid.Row="3" Grid.Column="2"  Height="30" Width="200" Margin="0,0,0,0" 
-                 VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontStyle="Italic" Opacity="0.6"/>
+        <PasswordBox Name="PasswordBox" Grid.Row="3" Grid.Column="2" Margin="46,7,46,8"
+                 PasswordChar="•" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontStyle="Italic" Opacity="0.6">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="PasswordChanged">
+                    <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}"
+                                           CommandParameter="{Binding ElementName=PasswordBox}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </PasswordBox>
 
         <Button Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="5" Content="Login" FontSize="18" Opacity="0.4" HorizontalAlignment="Center" 
-                VerticalAlignment="Center" Background="#FFDDDDDD" Width="300" Height="40" Cursor="Hand" >
+                VerticalAlignment="Center" Background="#FFDDDDDD" Width="300" Height="40" Cursor="Hand"
+                Command="{Binding LogInCommand}" Margin="143,3,143,2">
         </Button>
 
         <Grid.Background>

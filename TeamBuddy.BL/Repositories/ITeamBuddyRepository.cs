@@ -7,6 +7,7 @@ namespace TeamBuddy.BL.Repositories
     public interface ITeamBuddyRepository
     {
         IEnumerable<TeamListModel> GetAllTeams();
+        IEnumerable<TeamListModel> GetAllMyTeams(Guid userId);
         IEnumerable<UserListModel> GetAllUsers();
         IEnumerable<PostDetailModel> GetAllPosts();
         IEnumerable<CommentDetailModel> GetAllComments();

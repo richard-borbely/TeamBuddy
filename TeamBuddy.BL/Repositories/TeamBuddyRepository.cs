@@ -26,6 +26,14 @@ namespace TeamBuddy.BL.Repositories
                 .Select(_mapper.MapTeamListModelFromEntity);
         }
 
+        public IEnumerable<TeamListModel> GetAllMyTeams(Guid userId)
+        {
+            return _dbContextFactory.CreateDbContext()
+                .UserTeams
+                .Where(u => u.UserId == userId)
+                .Select(t => _mapper.MapTeamListModelFromEntity(t.Team));
+        }
+
         public IEnumerable<UserListModel> GetAllUsers()
         {
             return _dbContextFactory.CreateDbContext()

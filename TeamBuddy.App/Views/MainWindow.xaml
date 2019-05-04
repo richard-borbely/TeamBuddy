@@ -8,8 +8,8 @@
         mc:Ignorable="d"
         Title="Team Buddy" Icon="Images/TeamBuddyIcon.ico" Height="720" Width="1024" WindowStartupLocation="CenterScreen" MinWidth="1000" MinHeight="600">
     <Grid>
-        <!--<views:HomeUserDetailView Grid.Column="0" />--> 
         <views:TeamSelectedView />
         <views:HomeView />
+        <views:LogInView />
     </Grid>
 </Window>

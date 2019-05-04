@@ -159,11 +159,14 @@
     </ApplicationDefinition>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Converters\NullToVisibilityConverter.cs" />
+    <Compile Include="Services\IMessageBoxService.cs" />
+    <Compile Include="Services\MessageBoxService.cs" />
     <Compile Include="ViewModels\HomeCreateTeamViewModel.cs" />
     <Compile Include="ViewModels\HomeCreateUserViewModel.cs" />
     <Compile Include="ViewModels\HomeTeamListViewModel.cs" />
     <Compile Include="ViewModels\HomeUserDetailViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\LogInViewModel.cs" />
     <Compile Include="ViewModels\SelectedTeamLeftBarView.cs" />
     <Compile Include="ViewModels\SelectedTeamViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />

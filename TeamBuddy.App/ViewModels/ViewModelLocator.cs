@@ -3,24 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TeamBuddy.App.Services;
 using TeamBuddy.App.Views;
+using TeamBuddy.BL.Mapper;
+using TeamBuddy.BL.Repositories;
 using TeamBuddy.BL.Services;
+using TeamBuddy.DAL;
 
 namespace TeamBuddy.App.ViewModels
 {
     public class ViewModelLocator
     {
-        public IMediator Mediator { get; set; }
-        public HomeViewModel HomeViewModel => new HomeViewModel(Mediator);
-        public HomeUserDetailViewModel HomeUserDetailViewModel => new HomeUserDetailViewModel(Mediator);
-        public HomeTeamListViewModel HomeTeamListViewModel => new HomeTeamListViewModel(Mediator);
-        public HomeCreateUserViewModel HomeCreateUserViewModel => new HomeCreateUserViewModel(Mediator);
-        public HomeCreateTeamViewModel HomeCreateTeamViewModel => new HomeCreateTeamViewModel(Mediator);
-        public SelectedTeamViewModel SelectedTeamViewModel => new SelectedTeamViewModel(Mediator);
-        public SelectedTeamLeftBarView SelectedTeamLeftBarView => new SelectedTeamLeftBarView(Mediator);
+        private readonly IMediator mediator;
+        private readonly IDbContextFactory dbContextFactory;
+        private readonly IMapper _mapper = new Mapper();
+        private readonly ITeamBuddyRepository teamBuddyRepository;
+        private readonly IMessageBoxService messageBoxService;
+
+        public LogInViewModel LogInViewModel => new LogInViewModel(mediator, teamBuddyRepository, messageBoxService);
+        public HomeViewModel HomeViewModel => new HomeViewModel(mediator);
+        public HomeUserDetailViewModel HomeUserDetailViewModel => new HomeUserDetailViewModel(mediator);
+        public HomeTeamListViewModel HomeTeamListViewModel => new HomeTeamListViewModel(mediator, teamBuddyRepository);
+        public HomeCreateUserViewModel HomeCreateUserViewModel => new HomeCreateUserViewModel(mediator);
+        public HomeCreateTeamViewModel HomeCreateTeamViewModel => new HomeCreateTeamViewModel(mediator);
+        public SelectedTeamViewModel SelectedTeamViewModel => new SelectedTeamViewModel(mediator);
+        public SelectedTeamLeftBarView SelectedTeamLeftBarView => new SelectedTeamLeftBarView(mediator);
+
         public ViewModelLocator()
         {
-            Mediator = new Mediator();
+            mediator = new Mediator();
+            dbContextFactory = new DefaultDbContextFactory();
+            teamBuddyRepository = new TeamBuddyRepository(dbContextFactory, _mapper);
+            messageBoxService = new MessageBoxService();
         }
     }
 }

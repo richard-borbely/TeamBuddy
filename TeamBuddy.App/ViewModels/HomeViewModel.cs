@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using TeamBuddy.BL.Messages;
@@ -12,7 +13,7 @@ namespace TeamBuddy.App.ViewModels
     public class HomeViewModel : ViewModelBase
     {
         private readonly IMediator mediator;
-        private object _showHome = new Object();
+        private object _showHome = null;
 
         public Object ShowHome
         {
@@ -29,6 +30,7 @@ namespace TeamBuddy.App.ViewModels
         {
             this.mediator = mediator;
 
+            mediator.Register<LogInMessage>(ShowHomeView);
             mediator.Register<TeamSelectedMessage>(HideHomeView);
             mediator.Register<BackHomeMessage>(ShowHomeView);
         }
@@ -38,7 +40,7 @@ namespace TeamBuddy.App.ViewModels
             ShowHome = null;
         }
 
-        private void ShowHomeView(BackHomeMessage obj)
+        private void ShowHomeView(Object obj)
         {
             ShowHome = new Object();
         }

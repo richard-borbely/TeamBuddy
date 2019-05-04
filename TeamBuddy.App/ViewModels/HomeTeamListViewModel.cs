@@ -6,8 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TeamBuddy.App.Commands;
+using TeamBuddy.BL.Extensions;
 using TeamBuddy.BL.Messages;
 using TeamBuddy.BL.Models;
+using TeamBuddy.BL.Repositories;
 using TeamBuddy.BL.Services;
 
 namespace TeamBuddy.App.ViewModels
@@ -15,21 +17,26 @@ namespace TeamBuddy.App.ViewModels
     public class HomeTeamListViewModel : ViewModelBase
     {
         private readonly IMediator mediator;
+        private readonly ITeamBuddyRepository teamBuddyRepository;
 
-        public ObservableCollection<TeamListModel> Teams { get; set; } = new ObservableCollection<TeamListModel>()
-        {
-            new TeamListModel() {Name = "IFJ Team"},
-            new TeamListModel() {Name = "ICS Team"},
-            new TeamListModel() {Name = "IW5 Team"}
-        };
+        public ObservableCollection<TeamListModel> Teams { get; set; } = new ObservableCollection<TeamListModel>();
 
         public ICommand TeamSelectedCommand { get; set; }
 
-        public HomeTeamListViewModel(IMediator mediator)
+        public HomeTeamListViewModel(IMediator mediator, ITeamBuddyRepository teamBuddyRepository)
         {
             this.mediator = mediator;
+            this.teamBuddyRepository = teamBuddyRepository;
 
             TeamSelectedCommand = new RelayCommand<TeamListModel>(TeamSelected);
+
+            mediator.Register<LogInMessage>(ListUserTeams);
+        }
+
+        private void ListUserTeams(LogInMessage login)
+        {
+            var teams = teamBuddyRepository.GetAllMyTeams(login.SignedUser.Id);
+            Teams.AddRange(teams);
         }
 
         private void TeamSelected(TeamListModel team)
