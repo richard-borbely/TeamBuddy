@@ -13,8 +13,8 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10"/>
+            <RowDefinition Height="80"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="1" Text="My Teams:" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontFamily="Ink Free" FontWeight="Bold"/>

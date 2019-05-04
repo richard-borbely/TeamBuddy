@@ -20,34 +20,37 @@
             <RowDefinition Height="45"/>
             <RowDefinition Height="45"/>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Login:" Margin="0,0,20,0" 
+        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Username:" Margin="0,0,20,0" 
                    FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Foreground="#FF444343"/>
         <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Full Name:" Margin="0,0,20,0" 
                    FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Foreground="#FF444343"/>
-        <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="E-mail:" Margin="0,0,20,0" 
+        <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Email:" Margin="0,0,20,0" 
                    FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Foreground="#FF444343"/>
         <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Password:" Margin="0,0,20,0" 
                    FontSize="20" Foreground="#FF444343" FontFamily="Ink Free" FontWeight="Bold"/>
         <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Gender:" Margin="0,0,20,0" 
                    FontSize="20" Foreground="#FF444343" FontFamily="Ink Free" FontWeight="Bold"/>
 
-        <TextBox Name="TextBoxLogin" Grid.Row="1" Grid.Column="1" Text="{Binding NewUser.Username}" Height="30" Margin="0,0,0,0" 
-                 VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  FontStyle="Italic" Opacity="0.6"/>
-        <TextBox Name="TextBoxFullName" Grid.Row="2" Grid.Column="1" Text="{Binding NewUser.Name}" Height="30" Margin="0,0,0,0"
-                 VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  FontStyle="Italic" Opacity="0.6"/>
-        <TextBox Name="TextBoxEmail" Grid.Row="3" Grid.Column="1" Text="{Binding NewUser.Email}" Height="30" Margin="0,0,0,0" 
-                 VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  FontStyle="Italic" Opacity="0.6"/>
-        <TextBox Name="TextBoxPassword" Grid.Row="4" Grid.Column="1" Text="{Binding NewUser.Password}" Height="30" Margin="0,0,0,0" 
-                 VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  TextDecorations="{x:Null}" Opacity="0.6"/>
-        <ComboBox Name="ComboBoxGender" VerticalAlignment="Center" Grid.Row="5" Grid.Column="1" SelectedIndex="0" Opacity="0.6"
-                  Width="120" HorizontalContentAlignment="Center" ItemsSource="{Binding Source={StaticResource EnmGenders}}">
+        <TextBox Name="TextBoxLogin" Grid.Row="1" Grid.Column="1" Text="{Binding NewUser.Username}" Height="30" Margin="0,0,0,0" Background="Transparent" Foreground="Black"
+                 FontSize="18" FontWeight="Bold"  FontFamily="Ink Free" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Opacity="0.8"/>
+        <TextBox Name="TextBoxFullName" Grid.Row="2" Grid.Column="1" Text="{Binding NewUser.Name}" Height="30" Margin="0,0,0,0" Background="Transparent" Foreground="Black"
+                 FontSize="18" FontWeight="Bold" FontFamily="Ink Free" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Opacity="0.8"/>
+        <TextBox Name="TextBoxEmail" Grid.Row="3" Grid.Column="1" Text="{Binding NewUser.Email}" Height="30" Margin="0,0,0,0" Background="Transparent" Foreground="Black"
+                 FontSize="18" FontWeight="Bold" FontFamily="Ink Free" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Opacity="0.8"/>
+        <TextBox Name="TextBoxPassword" Grid.Row="4" Grid.Column="1" Text="{Binding NewUser.Password}" Height="30" Margin="0,0,0,0" Background="Transparent" Foreground="Black"
+                 FontSize="18" FontWeight="Bold" FontFamily="Ink Free" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" TextDecorations="{x:Null}" Opacity="0.8"/>
+        <ComboBox Name="ComboBoxGender" VerticalAlignment="Center" Grid.Row="5" Grid.Column="1" SelectedIndex="0" Opacity="0.8"
+                  Width="120" HorizontalContentAlignment="Center" ItemsSource="{Binding Source={StaticResource EnmGenders}}"
+                  FontFamily="Ink Free" FontSize="16" FontWeight="Black"
+                  Background='#0000' BorderBrush="Black" Foreground="Black"
+                  Style="{StaticResource MaterialDesignComboBox}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
                     <i:InvokeCommandAction Command="{Binding GenderSelectedCommand}"
