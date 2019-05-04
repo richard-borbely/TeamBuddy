@@ -35,10 +35,13 @@
                    FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Foreground="#FFC1C1C1" Height="24" Width="52"/>
         <TextBlock Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Password:" Margin="92,10,113,10" 
                    FontSize="20" Foreground="#FFC1C1C1" FontFamily="Ink Free" FontWeight="Bold" Height="25" Width="88"/>
-        <TextBox Grid.Row="2" Grid.Column="2" Margin="46,20,46,19" Text="{Binding Email}"
-                 VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontStyle="Italic" Opacity="0.6"/>
-        <PasswordBox Name="PasswordBox" Grid.Row="3" Grid.Column="2" Margin="46,7,46,8"
-                 PasswordChar="•" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontStyle="Italic" Opacity="0.6">
+        <TextBox Grid.Row="2" Grid.Column="2" Margin="46,10,46,19" Text="{Binding Email}"
+                 FontSize="18" FontWeight="Medium"  FontFamily="Ink Free"
+                 Background="Transparent" Foreground="#FFC739"  BorderBrush="#FFC1C1C1"
+                 VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Opacity="1"/>
+        <PasswordBox Name="PasswordBox" Grid.Row="3" Grid.Column="2" Margin="46,0,46,8"
+                 FontSize="20" Foreground="#FFC739" BorderBrush="#FFC1C1C1"
+                 PasswordChar="•" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontStyle="Italic" Opacity="1">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="PasswordChanged">
                     <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}"
@@ -51,9 +54,5 @@
                 VerticalAlignment="Center" Background="#FFDDDDDD" Width="300" Height="40" Cursor="Hand"
                 Command="{Binding LogInCommand}" Margin="143,3,143,2">
         </Button>
-
-        <Grid.Background>
-            <ImageBrush ImageSource="Images/TeamBuddyBG.png" Stretch="UniformToFill"/>
-        </Grid.Background>
     </Grid>
 </UserControl>
