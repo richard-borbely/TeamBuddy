@@ -31,7 +31,7 @@ namespace TeamBuddy.BL.Repositories
             return _dbContextFactory.CreateDbContext()
                 .UserTeams
                 .Where(u => u.UserId == userId)
-                .Select(t => _mapper.MapTeamListModelFromEntity(t.Team))
+                .Select(t => _mapper.MapTeamListModelFromEntity(t.Team));
         }
 
         public IEnumerable<UserListModel> GetAllUsers()
