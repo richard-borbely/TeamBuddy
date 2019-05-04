@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:TeamBuddy.App"
              xmlns:viewModels="clr-namespace:TeamBuddy.App.ViewModels"
              xmlns:converters="clr-namespace:TeamBuddy.App.Converters"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:enm="clr-namespace:TeamBuddy.DAL.Enumerations;assembly=TeamBuddy.DAL"
              xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
@@ -21,6 +23,12 @@
                 </ResourceDictionary>
                 <ResourceDictionary Source="pack://application:,,,/Dragablz;component/Themes/materialdesign.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
+            <ObjectDataProvider x:Key="EnmGenders" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="enm:Gender"></x:Type>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
 
             <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="{StaticResource Primary200}" po:Freeze="True" />
             <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="{StaticResource Primary200Foreground}" po:Freeze="True" />

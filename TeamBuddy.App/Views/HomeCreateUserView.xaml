@@ -46,7 +46,17 @@
                  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  FontStyle="Italic" Opacity="0.6"/>
         <TextBox Name="TextBoxPassword" Grid.Row="4" Grid.Column="1" Text="{Binding NewUser.Password}" Height="30" Margin="0,0,0,0" 
                  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  TextDecorations="{x:Null}" Opacity="0.6"/>
-        
+        <ComboBox Name="ComboBoxGender" VerticalAlignment="Center" Grid.Row="5" Grid.Column="1" SelectedIndex="0" Opacity="0.6"
+                  Width="120" HorizontalContentAlignment="Center" ItemsSource="{Binding Source={StaticResource EnmGenders}}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding GenderSelectedCommand}"
+                                           CommandParameter="{Binding ElementName=ComboBoxGender, Path=SelectedItem}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ComboBox>
+
+
         <StackPanel Grid.Column="0" Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Width="150" Height="40" Margin="20,0,0,0" Name="ButtonSwitch2" Content="Create New User" FontSize="15" Opacity="0.6" Background="#FFDDDDDD" 
                     Command="{Binding CreateNewUserCommand}" Cursor="Hand"/>
