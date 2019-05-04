@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dragablz, Version=0.0.3.203, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dragablz.0.0.3.203\lib\net45\Dragablz.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
     </Reference>
@@ -297,6 +300,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Views\Images\TBBG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Images\tbtitle3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Images\tblogo_XJx_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Images\houseB.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.4.2.1\build\Fody.targets" Condition="Exists('..\packages\Fody.4.2.1\build\Fody.targets')" />

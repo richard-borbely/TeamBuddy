@@ -11,13 +11,59 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="120"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Width="80" Height="40" Margin="20,0,0,0" Name="ButtonSwitch13" Content="Home" FontSize="15" Opacity="0.6" Background="#FFDDDDDD" 
-                    Command="{Binding BackHomeCommand}" Cursor="Hand"/>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
+            <Button Width="75" Height="50" Margin="0,0,0,0" Name="ButtonSwitch13" FontSize="15" Opacity="0.6" Background="#FFDDDDDD" 
+                    Command="{Binding BackHomeCommand}" Cursor="Hand">
+                <Image Source="Images/houseB.png" Stretch="UniformToFill"/>
+            </Button>
         </StackPanel>
+
+        <Grid Grid.Row="1" Margin="0 20 0 20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Text="Username:" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" FontFamily="Ink Free" Opacity="0.6" ></TextBlock>
+            <TextBlock Grid.Row="1" Text="Username" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Ink Free" ></TextBlock>
+            <TextBlock Grid.Row="2" Text="Name:" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" FontFamily="Ink Free" Opacity="0.6"  ></TextBlock>
+            <TextBlock Grid.Row="3" Text="Name" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Ink Free" ></TextBlock>
+            <TextBlock Grid.Row="4" Text="Email:" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" FontFamily="Ink Free" Opacity="0.6" ></TextBlock>
+            <TextBlock Grid.Row="5" Text="Email" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Ink Free" ></TextBlock>
+            <TextBlock Grid.Row="6" Text="Gender:" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" FontFamily="Ink Free" Opacity="0.6"  ></TextBlock>
+            <TextBlock Grid.Row="7" Text="Gender" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Ink Free" ></TextBlock>
+            <TextBlock Grid.Row="8" Text="Status:" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" FontFamily="Ink Free" Opacity="0.6"  ></TextBlock>
+            <TextBlock Grid.Row="9" Text="Status" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Ink Free" ></TextBlock>
+
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0" Margin="0,0,0,0" Content="Add User" FontSize="20" Opacity="0.4" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFDDDDDD" Width="200" Height="50" Cursor="Hand"/>
+
+            <TextBlock Grid.Row="1" Text="OR" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" Opacity="0.6" FontStyle="Italic" FontFamily="Ink Free" />
+
+            <Button Grid.Row="2" Margin="0,0,0,0" Content="Delete User" FontSize="20" Opacity="0.4" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFDDDDDD" Width="200" Height="50" Cursor="Hand"/>
+
+        </Grid>
     </Grid>
 </UserControl>
