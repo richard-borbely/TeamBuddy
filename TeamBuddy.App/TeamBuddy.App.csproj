@@ -169,6 +169,7 @@
     <Compile Include="ViewModels\LogInViewModel.cs" />
     <Compile Include="ViewModels\SelectedTeamDetailViewModel.cs" />
     <Compile Include="ViewModels\SelectedTeamLeftBarViewModel.cs" />
+    <Compile Include="ViewModels\SelectedTeamPostListViewModel.cs" />
     <Compile Include="ViewModels\SelectedTeamUserDetailViewModel.cs" />
     <Compile Include="ViewModels\SelectedTeamViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />

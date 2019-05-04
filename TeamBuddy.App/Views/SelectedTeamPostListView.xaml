@@ -4,9 +4,52 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TeamBuddy.App.Views"
+             xmlns:viewModels="clr-namespace:TeamBuddy.App.ViewModels"
              mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance viewModels:SelectedTeamPostListViewModel}"
+             DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=SelectedTeamPostListViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <ListBox x:Name="PostsListBox" Background="Transparent" Width="Auto" ItemsSource="{Binding Posts}" Margin="0" Panel.ZIndex="-1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Label Content="{Binding Title}" FontSize="30" Opacity="0.8" />
+                        <TextBlock Text="{Binding Text}" FontSize="30" Opacity="0.8" />
+                        <TextBlock Text="{Binding PostAdditionTime}" FontSize="30" Opacity="0.8" />
+                        <TextBlock Text="xmjaso00" FontSize="30" Opacity="0.8" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button Content="Show Author" Grid.Column="0"/>
+                            <Button Content="Add Comment" Grid.Column="1"/>
+                            <Button Content="Delete Post" Grid.Column="2"/>
+                        </Grid>
+                        <ListBox x:Name="CommentsListBox" Background="Transparent" Width="Auto" ItemsSource="{Binding Source={StaticResource ViewModelLocator}, Path=SelectedTeamPostListViewModel.Comments}" Margin="0" >
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Text}" FontSize="30" Opacity="0.8" />
+                                        <TextBlock Text="{Binding CommentAdditionTime}" FontSize="30" Opacity="0.8" />
+                                        <TextBlock Text="xmjaso00" FontSize="30" Opacity="0.8" />
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            <Button Content="Show Author" Grid.Column="0"/>
+                                            <Button Content="Delete Comment" Grid.Column="1"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </UserControl>
