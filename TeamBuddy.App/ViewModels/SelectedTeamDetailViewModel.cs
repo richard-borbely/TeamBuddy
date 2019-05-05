@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using TeamBuddy.App.Commands;
 using TeamBuddy.BL.Extensions;
@@ -11,6 +12,8 @@ using TeamBuddy.BL.Messages;
 using TeamBuddy.BL.Models;
 using TeamBuddy.BL.Repositories;
 using TeamBuddy.BL.Services;
+using TeamBuddy.DAL.Entities;
+using TeamBuddy.DAL.Enumerations;
 
 namespace TeamBuddy.App.ViewModels
 {
@@ -40,9 +43,8 @@ namespace TeamBuddy.App.ViewModels
                 OnPropertyChanged();
             } 
         }
-
+        
         public ICommand UserSelectedCommand { get; set; }
-
 
         public SelectedTeamDetailViewModel(IMediator mediator, ITeamBuddyRepository teamBuddyRepository)
         {

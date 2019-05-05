@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using Microsoft.EntityFrameworkCore;
 using TeamBuddy.BL.Mapper;
 using TeamBuddy.BL.Models;
@@ -33,6 +34,13 @@ namespace TeamBuddy.BL.Repositories
                 .UserTeams
                 .Where(u => u.UserId == userId)
                 .Select(t => _mapper.MapTeamListModelFromEntity(t.Team));
+
+            var foundEntity = _dbContextFactory.CreateDbContext()
+                .UserTeams
+                .Where(u => u.UserId == userId)
+                .Select(t => _mapper.MapTeamListModelFromEntity(t.Team));
+
+            return foundEntity;
         }
 
         public IEnumerable<UserListModel> GetAllUsers()
@@ -55,7 +63,21 @@ namespace TeamBuddy.BL.Repositories
             return _dbContextFactory.CreateDbContext()
                 .Posts
                 .Include(u => u.User)
-                .Select(_mapper.MaPostDetailModelFromEntity);
+                .Select(_mapper.MapPostDetailModelFromEntity);
+        }
+
+        public IEnumerable<PostDetailModel> GetAllPostsInTeam(Guid teamId)
+        {
+            TeamDetailModel TeamModel = GetTyamById(teamId);
+            var entityTeam = _mapper.MapTeamToEntity(TeamModel);
+            var foundEntity = _dbContextFactory.CreateDbContext()
+                .Posts
+                .Include(u => u.User)
+                .Include(t => t.Team)
+                .Where(t => t.Team == entityTeam)
+                .Select(p => _mapper.MapPostDetailModelFromEntity(p));
+
+            return foundEntity;
         }
 
         public IEnumerable<CommentDetailModel> GetAllComments()
@@ -143,7 +165,7 @@ namespace TeamBuddy.BL.Repositories
                 //dbContext.SaveChanges();
 
                 //dbContext.SaveChanges();
-                return _mapper.MaPostDetailModelFromEntity(entity);
+                return _mapper.MapPostDetailModelFromEntity(entity);
             }
         }
 

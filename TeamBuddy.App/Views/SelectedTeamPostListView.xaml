@@ -22,7 +22,7 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" Text="{Binding PostAdditionTime}" FontSize="12" Opacity="0.8" />
-                            <TextBlock Grid.Row="1"  Text="xmjaso00" FontSize="12" Opacity="0.8"  />
+                            <TextBlock Grid.Row="1"  Text="{Binding User.Email}" FontSize="12" Opacity="0.8"  />
                         </Grid>
 
                         <Grid Margin="0 10 0 0">

@@ -4,7 +4,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TeamBuddy.BL.Extensions;
+using TeamBuddy.BL.Messages;
 using TeamBuddy.BL.Models;
+using TeamBuddy.BL.Repositories;
 using TeamBuddy.BL.Services;
 using TeamBuddy.DAL.Enumerations;
 
@@ -13,6 +16,8 @@ namespace TeamBuddy.App.ViewModels
     public class SelectedTeamPostListViewModel : ViewModelBase
     {
         private readonly IMediator mediator;
+        private readonly ITeamBuddyRepository teamBuddyRepository;
+        private ObservableCollection<PostDetailModel> _posts;
 
         public static UserDetailModel Author = new UserDetailModel()
         {
@@ -23,49 +28,61 @@ namespace TeamBuddy.App.ViewModels
             Email = "shoygu@duma.gov.ru"
         };
 
-        public ObservableCollection<PostDetailModel> Posts { get; set; } = new ObservableCollection<PostDetailModel>()
+        private TeamDetailModel SelectedTeam { get; set; }
+
+        ////public ObservableCollection<PostDetailModel> Posts { get; set; } = new ObservableCollection<PostDetailModel>()
+        ////{
+        ////    new PostDetailModel
+        ////    {
+        ////        Title = "First Post Title",
+        ////        Text = "He an thing rapid these after going drawn "+
+        ////               "or. Timed she his law the spoil round "+
+        ////               "defer. In surprise concerns informed betrayed"+
+        ////               "he learning is ye.",
+        ////        PostAdditionTime = DateTime.Now,
+        ////        User = Author
+        ////    },
+        ////    new PostDetailModel
+        ////    {
+        ////        Title = "Second Post Title",
+        ////        Text = "He an thing rapid these after going drawn "+
+        ////               "or. Timed she his law the spoil round "+
+        ////               "defer. In surprise concerns informed betrayed"+
+        ////               "he learning is ye.",
+        ////        PostAdditionTime = DateTime.Now,
+        ////        User = Author
+        ////    },
+        ////    new PostDetailModel
+        ////    {
+        ////        Title = "Another post",
+        ////        Text = "He an thing rapid these after going drawn "+
+        ////               "or. Timed she his law the spoil round "+
+        ////               "defer. In surprise concerns informed betrayed"+
+        ////               "he learning is ye.",
+        ////        PostAdditionTime = DateTime.Now,
+        ////        User = Author
+        ////    },
+        ////    new PostDetailModel
+        ////    {
+        ////        Title = "Last Post",
+        ////        Text = "He an thing rapid these after going drawn "+
+        ////               "or. Timed she his law the spoil round "+
+        ////               "defer. In surprise concerns informed betrayed"+
+        ////               "he learning is ye.",
+        ////        PostAdditionTime = DateTime.Now,
+        ////        User = Author
+        ////    }
+        ////};
+
+        public ObservableCollection<PostDetailModel> Posts
         {
-            new PostDetailModel
+            get => _posts;
+            set
             {
-                Title = "First Post Title",
-                Text = "He an thing rapid these after going drawn "+
-                       "or. Timed she his law the spoil round "+
-                       "defer. In surprise concerns informed betrayed"+
-                       "he learning is ye.",
-                PostAdditionTime = DateTime.Now,
-                User = Author
-            },
-            new PostDetailModel
-            {
-                Title = "Second Post Title",
-                Text = "He an thing rapid these after going drawn "+
-                       "or. Timed she his law the spoil round "+
-                       "defer. In surprise concerns informed betrayed"+
-                       "he learning is ye.",
-                PostAdditionTime = DateTime.Now,
-                User = Author
-            },
-            new PostDetailModel
-            {
-                Title = "Another post",
-                Text = "He an thing rapid these after going drawn "+
-                       "or. Timed she his law the spoil round "+
-                       "defer. In surprise concerns informed betrayed"+
-                       "he learning is ye.",
-                PostAdditionTime = DateTime.Now,
-                User = Author
-            },
-            new PostDetailModel
-            {
-                Title = "Last Post",
-                Text = "He an thing rapid these after going drawn "+
-                       "or. Timed she his law the spoil round "+
-                       "defer. In surprise concerns informed betrayed"+
-                       "he learning is ye.",
-                PostAdditionTime = DateTime.Now,
-                User = Author
+                _posts = value; 
+                OnPropertyChanged();
             }
-        };
+        }
 
         public ObservableCollection<CommentDetailModel> Comments { get; set; } = new ObservableCollection<CommentDetailModel>()
         {
@@ -84,13 +101,20 @@ namespace TeamBuddy.App.ViewModels
         };
 
 
-        public SelectedTeamPostListViewModel(IMediator mediator)
+        public SelectedTeamPostListViewModel(IMediator mediator, ITeamBuddyRepository teamBuddyRepository)
         {
             this.mediator = mediator;
+            this.teamBuddyRepository = teamBuddyRepository;
 
+            mediator.Register<TeamSelectedMessage>(LoadPosts);
         }
 
-
-
+        private void LoadPosts(TeamSelectedMessage selectedTeam)
+        {
+            Posts = new ObservableCollection<PostDetailModel>();
+            SelectedTeam = teamBuddyRepository.GetByName(selectedTeam.Name);
+            var posts = teamBuddyRepository.GetAllPostsInTeam(SelectedTeam.Id);
+            Posts.AddRange(posts);
+        }
     }
 }
