@@ -17,7 +17,7 @@ namespace TeamBuddy.App.ViewModels
     {
         private readonly IMediator mediator;
         private readonly ITeamBuddyRepository teamBuddyRepository;
-        private ObservableCollection<PostDetailModel> _posts;
+        private ObservableCollection<PostDetailModel> _posts = new ObservableCollection<PostDetailModel>();
 
         public static UserDetailModel Author = new UserDetailModel()
         {
@@ -28,7 +28,7 @@ namespace TeamBuddy.App.ViewModels
             Email = "shoygu@duma.gov.ru"
         };
 
-        private TeamDetailModel SelectedTeam { get; set; }
+        private static TeamDetailModel SelectedTeam { get; set; }
 
         ////public ObservableCollection<PostDetailModel> Posts { get; set; } = new ObservableCollection<PostDetailModel>()
         ////{
@@ -107,11 +107,18 @@ namespace TeamBuddy.App.ViewModels
             this.teamBuddyRepository = teamBuddyRepository;
 
             mediator.Register<TeamSelectedMessage>(LoadPosts);
+            mediator.Register<ReloadTeamPostsMessage>(ReloadTeamPosts);
+        }
+
+        private void ReloadTeamPosts(ReloadTeamPostsMessage obj)
+        {
+            Posts.Clear();
+            var posts = teamBuddyRepository.GetAllPostsInTeam(SelectedTeam.Id);
+            Posts.AddRange(posts);
         }
 
         private void LoadPosts(TeamSelectedMessage selectedTeam)
         {
-            Posts = new ObservableCollection<PostDetailModel>();
             SelectedTeam = teamBuddyRepository.GetByName(selectedTeam.Name);
             var posts = teamBuddyRepository.GetAllPostsInTeam(SelectedTeam.Id);
             Posts.AddRange(posts);

@@ -21,17 +21,17 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Team Name:" Margin="0,0,20,0" 
+        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Title:" Margin="0,0,20,0" 
                    FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Foreground="#FF444343"/>
-        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Team Description:" Margin="0,0,20,0" 
+        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Text:" Margin="0,0,20,0" 
                    FontSize="20" Foreground="#FF444343" FontFamily="Ink Free" FontWeight="Bold"/>
         <TextBox Grid.Row="0" Grid.Column="1" Height="30" Margin="42,0" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                 Text="" Background="Transparent" Foreground="Black" FontSize="18" FontWeight="Bold"  FontFamily="Ink Free"  Opacity="0.8"/>
+                 Text="{Binding NewPost.Title}" Background="Transparent" Foreground="Black" FontSize="18" FontWeight="Bold"  FontFamily="Ink Free"  Opacity="0.8"/>
         <TextBox Grid.Row="1" Grid.Column="1"  Height="30" Margin="42,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                 Text="" TextDecorations="{x:Null}" Background="Transparent" Foreground="Black" FontSize="18" FontWeight="Bold"  FontFamily="Ink Free"  Opacity="0.8"/>
+                 Text="{Binding NewPost.Text}" TextDecorations="{x:Null}" Background="Transparent" Foreground="Black" FontSize="18" FontWeight="Bold"  FontFamily="Ink Free"  Opacity="0.8"/>
         <StackPanel Grid.Column="0"  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Width="150" Height="40" Margin="0,0,0,0" Name="ButtonSwitch2" FontSize="15" VerticalAlignment="Center" Content="Create New Post" Opacity="0.6" Background="#FFDDDDDD" 
-                    Cursor="Hand"/>
+                    Command="{Binding CreatePostCommand}" Cursor="Hand"/>
         </StackPanel>
         <StackPanel Grid.Column="1"  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Width="150" Height="40" Margin="0,0,0,0" Name="ButtonSwitch3" FontSize="15" VerticalAlignment="Center" Content="Cancel" Opacity="0.6" Background="#FFDDDDDD" 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using TeamBuddy.App.Commands;
 using TeamBuddy.App.Services;
@@ -30,6 +31,10 @@ namespace TeamBuddy.App.ViewModels
             }
         }
 
+        private TeamDetailModel SelectedTeam { get; set; }
+        private UserDetailModel SignedUser { get; set; }
+
+        public ICommand CreatePostCommand { get; set; }
         public ICommand CreatePostCancelCommand { get; set; }
 
         public SelectedTeamCreatePostViewModel(IMediator mediator, ITeamBuddyRepository teamBuddyRepository, IMessageBoxService messageBoxService)
@@ -38,10 +43,43 @@ namespace TeamBuddy.App.ViewModels
             this.teamBuddyRepository = teamBuddyRepository;
             this.messageBoxService = messageBoxService;
 
+            CreatePostCommand = new RelayCommand(CreatePost);
             CreatePostCancelCommand = new RelayCommand(HideCreateNewPost);
 
+            mediator.Register<TeamSelectedMessage>(TeamSelected);
+            mediator.Register<LogInMessage>(SigndUser);
             mediator.Register<CreateNewPostSelectedMessage>(CreateNewPostSelected);
             mediator.Register<CreateNewPostCancelMessage>(HideCreateNewPost);
+        }
+
+        private void SigndUser(LogInMessage signedUser)
+        {
+            SignedUser = signedUser.SignedUser;
+        }
+
+        private void TeamSelected(TeamSelectedMessage selectedTeam)
+        {
+            SelectedTeam = teamBuddyRepository.GetByName(selectedTeam.Name);
+        }
+
+        private void CreatePost()
+        {
+            try
+            {
+                NewPost.Team = SelectedTeam;
+                NewPost.User = SignedUser;
+                NewPost.PostAdditionTime = DateTime.Now;
+                teamBuddyRepository.Create(NewPost, SelectedTeam.Id);
+                NewPost = null;
+            }
+            catch
+            {
+                messageBoxService.Show($"Please, fill in the required fields!", "Post creation failed", MessageBoxButton.OK);
+            }
+            finally
+            {
+                mediator.Send(new ReloadTeamPostsMessage());
+            }
         }
 
         private void HideCreateNewPost()
