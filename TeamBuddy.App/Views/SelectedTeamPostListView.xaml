@@ -32,7 +32,7 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Button Content="Show Author" Grid.Column="0"/>
+                                <Button Content="Show Author" Grid.Column="0" Command="{Binding Path=DataContext.ShowAuthorCommand, ElementName=PostsListBox}" CommandParameter="{Binding Path=User.Username}"/>
                             <Button Content="Add Comment" Grid.Column="1"/>
                             <Button Content="Delete Post" Grid.Column="2"/>
                         </Grid>
@@ -55,7 +55,7 @@
                                                 <ColumnDefinition/>
                                                 <ColumnDefinition/>
                                             </Grid.ColumnDefinitions>
-                                            <Button Content="Show Author" Grid.Column="0"/>
+                                            <Button Content="Show Author" Grid.Column="0" />
                                             <Button Content="Delete Comment" Grid.Column="1"/>
                                         </Grid>
                                     </StackPanel>

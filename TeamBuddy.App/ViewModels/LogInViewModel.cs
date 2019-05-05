@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using TeamBuddy.App.Commands;
 using TeamBuddy.App.Services;
+using TeamBuddy.BL.Extensions;
 using TeamBuddy.BL.Messages;
 using TeamBuddy.BL.Models;
 using TeamBuddy.BL.Repositories;
@@ -33,6 +34,7 @@ namespace TeamBuddy.App.ViewModels
             }
         }
 
+        //private string passwd { get; set; } = PasswordHasher.GetHash("asdf");
         public UserDetailModel User { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
@@ -60,7 +62,6 @@ namespace TeamBuddy.App.ViewModels
 
         private void LogIn()
         {
-            //string pass = Hasher.GetHash("pass");
             User = teamBuddyRepository.GetByEmail(Email);
             if (User == null)
             {
@@ -68,16 +69,26 @@ namespace TeamBuddy.App.ViewModels
             }
             else
             {
-                if (Password != User.Password)
-                {
-                    messageBoxService.Show($"Invalid password!", "Login failed", MessageBoxButton.OK);
-                }
-                else
+                if (Password == User.Password)
                 {
                     mediator.Send(new LogInMessage { SignedUser = User });
                     ShowLogin = null;
                 }
-            }
+                else
+                {
+                    messageBoxService.Show($"Invalid password!", "Login failed", MessageBoxButton.OK);
+                }
+
+                //if (teamBuddyRepository.CheckPassword(Password, User.Password))
+                    //{
+                    //    mediator.Send(new LogInMessage { SignedUser = User });
+                    //    ShowLogin = null;
+                    //}
+                    //else
+                    //{
+                    //    messageBoxService.Show($"Invalid password!", "Login failed", MessageBoxButton.OK);
+                    //}
+                }
         }
     }
 }

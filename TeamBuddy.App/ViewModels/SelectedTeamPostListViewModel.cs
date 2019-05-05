@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using TeamBuddy.App.Commands;
 using TeamBuddy.BL.Extensions;
 using TeamBuddy.BL.Messages;
 using TeamBuddy.BL.Models;
@@ -100,14 +102,22 @@ namespace TeamBuddy.App.ViewModels
             }
         };
 
+        public ICommand ShowAuthorCommand { get; set; }
 
         public SelectedTeamPostListViewModel(IMediator mediator, ITeamBuddyRepository teamBuddyRepository)
         {
             this.mediator = mediator;
             this.teamBuddyRepository = teamBuddyRepository;
 
+            ShowAuthorCommand = new RelayCommand(ShowAuthor);
+
             mediator.Register<TeamSelectedMessage>(LoadPosts);
             mediator.Register<ReloadTeamPostsMessage>(ReloadTeamPosts);
+        }
+
+        private void ShowAuthor(Object SelectedUsersUsername)
+        {
+            mediator.Send(new UserSelectedMessage { Username = SelectedUsersUsername.ToString() });
         }
 
         private void ReloadTeamPosts(ReloadTeamPostsMessage obj)
