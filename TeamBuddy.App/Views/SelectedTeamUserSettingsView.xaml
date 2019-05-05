@@ -27,7 +27,7 @@
                  Text="{Binding User.Username}" Background="Transparent" Foreground="Black" FontSize="18" FontWeight="Bold"  FontFamily="Ink Free"  Opacity="0.8"/>
         <StackPanel Grid.Column="0"  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Width="150" Height="40" Margin="0,13,0,0" Name="ButtonSwitch2" FontSize="15" VerticalAlignment="Center" Content="Add User" Opacity="0.7" Background="#FFDDDDDD" 
-                    Command="{Binding AddNewUserToTeamCommand}" Cursor="Hand" Foreground="#DD1F9725"/>
+                    Command="{Binding AddNewUserToTeamCommand}" Cursor="Hand" />
         </StackPanel>
         <StackPanel Grid.Column="1"  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Width="150" Height="40" Margin="0,13,0,0" Name="ButtonSwitch3" FontSize="15" VerticalAlignment="Center" Content="Cancel" Opacity="0.6" Background="#FFDDDDDD" 

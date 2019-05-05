@@ -28,7 +28,7 @@
         </Grid>
 
         <Grid Grid.Row="1" Margin="30 0 30 30" Opacity="1">
-            <dragablz:TabablzControl FixedHeaderCount="3" FontSize="16" Padding="2,2,0,2" Background="Transparent">
+            <dragablz:TabablzControl FixedHeaderCount="3" FontSize="16" Padding="2,2,0,2" Background="Transparent" >
                 <TabItem Header="Posts" VerticalAlignment="Center" HorizontalContentAlignment="Stretch">
                     <views:SelectedTeamPostListView />
                 </TabItem>
