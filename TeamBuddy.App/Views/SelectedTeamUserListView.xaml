@@ -11,7 +11,7 @@
              DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=SelectedTeamDetailViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <ListBox x:Name="UsersListBox" ItemsSource="{Binding Users}">
+        <ListBox ScrollViewer.CanContentScroll="False" x:Name="UsersListBox" ItemsSource="{Binding Users}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
                     <i:InvokeCommandAction Command="{Binding UserSelectedCommand}"

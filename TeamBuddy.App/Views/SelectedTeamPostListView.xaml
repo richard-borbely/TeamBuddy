@@ -9,9 +9,10 @@
              d:DataContext="{d:DesignInstance viewModels:SelectedTeamPostListViewModel}"
              DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=SelectedTeamPostListViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <ListBox ScrollViewer.CanContentScroll="False" x:Name="PostsListBox" Background="Transparent" Width="Auto" ItemsSource="{Binding Posts}" Margin="0" Panel.ZIndex="-1">
-            <ListBox.ItemTemplate>
+    <Grid >
+        <ScrollViewer>
+        <ItemsControl  x:Name="PostsListBox" Background="Transparent" Width="Auto" ItemsSource="{Binding Posts}" Margin="0 0 0 0" Panel.ZIndex="-1">
+            <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
                         <Label Content="{Binding Title}" FontSize="30" FontWeight="Bold" Opacity="1" FontFamily="Bell MT"  />
@@ -35,9 +36,11 @@
                             <Button Content="Add Comment" Grid.Column="1"/>
                             <Button Content="Delete Post" Grid.Column="2"/>
                         </Grid>
-                        <ListBox ScrollViewer.CanContentScroll="False" x:Name="CommentsListBox" Background="Transparent" Width="Auto" ItemsSource="{Binding Source={StaticResource ViewModelLocator}, Path=SelectedTeamPostListViewModel.Comments}" Margin="50 0 0 0" >
-                            <ListBox.ItemTemplate>
+                        <ItemsControl  x:Name="CommentsListBox" Background="Transparent" Width="Auto" 
+                                 ItemsSource="{Binding Source={StaticResource ViewModelLocator}, Path=SelectedTeamPostListViewModel.Comments}" Margin="80 0 0 0" >
+                            <ItemsControl.ItemTemplate>
                                 <DataTemplate>
+
                                     <StackPanel>
                                         <TextBlock Text="{Binding Text}" TextWrapping="Wrap" FontSize="20" Opacity="0.8" FontFamily="Arial"/>
                                         <Grid Margin="0 10 0 0">
@@ -57,12 +60,14 @@
                                             <Button Content="Delete Comment" Grid.Column="1"/>
                                         </Grid>
                                     </StackPanel>
+
                                 </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
                     </StackPanel>
                 </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </UserControl>
