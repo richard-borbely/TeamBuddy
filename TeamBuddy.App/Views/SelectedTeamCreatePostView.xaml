@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="TeamBuddy.App.Views.SelectedTeamCreatePostView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TeamBuddy.App.Views"
+             xmlns:viewModels="clr-namespace:TeamBuddy.App.ViewModels"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance viewModels:SelectedTeamCreatePostViewModel}"
+             DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=SelectedTeamCreatePostViewModel}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Visibility="{Binding NewPost, Converter={StaticResource NullToVisibilityConverter}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Team Name:" Margin="0,0,20,0" 
+                   FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Foreground="#FF444343"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Team Description:" Margin="0,0,20,0" 
+                   FontSize="20" Foreground="#FF444343" FontFamily="Ink Free" FontWeight="Bold"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Height="30" Margin="0,0,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                 Text="" FontStyle="Italic" Opacity="0.6"/>
+        <TextBox Grid.Row="1" Grid.Column="1"  Height="30" Margin="0,0,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                 Text="" TextDecorations="{x:Null}" Opacity="0.6"/>
+        <StackPanel Grid.Column="0"  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Width="150" Height="40" Margin="0,0,0,0" Name="ButtonSwitch2" FontSize="15" VerticalAlignment="Center" Content="Create New Post" Opacity="0.6" Background="#FFDDDDDD" 
+                    Cursor="Hand"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1"  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Width="150" Height="40" Margin="0,0,0,0" Name="ButtonSwitch3" FontSize="15" VerticalAlignment="Center" Content="Cancel" Opacity="0.6" Background="#FFDDDDDD" 
+                    Command="{Binding CreatePostCancelCommand}" Cursor="Hand"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

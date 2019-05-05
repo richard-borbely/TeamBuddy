@@ -127,13 +127,22 @@ namespace TeamBuddy.BL.Repositories
             }
         }
 
-        public PostDetailModel Create(PostDetailModel post)
+        public PostDetailModel Create(PostDetailModel post, Guid teamId)
         {
             using (var dbContext = _dbContextFactory.CreateDbContext())
             {
+                TeamDetailModel TeamModel = GetTyamById(teamId);
+                var entityTeam = _mapper.MapTeamToEntity(TeamModel);
                 var entity = _mapper.MapPostToEntity(post);
+                dbContext.Entry(entity).State = EntityState.Unchanged;
                 dbContext.Posts.Add(entity);
                 dbContext.SaveChanges();
+                //dbContext.Entry(entityTeam).State = EntityState.Unchanged;
+                
+                //entityTeam.Posts.Add(entity);
+                //dbContext.SaveChanges();
+
+                //dbContext.SaveChanges();
                 return _mapper.MaPostDetailModelFromEntity(entity);
             }
         }
@@ -222,6 +231,19 @@ namespace TeamBuddy.BL.Repositories
                 //dbContext.SaveChanges();
                 //dbContext.Teams.Update(teamTeamBuddyAdmins).State = EntityState.;
 
+            }
+        }
+        public void RemoveUserFromTeam(UserDetailModel user, Guid teamId)
+        {
+            using (var dbContext = _dbContextFactory.CreateDbContext())
+            {
+                var entity = dbContext
+                    .UserTeams
+                    .Where(u => u.UserId == user.Id)
+                    .First(t => t.TeamId == teamId);
+                    
+                dbContext.UserTeams.Remove(entity);
+                dbContext.SaveChanges();
             }
         }
 

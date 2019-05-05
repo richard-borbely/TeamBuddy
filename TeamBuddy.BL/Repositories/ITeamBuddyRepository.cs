@@ -18,9 +18,10 @@ namespace TeamBuddy.BL.Repositories
         UserDetailModel GetByUsername(string username);
         TeamDetailModel Create(TeamDetailModel team);
         UserDetailModel Create(UserDetailModel user);
-        PostDetailModel Create(PostDetailModel post);
+        PostDetailModel Create(PostDetailModel post, Guid teamId);
         CommentDetailModel Create(CommentDetailModel comment);
         void AddUserToTeam(UserDetailModel user, Guid teamId);
+        void RemoveUserFromTeam(UserDetailModel user, Guid teamId);
         void UpdateUser(UserDetailModel user);
         void DeleteTeam(Guid id);
         void DeleteUser(Guid id);

@@ -17,8 +17,14 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="2.5*"/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-        <local:SelectedTeamLeftBarView Grid.Column="0" />
-        <local:SelectedTeamDetailView Grid.Column="1" />
+        <local:SelectedTeamLeftBarView Grid.Column="0" Grid.RowSpan="2" />
+        <local:SelectedTeamDetailView Grid.Column="1" Grid.Row="0" />
+        <local:SelectedTeamCreatePostView Grid.Column="1" Grid.Row="1" />
+        <local:SelectedTeamUserSettingsView Grid.Column="1" Grid.Row="1" />
     </Grid>
 </UserControl>

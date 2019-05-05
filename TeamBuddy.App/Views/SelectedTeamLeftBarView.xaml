@@ -33,11 +33,13 @@
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
 
-            <Button Grid.Row="0" Margin="0,0,0,0" Content="Add User" FontSize="20" Opacity="0.4" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFDDDDDD" Width="200" Height="50" Cursor="Hand"/>
+            <Button Grid.Row="0" Margin="0,0,0,0" Content="Create Post" FontSize="20" Opacity="0.4" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    Command="{Binding CreateNewPostSelectedCommand}" Background="#FFDDDDDD" Width="200" Height="50" Cursor="Hand"/>
 
             <TextBlock Grid.Row="1" Text="OR" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" Opacity="0.6" FontStyle="Italic" FontFamily="Ink Free" />
 
-            <Button Grid.Row="2" Margin="0,0,0,0" Content="Delete User" FontSize="20" Opacity="0.4" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFDDDDDD" Width="200" Height="50" Cursor="Hand"/>
+            <Button Grid.Row="2" Margin="0,0,0,0" Content="Users Settings" FontSize="20" Opacity="0.4" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    Command="{Binding UsersSettingsSelectedCommand}" Background="#FFDDDDDD" Width="200" Height="50" Cursor="Hand"/>
 
         </Grid>
     </Grid>

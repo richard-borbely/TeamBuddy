@@ -11,5 +11,6 @@ namespace TeamBuddy.BL.Models
         public string Text { get; set; }
         public DateTime PostAdditionTime { get; set; }
         public UserDetailModel User { get; set; }
+        public TeamDetailModel Team { get; set; }
     }
 }

@@ -52,6 +52,14 @@ namespace TeamBuddy.App.ViewModels
             UserSelectedCommand = new RelayCommand<UserListModel>(UserSelected);
 
             mediator.Register<TeamSelectedMessage>(TeamSelected);
+            mediator.Register<ReloadTeamUsersMessage>(ReloadTeamUsers);
+        }
+
+        private void ReloadTeamUsers(ReloadTeamUsersMessage obj)
+        {
+            Users.Clear();
+            var users = teamBuddyRepository.GetAllUsersInTeam(SelectedTeam.Id);
+            Users.AddRange(users);
         }
 
         private void UserSelected(UserListModel user)

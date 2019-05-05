@@ -25,7 +25,8 @@ namespace TeamBuddy.BL.Mapper
                 Title = post.Title,
                 Text = post.Text,
                 PostAdditionTime = post.PostAdditionTime,
-                User = MapUserToEntity(post.User)
+                User = MapUserToEntity(post.User),
+                Team = MapTeamToEntity(post.Team)
             };
         }
 
@@ -73,7 +74,8 @@ namespace TeamBuddy.BL.Mapper
                 Title = post.Title,
                 Text = post.Text,
                 PostAdditionTime = post.PostAdditionTime,
-                User = MapUserDetailModelFromEntity(post.User)
+                User = MapUserDetailModelFromEntity(post.User),
+                Team = MapTeamDetailModelFromEntity(post.Team)
             };
         }
 

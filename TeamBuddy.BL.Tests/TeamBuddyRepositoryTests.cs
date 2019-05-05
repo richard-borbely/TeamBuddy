@@ -104,8 +104,8 @@ namespace TeamBuddy.BL.Tests
                 User = modelUser
             };
             sut.Create(modelUser);
-            sut.Create(modelPost1);
-            sut.Create(modelPost2);
+            sut.Create(modelPost1, Guid.NewGuid()); //todo
+            sut.Create(modelPost2, Guid.NewGuid()); //todo
 
             //Act
             var allPostsModel = sut.GetAllPosts();
@@ -309,26 +309,40 @@ namespace TeamBuddy.BL.Tests
         {
             //Arrange
             var sut = CreateSUT();
+            var sergej = new UserDetailModel
+            {
+                Username = "xshoyg01",
+                Name = "Sergey Shoygu",
+                Password = "StrongRussia",
+                Gender = Gender.Male,
+                Email = "shoygu@duma.gov.ru"
+            };
+            var createdUserModel = sut.Create(sergej);
+
+            var teamModel = new TeamDetailModel()
+            {
+                Name = "IFJ projects",
+                Description = "This team is dedicated for users, " +
+                              "who are working on IFJ projects."
+            };
+            var createdTeamModel = sut.Create(teamModel);
+
+
             var model = new PostDetailModel()
             {
                 Title = "The first post in this Team!",
                 Text = "Some post text.",
                 PostAdditionTime = DateTime.Now,
-                User = new UserDetailModel
-                {
-                    Username = "xshoyg01",
-                    Name = "Sergey Shoygu",
-                    Password = "StrongRussia",
-                    Gender = Gender.Male,
-                    Email = "shoygu@duma.gov.ru"
-                }
+                User = createdUserModel,
+                Team = createdTeamModel
             };
 
+            
             PostDetailModel createdModel = null;
             try
             {
                 //Act
-                createdModel = sut.Create(model);
+                createdModel = sut.Create(model, createdTeamModel.Id);
 
                 //Assert
                 Assert.NotNull(createdModel);
@@ -414,6 +428,61 @@ namespace TeamBuddy.BL.Tests
 
                 //Assert
                 Assert.Equal(0,teamEntity.UserInTeam.Count);
+            }
+            finally
+            {
+                //Teardown
+                if (createdTeamModel != null)
+                {
+                    sut.DeleteTeam(createdTeamModel.Id);
+                }
+            }
+        }
+
+        [Fact]
+        public void RemoveUser_WithValidData_RemovesUserFromTeam()
+        {
+            //Arrange
+            var sut = CreateSUT();
+            var modelUser1 = new UserDetailModel()
+            {
+                Username = "xlavro00",
+                Name = "Sergey Lavrov",
+                Password = "StrongRussia42",
+                Gender = Gender.Male,
+                Email = "lavrov@duma.gov.ru"
+            };
+            var modelUser2 = new UserDetailModel
+            {
+                Username = "xmedved00",
+                Name = "Dmitry Medvedev",
+                Password = "StrongRussiaNo1",
+                Gender = Gender.Male,
+                Email = "medved@duma.gov.ru",
+                Status = Status.DoNotDisturb
+            };
+
+            var teamModel = new TeamDetailModel()
+            {
+                Name = "IFJ projects",
+                Description = "This team is dedicated for users, " +
+                              "who are working on IFJ projects."
+            };
+
+            var createdUserModel1 = sut.Create(modelUser1);
+            var createdUserModel2 = sut.Create(modelUser2);
+            var createdTeamModel = sut.Create(teamModel);
+            var teamEntity = _mapper.MapTeamToEntity(createdTeamModel);
+
+            try
+            {
+                //Act
+                sut.AddUserToTeam(createdUserModel1, createdTeamModel.Id);
+                sut.AddUserToTeam(createdUserModel2, createdTeamModel.Id);
+                sut.RemoveUserFromTeam(createdUserModel1, createdTeamModel.Id);
+
+                //Assert
+                Assert.Equal(0, teamEntity.UserInTeam.Count);
             }
             finally
             {

@@ -167,10 +167,12 @@
     <Compile Include="ViewModels\HomeUserDetailViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\LogInViewModel.cs" />
+    <Compile Include="ViewModels\SelectedTeamCreatePostViewModel.cs" />
     <Compile Include="ViewModels\SelectedTeamDetailViewModel.cs" />
     <Compile Include="ViewModels\SelectedTeamLeftBarViewModel.cs" />
     <Compile Include="ViewModels\SelectedTeamPostListViewModel.cs" />
     <Compile Include="ViewModels\SelectedTeamUserDetailViewModel.cs" />
+    <Compile Include="ViewModels\SelectedTeamUserSettingsViewModel.cs" />
     <Compile Include="ViewModels\SelectedTeamViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
@@ -188,6 +190,9 @@
     </Compile>
     <Compile Include="Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SelectedTeamCreatePostView.xaml.cs">
+      <DependentUpon>SelectedTeamCreatePostView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SelectedTeamPostListView.xaml.cs">
       <DependentUpon>SelectedTeamPostListView.xaml</DependentUpon>
@@ -207,10 +212,17 @@
     <Compile Include="Views\SelectedTeamUserListView.xaml.cs">
       <DependentUpon>SelectedTeamUserListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SelectedTeamUserSettingsView.xaml.cs">
+      <DependentUpon>SelectedTeamUserSettingsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TeamSelectedView.xaml.cs">
       <DependentUpon>TeamSelectedView.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\HomeCreateTeamView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SelectedTeamCreatePostView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -263,6 +275,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SelectedTeamUserListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SelectedTeamUserSettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
