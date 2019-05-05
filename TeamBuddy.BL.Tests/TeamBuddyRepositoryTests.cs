@@ -328,7 +328,7 @@ namespace TeamBuddy.BL.Tests
             var createdTeamModel = sut.Create(teamModel);
 
 
-            var model = new PostDetailModel()
+            var modelPost1 = new PostDetailModel()
             {
                 Title = "The first post in this Team!",
                 Text = "Some post text.",
@@ -337,12 +337,23 @@ namespace TeamBuddy.BL.Tests
                 Team = createdTeamModel
             };
 
-            
+            var modelPost2 = new PostDetailModel()
+            {
+                Title = "The first post in this Team!",
+                Text = "Some post text.",
+                PostAdditionTime = DateTime.Now,
+                User = createdUserModel,
+                Team = createdTeamModel
+            };
+
+
             PostDetailModel createdModel = null;
             try
             {
                 //Act
-                createdModel = sut.Create(model, createdTeamModel.Id);
+                createdModel = sut.Create(modelPost1, createdTeamModel.Id);
+                createdModel = sut.Create(modelPost2, createdTeamModel.Id);
+                var result = sut.GetAllPostsInTeam(createdTeamModel.Id);
 
                 //Assert
                 Assert.NotNull(createdModel);
@@ -479,6 +490,7 @@ namespace TeamBuddy.BL.Tests
                 //Act
                 sut.AddUserToTeam(createdUserModel1, createdTeamModel.Id);
                 sut.AddUserToTeam(createdUserModel2, createdTeamModel.Id);
+                sut.GetAllUsersInTeam(createdTeamModel.Id);
                 sut.RemoveUserFromTeam(createdUserModel1, createdTeamModel.Id);
 
                 //Assert

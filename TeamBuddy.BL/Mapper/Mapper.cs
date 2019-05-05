@@ -66,7 +66,7 @@ namespace TeamBuddy.BL.Mapper
             };
         }
 
-        public PostDetailModel MaPostDetailModelFromEntity(Post post)
+        public PostDetailModel MapPostDetailModelFromEntity(Post post)
         {
             return new PostDetailModel
             {

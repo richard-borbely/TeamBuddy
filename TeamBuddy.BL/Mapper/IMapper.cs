@@ -13,7 +13,7 @@ namespace TeamBuddy.BL.Mapper
         Team MapTeamToEntity(TeamDetailModel team);
         User MapUserToEntity(UserDetailModel user);
         CommentDetailModel MapCommentDetailModelFromEntity(Comment comment);
-        PostDetailModel MaPostDetailModelFromEntity(Post post);
+        PostDetailModel MapPostDetailModelFromEntity(Post post);
         TeamDetailModel MapTeamDetailModelFromEntity(Team team);
         TeamListModel MapTeamListModelFromEntity(Team team);
         UserDetailModel MapUserDetailModelFromEntity(User user);
