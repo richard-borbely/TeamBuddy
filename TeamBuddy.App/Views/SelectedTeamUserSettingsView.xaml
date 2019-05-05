@@ -9,11 +9,11 @@
              d:DataContext="{d:DesignInstance viewModels:SelectedTeamUserSettingsViewModel}"
              DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=SelectedTeamUserSettingsViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Visibility="{Binding User, Converter={StaticResource NullToVisibilityConverter}}">
+    <Grid Width="650" Margin="0,0,0,32" Visibility="{Binding User, Converter={StaticResource NullToVisibilityConverter}}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="45"/>
-            <RowDefinition Height="45"/>
-            <RowDefinition Height="45"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -21,21 +21,21 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Username:" Margin="0,0,20,0" 
+        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Username:" Margin="100,30,0,0" 
                    FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Foreground="#FF444343"/>
-        <TextBox Grid.Row="0" Grid.Column="1" Height="30" Margin="0,0,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                 Text="{Binding User.Username}" FontStyle="Italic" Opacity="0.6"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Height="30" Margin="148,30,-152,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                 Text="{Binding User.Username}" Background="Transparent" Foreground="Black" FontSize="18" FontWeight="Bold"  FontFamily="Ink Free"  Opacity="0.8"/>
         <StackPanel Grid.Column="0"  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Width="150" Height="40" Margin="0,0,0,0" Name="ButtonSwitch2" FontSize="15" VerticalAlignment="Center" Content="Add User" Opacity="0.6" Background="#FFDDDDDD" 
-                    Command="{Binding AddNewUserToTeamCommand}" Cursor="Hand"/>
+            <Button Width="150" Height="40" Margin="0,13,0,0" Name="ButtonSwitch2" FontSize="15" VerticalAlignment="Center" Content="Add User" Opacity="0.7" Background="#FFDDDDDD" 
+                    Command="{Binding AddNewUserToTeamCommand}" Cursor="Hand" Foreground="#DD1F9725"/>
         </StackPanel>
         <StackPanel Grid.Column="1"  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Width="150" Height="40" Margin="0,0,0,0" Name="ButtonSwitch3" FontSize="15" VerticalAlignment="Center" Content="Cancel" Opacity="0.6" Background="#FFDDDDDD" 
+            <Button Width="150" Height="40" Margin="0,13,0,0" Name="ButtonSwitch3" FontSize="15" VerticalAlignment="Center" Content="Cancel" Opacity="0.6" Background="#FFDDDDDD" 
                     Command="{Binding UserSettingsCancelCommand}" Cursor="Hand"/>
         </StackPanel>
         <StackPanel Grid.Column="2"  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Width="150" Height="40" Margin="0,0,0,0" Name="ButtonSwitch14" FontSize="15" VerticalAlignment="Center" Content="Delete User" Opacity="0.6" Background="#FFDDDDDD" 
-                    Command="{Binding DeleteUserFromTeamCommand}" Cursor="Hand"/>
+            <Button Width="150" Height="40" Margin="0,13,0,0" Name="ButtonSwitch14" FontSize="15" VerticalAlignment="Center"  Content="Delete User" Opacity="0.7" Background="#FFDDDDDD" 
+                    Command="{Binding DeleteUserFromTeamCommand}" Cursor="Hand" FontWeight="SemiBold" Foreground="Red"/>
         </StackPanel>     
     </Grid>
 </UserControl>

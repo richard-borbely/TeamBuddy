@@ -331,7 +331,6 @@
     <Resource Include="Views\Images\TBTitle2.png" />
     <Resource Include="Views\Images\TB_wall1.jpg" />
     <Resource Include="Views\Images\TeamBuddyBG.png" />
-    <Resource Include="Views\Images\TeamBuddyIcon.ico" />
     <Resource Include="Views\Images\TeamBuddy_logo.png" />
   </ItemGroup>
   <ItemGroup>
@@ -341,10 +340,13 @@
     <Resource Include="Views\Images\tbtitle3.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Views\Images\tblogo_XJx_icon.ico" />
+    <Resource Include="Views\Images\houseB.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Views\Images\houseB.png" />
+    <Resource Include="Views\Images\TeambuddyHomeImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Images\icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.4.2.1\build\Fody.targets" Condition="Exists('..\packages\Fody.4.2.1\build\Fody.targets')" />

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TeamBuddy.App"
         xmlns:views="clr-namespace:TeamBuddy.App.Views"
         mc:Ignorable="d"
-        Title="Team Buddy" Icon="Images/TeamBuddyIcon.ico" Height="720" Width="1024" WindowStartupLocation="CenterScreen" MinWidth="1024" MinHeight="720">
+        Title="Team Buddy" Icon="Images/icon.ico" Height="720" Width="1024" WindowStartupLocation="CenterScreen" MinWidth="1024" MinHeight="720">
     <Grid>
         <views:TeamSelectedView />
         <views:HomeView />

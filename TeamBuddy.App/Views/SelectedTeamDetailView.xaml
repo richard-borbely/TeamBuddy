@@ -13,8 +13,8 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="5*"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -23,8 +23,8 @@
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="1" Text="{Binding SelectedTeam.Name}" HorizontalAlignment="Center" Margin="0 0 0 0" FontSize="35" FontFamily="Ink Free" FontWeight="Bold"/>
-            <TextBlock Grid.Row="2" Text="{Binding SelectedTeam.Description}" HorizontalAlignment="Center" Margin="0 0 0 0" FontSize="25" FontFamily="Ink Free"/>
+            <TextBlock Grid.Row="1" Text="{Binding SelectedTeam.Name}" HorizontalAlignment="Center"  Margin="0 0 0 0" FontSize="35" FontFamily="Ink Free" FontWeight="Bold"/>
+            <TextBlock Grid.Row="2" Text="{Binding SelectedTeam.Description}" HorizontalAlignment="Center"  Margin="0 0 0 0" FontSize="25" FontFamily="Ink Free"/>
         </Grid>
 
         <Grid Grid.Row="1" Margin="30 0 30 30" Opacity="1">
