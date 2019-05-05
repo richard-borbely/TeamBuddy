@@ -401,13 +401,16 @@ namespace TeamBuddy.BL.Tests
                               "who are working on IFJ projects."
             };
 
+            var createduserModel = sut.Create(userModel);
             var createdTeamModel = sut.Create(teamModel);
             var teamEntity = _mapper.MapTeamToEntity(createdTeamModel);
+            
             try
             {
                 //Act
-                sut.AddUserToTeam(userModel, createdTeamModel.Id);
-                var result = sut.GetAllMyTeams(userModel.Id);
+                sut.AddUserToTeam(createduserModel, createdTeamModel.Id);
+                var team = sut.GetTyamById(createdTeamModel.Id);
+                var result = sut.GetAllMyTeams(createduserModel.Id);
 
                 //Assert
                 Assert.Equal(0,teamEntity.UserInTeam.Count);

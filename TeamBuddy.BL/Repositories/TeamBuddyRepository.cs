@@ -6,6 +6,7 @@ using TeamBuddy.BL.Mapper;
 using TeamBuddy.BL.Models;
 using TeamBuddy.DAL;
 using TeamBuddy.DAL.Entities;
+using TeamBuddy.DAL.Enumerations;
 
 namespace TeamBuddy.BL.Repositories
 {
@@ -75,6 +76,15 @@ namespace TeamBuddy.BL.Repositories
             return foundEntity == null ? null : _mapper.MapTeamDetailModelFromEntity(foundEntity);
         }
 
+        public TeamDetailModel GetTyamById(Guid Id)
+        {
+            var foundEntity = _dbContextFactory
+                .CreateDbContext()
+                .Teams
+                .FirstOrDefault(t => t.Id == Id);
+            return foundEntity == null ? null : _mapper.MapTeamDetailModelFromEntity(foundEntity);
+        }
+
         public UserDetailModel GetByEmail(string email)
         {
             var foundEntity = _dbContextFactory
@@ -100,6 +110,7 @@ namespace TeamBuddy.BL.Repositories
                 var entity = _mapper.MapTeamToEntity(team);
                 dbContext.Teams.Add(entity);
                 dbContext.SaveChanges();
+                //dbContext.Entry(entity).State = EntityState.Unchanged;
                 return _mapper.MapTeamDetailModelFromEntity(entity);
             }
         }
@@ -111,6 +122,7 @@ namespace TeamBuddy.BL.Repositories
                 var entity = _mapper.MapUserToEntity(user);
                 dbContext.Users.Add(entity);
                 dbContext.SaveChanges();
+                //dbContext.Entry(entity).State = EntityState.Unchanged;
                 return _mapper.MapUserDetailModelFromEntity(entity);
             }
         }
@@ -141,15 +153,75 @@ namespace TeamBuddy.BL.Repositories
         {
             using (var dbContext = _dbContextFactory.CreateDbContext())
             {
-                var entity = _mapper.MapUserToEntity(user);
-                dbContext.Teams
-                    .First(t => t.Id == teamId)
-                    .UserInTeam
-                    .Add(new UserTeam()
-                    {
-                        User = entity
-                    });
+                TeamDetailModel TeamModel = GetTyamById(teamId);
+                var entityUser = _mapper.MapUserToEntity(user);
+                var entityTeam = _mapper.MapTeamToEntity(TeamModel);
+                //dbContext.Teams
+                //    .First(t => t.Id == teamId)
+                //    .UserInTeam
+                //    .Add(new UserTeam()
+                //    {
+                //        User = entityUser,
+                //        Team = entityTeam
+                //    });
+                //var team = new UserTeam()
+                //{
+                //    Id = Guid.NewGuid(),
+                //    User = entityUser,
+                //    Team = entityTeam
+                //};
+
+                //////var userPavelKocourek = new User
+                //////{
+                //////    Id = Guid.NewGuid(),
+                //////    Username = "xkocur00",
+                //////    Name = "Pavel Kocourek",
+                //////    Password = "VudnnGPQ",
+                //////    Gender = Gender.Male,
+                //////    Email = "xkocur00@vutbr.cz",
+                //////    Status = Status.Invisible
+                //////};
+                //////dbContext.Users.Add(userPavelKocourek);
+                //////dbContext.SaveChanges();
+                //////dbContext.Entry(userPavelKocourek).State = EntityState.Unchanged;
+
+                //////var teamTeamBuddyAdmins = new Team
+                //////{
+                //////    Id = Guid.NewGuid(),
+                //////    Name = "TeamBuddy",
+                //////    Description = "Members of this team are administrators."
+                //////};
+                //////dbContext.Teams.Add(teamTeamBuddyAdmins);
+                //////dbContext.SaveChanges();
+                //////dbContext.Entry(teamTeamBuddyAdmins).State = EntityState.Unchanged;
+
+                dbContext.Entry(entityTeam).State = EntityState.Unchanged;
+                //dbContext.Entry(entityUser).State = EntityState.Unchanged;
+
+                entityTeam.UserInTeam.Add(new UserTeam()
+                {
+                    Id = Guid.NewGuid(),
+                    TeamId = entityTeam.Id,
+                    UserId = entityUser.Id
+                });
                 dbContext.SaveChanges();
+                //var ccc = new UserTeam()
+                //{
+                //    Id = Guid.NewGuid(),
+                //    TeamId = teamTeamBuddyAdmins.Id,
+                //    UserId = userPavelKocourek.Id
+
+                //};
+                ////dbContext.UserTeams.Add(ccc);
+                //dbContext.UserTeams.Add(ccc);
+
+
+                ////    });
+                ////var Indquery2 = dbContext.UserTeams.Where(Ind => Ind.TeamId == teamId).FirstOrDefault();
+                ////Indquery2.User = entityUser;
+                //dbContext.SaveChanges();
+                //dbContext.Teams.Update(teamTeamBuddyAdmins).State = EntityState.;
+
             }
         }
 

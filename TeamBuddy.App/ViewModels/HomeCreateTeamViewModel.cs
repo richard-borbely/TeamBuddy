@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using TeamBuddy.App.Commands;
+using TeamBuddy.App.Services;
 using TeamBuddy.BL.Messages;
 using TeamBuddy.BL.Models;
+using TeamBuddy.BL.Repositories;
 using TeamBuddy.BL.Services;
 
 namespace TeamBuddy.App.ViewModels
@@ -14,6 +17,8 @@ namespace TeamBuddy.App.ViewModels
     public class HomeCreateTeamViewModel : ViewModelBase
     {
         private readonly IMediator mediator;
+        private readonly ITeamBuddyRepository teamBuddyRepository;
+        private readonly IMessageBoxService messageBoxService;
         private TeamDetailModel _newTeam;
 
         public TeamDetailModel NewTeam
@@ -29,14 +34,32 @@ namespace TeamBuddy.App.ViewModels
         public ICommand CreateNewTeamCommand { get; set; }
         public ICommand CreateNewTeamCanceledCommand { get; set; }
 
-        public HomeCreateTeamViewModel(IMediator mediator)
+        public HomeCreateTeamViewModel(IMediator mediator, ITeamBuddyRepository teamBuddyRepository, IMessageBoxService messageBoxService)
         {
             this.mediator = mediator;
+            this.teamBuddyRepository = teamBuddyRepository;
+            this.messageBoxService = messageBoxService;
 
             CreateNewTeamCanceledCommand = new RelayCommand(CreateNewTeamCanceled);
+            CreateNewTeamCommand = new RelayCommand(CreateNewTeam);
 
             mediator.Register<CreateNewTeamSelectedMessage>(ShowCreateNewTeamTab);
             mediator.Register<CreateNewTeamCancelMessage>(CreateNewTeamCanceled);
+        }
+
+        private void CreateNewTeam(object obj)
+        {
+            try
+            {
+                var newTeamModel = teamBuddyRepository.Create(NewTeam);
+                //var newTeamModel = Guid.NewGuid();
+                mediator.Send(new AddUserToTeamMessage { Id = newTeamModel.Id });
+                NewTeam = null;
+            }
+            catch
+            {
+                messageBoxService.Show($"Please, fill in the required fields!", "Team creation failed", MessageBoxButton.OK);
+            }
         }
 
         private void CreateNewTeamCanceled(CreateNewTeamCancelMessage obj)

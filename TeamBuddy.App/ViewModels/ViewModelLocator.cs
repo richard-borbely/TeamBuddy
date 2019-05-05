@@ -22,10 +22,10 @@ namespace TeamBuddy.App.ViewModels
 
         public LogInViewModel LogInViewModel => new LogInViewModel(mediator, teamBuddyRepository, messageBoxService);
         public HomeViewModel HomeViewModel => new HomeViewModel(mediator);
-        public HomeUserDetailViewModel HomeUserDetailViewModel => new HomeUserDetailViewModel(mediator);
+        public HomeUserDetailViewModel HomeUserDetailViewModel => new HomeUserDetailViewModel(mediator, teamBuddyRepository, messageBoxService);
         public HomeTeamListViewModel HomeTeamListViewModel => new HomeTeamListViewModel(mediator, teamBuddyRepository);
-        public HomeCreateUserViewModel HomeCreateUserViewModel => new HomeCreateUserViewModel(mediator);
-        public HomeCreateTeamViewModel HomeCreateTeamViewModel => new HomeCreateTeamViewModel(mediator);
+        public HomeCreateUserViewModel HomeCreateUserViewModel => new HomeCreateUserViewModel(mediator, teamBuddyRepository, messageBoxService);
+        public HomeCreateTeamViewModel HomeCreateTeamViewModel => new HomeCreateTeamViewModel(mediator, teamBuddyRepository, messageBoxService);
         public SelectedTeamViewModel SelectedTeamViewModel => new SelectedTeamViewModel(mediator);
         public SelectedTeamLeftBarViewModel SelectedTeamLeftBarViewModel => new SelectedTeamLeftBarViewModel(mediator);
         public SelectedTeamDetailViewModel SelectedTeamDetailViewModel => new SelectedTeamDetailViewModel(mediator, teamBuddyRepository);

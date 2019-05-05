@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using TeamBuddy.App.Commands;
+using TeamBuddy.App.Services;
 using TeamBuddy.BL.Messages;
 using TeamBuddy.BL.Models;
+using TeamBuddy.BL.Repositories;
 using TeamBuddy.BL.Services;
 using TeamBuddy.DAL.Enumerations;
 
@@ -15,6 +18,8 @@ namespace TeamBuddy.App.ViewModels
     public class HomeUserDetailViewModel : ViewModelBase
     {
         private readonly IMediator mediator;
+        private readonly ITeamBuddyRepository teamBuddyRepository;
+        private readonly IMessageBoxService messageBoxService;
         private UserDetailModel _user;
 
         public UserDetailModel User
@@ -30,14 +35,31 @@ namespace TeamBuddy.App.ViewModels
         public ICommand CreateNewUserSelectedCommand { get; set; }
         public ICommand CreateNewTeamSelectedCommand { get; set; }
 
-        public HomeUserDetailViewModel(IMediator mediator)
+        public HomeUserDetailViewModel(IMediator mediator, ITeamBuddyRepository teamBuddyRepository, IMessageBoxService messageBoxService)
         {
             this.mediator = mediator;
+            this.teamBuddyRepository = teamBuddyRepository;
+            this.messageBoxService = messageBoxService;
 
             CreateNewUserSelectedCommand = new RelayCommand(CreateNewUserSelected);
             CreateNewTeamSelectedCommand = new RelayCommand(CreateNewTeamSelected);
 
             mediator.Register<LogInMessage>(ShowUserDetails);
+            mediator.Register<AddUserToTeamMessage>(AddUserToTeam);
+        }
+
+        private void AddUserToTeam(AddUserToTeamMessage newTeam)
+        {
+            try
+            {
+                teamBuddyRepository.AddUserToTeam(User, newTeam.Id);
+                mediator.Send(new ReloadMyTeamsMessage{Id = User.Id});
+            }
+            catch //todelete
+            {
+                messageBoxService.Show($"Please, fill in the required fields!", "Team creation failed", MessageBoxButton.OK);
+            }
+            
         }
 
         private void ShowUserDetails(LogInMessage login)
