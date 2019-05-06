@@ -32,9 +32,6 @@
             <TextBlock Grid.Row="5" Text="{Binding SelectedUser.Email}" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Ink Free" ></TextBlock>
             <TextBlock Grid.Row="6" Text="Gender:" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" FontFamily="Ink Free" Opacity="0.6"  ></TextBlock>
             <TextBlock Grid.Row="7" Text="{Binding SelectedUser.Gender}" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Ink Free" ></TextBlock>
-            <!--<TextBlock Grid.Row="8" Text="Status:" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" FontFamily="Ink Free" Opacity="0.6"  ></TextBlock>-->
-            <!--<TextBlock Grid.Row="9" Text="Status" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Ink Free" ></TextBlock>-->
-
         </Grid>
     </Grid>
 </UserControl>

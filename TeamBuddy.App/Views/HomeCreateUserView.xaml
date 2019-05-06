@@ -59,7 +59,6 @@
             </i:Interaction.Triggers>
         </ComboBox>
 
-
         <StackPanel Grid.Column="0" Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Width="150" Height="40" Margin="20,0,0,0" Name="ButtonSwitch2" Content="Create New User" FontSize="15" Opacity="0.6" Background="#FFDDDDDD" 
                     Command="{Binding CreateNewUserCommand}" Cursor="Hand"/>

@@ -6,7 +6,6 @@ namespace TeamBuddy.BL.Repositories
 {
     public interface ITeamBuddyRepository
     {
-        //bool CheckPassword(string enteredPassword, string correctPassword);
         IEnumerable<TeamListModel> GetAllTeams();
         IEnumerable<TeamListModel> GetAllMyTeams(Guid userId);
         IEnumerable<UserListModel> GetAllUsers();

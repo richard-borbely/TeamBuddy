@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using TeamBuddy.App.Commands;
 using TeamBuddy.BL.Messages;
 using TeamBuddy.BL.Services;

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TeamBuddy.DAL
+﻿namespace TeamBuddy.DAL
 {
     public interface IDbContextFactory
     {

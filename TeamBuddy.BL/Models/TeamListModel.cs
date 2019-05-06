@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TeamBuddy.BL.Models
+﻿namespace TeamBuddy.BL.Models
 {
     public class TeamListModel : BaseModel
     {

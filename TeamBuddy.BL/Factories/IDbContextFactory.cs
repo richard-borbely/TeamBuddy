@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TeamBuddy.DAL;
+﻿using TeamBuddy.DAL;
 
 namespace TeamBuddy.BL.Factories
 {

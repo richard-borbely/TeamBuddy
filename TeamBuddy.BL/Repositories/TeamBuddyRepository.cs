@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.ExceptionServices;
 using Microsoft.EntityFrameworkCore;
-using TeamBuddy.BL.Extensions;
 using TeamBuddy.BL.Mapper;
 using TeamBuddy.BL.Models;
 using TeamBuddy.DAL;
 using TeamBuddy.DAL.Entities;
-using TeamBuddy.DAL.Enumerations;
 
 namespace TeamBuddy.BL.Repositories
 {
@@ -16,13 +13,6 @@ namespace TeamBuddy.BL.Repositories
     {
         private readonly IDbContextFactory _dbContextFactory;
         private readonly IMapper _mapper;
-
-        //public bool CheckPassword(string enteredPassword, string correctPassword)
-        //{
-        //    string enteredPasswordHash = PasswordHasher.GetHash(enteredPassword);
-
-        //    return false;
-        //}
 
         public TeamBuddyRepository(IDbContextFactory dbContextFactory, IMapper mapper)
         {

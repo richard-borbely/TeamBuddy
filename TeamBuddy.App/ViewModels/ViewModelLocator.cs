@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TeamBuddy.App.Services;
-using TeamBuddy.App.Views;
+﻿using TeamBuddy.App.Services;
 using TeamBuddy.BL.Mapper;
 using TeamBuddy.BL.Repositories;
 using TeamBuddy.BL.Services;
@@ -34,6 +28,7 @@ namespace TeamBuddy.App.ViewModels
         public SelectedTeamCreatePostViewModel SelectedTeamCreatePostViewModel => new SelectedTeamCreatePostViewModel(mediator, teamBuddyRepository, messageBoxService);
         public SelectedTeamUserSettingsViewModel SelectedTeamUserSettingsViewModel => new SelectedTeamUserSettingsViewModel(mediator, teamBuddyRepository, messageBoxService);
         public SelectedTeamCreateCommentViewModel SelectedTeamCreateCommentViewModel => new SelectedTeamCreateCommentViewModel(mediator, teamBuddyRepository, messageBoxService);
+
         public ViewModelLocator()
         {
             mediator = new Mediator();

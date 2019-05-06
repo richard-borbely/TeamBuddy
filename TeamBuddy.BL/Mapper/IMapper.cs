@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TeamBuddy.BL.Models;
+﻿using TeamBuddy.BL.Models;
 using TeamBuddy.DAL.Entities;
 
 namespace TeamBuddy.BL.Mapper

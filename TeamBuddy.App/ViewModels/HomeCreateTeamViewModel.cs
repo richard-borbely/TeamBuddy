@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 using TeamBuddy.App.Commands;
 using TeamBuddy.App.Services;
@@ -52,7 +47,6 @@ namespace TeamBuddy.App.ViewModels
             try
             {
                 var newTeamModel = teamBuddyRepository.Create(NewTeam);
-                //var newTeamModel = Guid.NewGuid();
                 mediator.Send(new AddUserToTeamMessage { Id = newTeamModel.Id });
                 NewTeam = null;
             }

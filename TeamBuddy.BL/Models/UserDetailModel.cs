@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TeamBuddy.DAL.Enumerations;
+﻿using TeamBuddy.DAL.Enumerations;
 
 namespace TeamBuddy.BL.Models
 {

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using TeamBuddy.DAL.Entities.Base;
 
 namespace TeamBuddy.DAL.Entities

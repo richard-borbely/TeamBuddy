@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 using TeamBuddy.App.Commands;
 using TeamBuddy.App.Services;
@@ -11,7 +6,6 @@ using TeamBuddy.BL.Messages;
 using TeamBuddy.BL.Models;
 using TeamBuddy.BL.Repositories;
 using TeamBuddy.BL.Services;
-using TeamBuddy.DAL.Enumerations;
 
 namespace TeamBuddy.App.ViewModels
 {
@@ -55,11 +49,10 @@ namespace TeamBuddy.App.ViewModels
                 teamBuddyRepository.AddUserToTeam(User, newTeam.Id);
                 mediator.Send(new ReloadMyTeamsMessage{Id = User.Id});
             }
-            catch //todelete
+            catch
             {
-                messageBoxService.Show($"Please, fill in the required fields!", "Team creation failed", MessageBoxButton.OK);
+                messageBoxService.Show($"User can't be added to team!", "User addition failed", MessageBoxButton.OK);
             }
-            
         }
 
         private void ShowUserDetails(LogInMessage login)
