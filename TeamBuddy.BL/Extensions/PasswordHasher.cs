@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
 namespace TeamBuddy.BL.Extensions
 {
-    public abstract class PasswordHasher
+    public static class PasswordHasher
     {
         public static string GetHash(string input)
         {

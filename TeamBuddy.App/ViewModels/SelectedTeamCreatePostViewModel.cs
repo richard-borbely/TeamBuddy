@@ -95,6 +95,7 @@ namespace TeamBuddy.App.ViewModels
         private void CreateNewPostSelected(CreateNewPostSelectedMessage obj)
         {
             mediator.Send(new UsersSettingsCancelMessage());
+            mediator.Send(new CommentCreateCancelMessage());
             NewPost = new PostDetailModel();
         }
     }

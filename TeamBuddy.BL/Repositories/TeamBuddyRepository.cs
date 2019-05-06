@@ -43,13 +43,6 @@ namespace TeamBuddy.BL.Repositories
                 .UserTeams
                 .Where(u => u.UserId == userId)
                 .Select(t => _mapper.MapTeamListModelFromEntity(t.Team));
-
-            var foundEntity = _dbContextFactory.CreateDbContext()
-                .UserTeams
-                .Where(u => u.UserId == userId)
-                .Select(t => _mapper.MapTeamListModelFromEntity(t.Team));
-
-            return foundEntity;
         }
 
         public IEnumerable<UserListModel> GetAllUsers()
@@ -94,7 +87,23 @@ namespace TeamBuddy.BL.Repositories
             return _dbContextFactory.CreateDbContext()
                 .Comments
                 .Include(u => u.User)
+                .Include(p=>p.Post)
                 .Select(_mapper.MapCommentDetailModelFromEntity);
+        }
+
+        public IEnumerable<CommentDetailModel> GetAllCommentsInPost(Guid postId)
+        {
+            PostDetailModel PostModel = GetPostById(postId);
+            var entityPost = _mapper.MapPostToEntity(PostModel);
+            var foundEntity = _dbContextFactory.CreateDbContext()
+                .Comments
+                .Include(u => u.User)
+                .Include(p => p.Post)
+                .Include(u=>u.Post.Team)
+                .Include(u => u.Post.User)
+                .Where(p => p.Post == entityPost)
+                .Select(c => _mapper.MapCommentDetailModelFromEntity(c));
+            return foundEntity;
         }
 
         public TeamDetailModel GetByName(string name)
@@ -114,6 +123,17 @@ namespace TeamBuddy.BL.Repositories
                 .Teams
                 .FirstOrDefault(t => t.Id == Id);
             return foundEntity == null ? null : _mapper.MapTeamDetailModelFromEntity(foundEntity);
+        }
+
+        public PostDetailModel GetPostById(Guid Id)
+        {
+            var foundEntity = _dbContextFactory
+                .CreateDbContext()
+                .Posts
+                .Include(u => u.User)
+                .Include(u => u.Team)
+                .FirstOrDefault(t => t.Id == Id);
+            return foundEntity == null ? null : _mapper.MapPostDetailModelFromEntity(foundEntity);
         }
 
         public UserDetailModel GetByEmail(string email)
@@ -141,7 +161,7 @@ namespace TeamBuddy.BL.Repositories
                 var entity = _mapper.MapTeamToEntity(team);
                 dbContext.Teams.Add(entity);
                 dbContext.SaveChanges();
-                //dbContext.Entry(entity).State = EntityState.Unchanged;
+                
                 return _mapper.MapTeamDetailModelFromEntity(entity);
             }
         }
@@ -153,7 +173,7 @@ namespace TeamBuddy.BL.Repositories
                 var entity = _mapper.MapUserToEntity(user);
                 dbContext.Users.Add(entity);
                 dbContext.SaveChanges();
-                //dbContext.Entry(entity).State = EntityState.Unchanged;
+                
                 return _mapper.MapUserDetailModelFromEntity(entity);
             }
         }
@@ -162,18 +182,11 @@ namespace TeamBuddy.BL.Repositories
         {
             using (var dbContext = _dbContextFactory.CreateDbContext())
             {
-                TeamDetailModel TeamModel = GetTyamById(teamId);
-                var entityTeam = _mapper.MapTeamToEntity(TeamModel);
                 var entity = _mapper.MapPostToEntity(post);
                 dbContext.Entry(entity).State = EntityState.Unchanged;
                 dbContext.Posts.Add(entity);
                 dbContext.SaveChanges();
-                //dbContext.Entry(entityTeam).State = EntityState.Unchanged;
-                
-                //entityTeam.Posts.Add(entity);
-                //dbContext.SaveChanges();
 
-                //dbContext.SaveChanges();
                 return _mapper.MapPostDetailModelFromEntity(entity);
             }
         }
@@ -183,8 +196,10 @@ namespace TeamBuddy.BL.Repositories
             using (var dbContext = _dbContextFactory.CreateDbContext())
             {
                 var entity = _mapper.MapCommentToEntity(comment);
+                dbContext.Entry(entity).State = EntityState.Unchanged;
                 dbContext.Comments.Add(entity);
                 dbContext.SaveChanges();
+
                 return _mapper.MapCommentDetailModelFromEntity(entity);
             }
         }
@@ -196,48 +211,7 @@ namespace TeamBuddy.BL.Repositories
                 TeamDetailModel TeamModel = GetTyamById(teamId);
                 var entityUser = _mapper.MapUserToEntity(user);
                 var entityTeam = _mapper.MapTeamToEntity(TeamModel);
-                //dbContext.Teams
-                //    .First(t => t.Id == teamId)
-                //    .UserInTeam
-                //    .Add(new UserTeam()
-                //    {
-                //        User = entityUser,
-                //        Team = entityTeam
-                //    });
-                //var team = new UserTeam()
-                //{
-                //    Id = Guid.NewGuid(),
-                //    User = entityUser,
-                //    Team = entityTeam
-                //};
-
-                //////var userPavelKocourek = new User
-                //////{
-                //////    Id = Guid.NewGuid(),
-                //////    Username = "xkocur00",
-                //////    Name = "Pavel Kocourek",
-                //////    Password = "VudnnGPQ",
-                //////    Gender = Gender.Male,
-                //////    Email = "xkocur00@vutbr.cz",
-                //////    Status = Status.Invisible
-                //////};
-                //////dbContext.Users.Add(userPavelKocourek);
-                //////dbContext.SaveChanges();
-                //////dbContext.Entry(userPavelKocourek).State = EntityState.Unchanged;
-
-                //////var teamTeamBuddyAdmins = new Team
-                //////{
-                //////    Id = Guid.NewGuid(),
-                //////    Name = "TeamBuddy",
-                //////    Description = "Members of this team are administrators."
-                //////};
-                //////dbContext.Teams.Add(teamTeamBuddyAdmins);
-                //////dbContext.SaveChanges();
-                //////dbContext.Entry(teamTeamBuddyAdmins).State = EntityState.Unchanged;
-
                 dbContext.Entry(entityTeam).State = EntityState.Unchanged;
-                //dbContext.Entry(entityUser).State = EntityState.Unchanged;
-
                 entityTeam.UserInTeam.Add(new UserTeam()
                 {
                     Id = Guid.NewGuid(),
@@ -245,25 +219,9 @@ namespace TeamBuddy.BL.Repositories
                     UserId = entityUser.Id
                 });
                 dbContext.SaveChanges();
-                //var ccc = new UserTeam()
-                //{
-                //    Id = Guid.NewGuid(),
-                //    TeamId = teamTeamBuddyAdmins.Id,
-                //    UserId = userPavelKocourek.Id
-
-                //};
-                ////dbContext.UserTeams.Add(ccc);
-                //dbContext.UserTeams.Add(ccc);
-
-
-                ////    });
-                ////var Indquery2 = dbContext.UserTeams.Where(Ind => Ind.TeamId == teamId).FirstOrDefault();
-                ////Indquery2.User = entityUser;
-                //dbContext.SaveChanges();
-                //dbContext.Teams.Update(teamTeamBuddyAdmins).State = EntityState.;
-
             }
         }
+
         public void RemoveUserFromTeam(UserDetailModel user, Guid teamId)
         {
             using (var dbContext = _dbContextFactory.CreateDbContext())

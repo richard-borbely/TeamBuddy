@@ -14,8 +14,10 @@ namespace TeamBuddy.BL.Repositories
         IEnumerable<PostDetailModel> GetAllPosts();
         IEnumerable<PostDetailModel> GetAllPostsInTeam(Guid teamId);
         IEnumerable<CommentDetailModel> GetAllComments();
+        IEnumerable<CommentDetailModel> GetAllCommentsInPost(Guid postId);
         TeamDetailModel GetByName(string name);
         TeamDetailModel GetTyamById(Guid teamId);
+        PostDetailModel GetPostById(Guid Id);
         UserDetailModel GetByEmail(string email);
         UserDetailModel GetByUsername(string username);
         TeamDetailModel Create(TeamDetailModel team);

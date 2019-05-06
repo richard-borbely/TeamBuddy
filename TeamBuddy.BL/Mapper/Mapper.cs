@@ -13,7 +13,8 @@ namespace TeamBuddy.BL.Mapper
                 Id = comment.Id,
                 Text = comment.Text,
                 CommentAdditionTime = comment.CommentAdditionTime,
-                User = MapUserToEntity(comment.User)
+                User = MapUserToEntity(comment.User),
+                Post = MapPostToEntity(comment.Post)
             };
         }
 
@@ -62,7 +63,8 @@ namespace TeamBuddy.BL.Mapper
                 Id = comment.Id,
                 Text = comment.Text,
                 CommentAdditionTime = comment.CommentAdditionTime,
-                User = MapUserDetailModelFromEntity(comment.User)
+                User = MapUserDetailModelFromEntity(comment.User),
+                Post = MapPostDetailModelFromEntity(comment.Post)
             };
         }
 

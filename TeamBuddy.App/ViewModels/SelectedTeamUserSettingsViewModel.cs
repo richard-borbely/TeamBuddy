@@ -100,6 +100,7 @@ namespace TeamBuddy.App.ViewModels
         private void UserSettingsSelected(UsersSettingsSelectedMessage obj)
         {
             mediator.Send(new CreateNewPostCancelMessage());
+            mediator.Send(new CommentCreateCancelMessage());
             User = new UserListModel();
         }
     }

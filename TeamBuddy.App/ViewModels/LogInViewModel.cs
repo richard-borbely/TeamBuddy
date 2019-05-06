@@ -69,6 +69,7 @@ namespace TeamBuddy.App.ViewModels
             }
             else
             {
+                //PasswordComparer.comparePasswords(Password, User.Password);
                 if (Password == User.Password)
                 {
                     mediator.Send(new LogInMessage { SignedUser = User });
@@ -78,17 +79,7 @@ namespace TeamBuddy.App.ViewModels
                 {
                     messageBoxService.Show($"Invalid password!", "Login failed", MessageBoxButton.OK);
                 }
-
-                //if (teamBuddyRepository.CheckPassword(Password, User.Password))
-                    //{
-                    //    mediator.Send(new LogInMessage { SignedUser = User });
-                    //    ShowLogin = null;
-                    //}
-                    //else
-                    //{
-                    //    messageBoxService.Show($"Invalid password!", "Login failed", MessageBoxButton.OK);
-                    //}
-                }
+            }
         }
     }
 }

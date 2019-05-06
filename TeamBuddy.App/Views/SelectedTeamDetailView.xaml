@@ -24,7 +24,7 @@
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="1" Text="{Binding SelectedTeam.Name}" HorizontalAlignment="Center"  Margin="0 0 0 0" FontSize="35" FontFamily="Ink Free" FontWeight="Bold"/>
-            <TextBlock Grid.Row="2" Text="{Binding SelectedTeam.Description}" HorizontalAlignment="Center"  Margin="0 0 0 0" FontSize="25" FontFamily="Ink Free"/>
+            <TextBlock Grid.Row="2" Text="{Binding SelectedTeam.Description}" TextWrapping="Wrap" HorizontalAlignment="Center"  Margin="0 0 0 0" FontSize="25" FontFamily="Ink Free"/>
         </Grid>
 
         <Grid Grid.Row="1" Margin="30 0 30 30" Opacity="1">

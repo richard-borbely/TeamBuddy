@@ -33,6 +33,7 @@ namespace TeamBuddy.App.ViewModels
         public SelectedTeamUserDetailViewModel SelectedTeamUserDetailViewModel => new SelectedTeamUserDetailViewModel(mediator, teamBuddyRepository);
         public SelectedTeamCreatePostViewModel SelectedTeamCreatePostViewModel => new SelectedTeamCreatePostViewModel(mediator, teamBuddyRepository, messageBoxService);
         public SelectedTeamUserSettingsViewModel SelectedTeamUserSettingsViewModel => new SelectedTeamUserSettingsViewModel(mediator, teamBuddyRepository, messageBoxService);
+        public SelectedTeamCreateCommentViewModel SelectedTeamCreateCommentViewModel => new SelectedTeamCreateCommentViewModel(mediator, teamBuddyRepository, messageBoxService);
         public ViewModelLocator()
         {
             mediator = new Mediator();

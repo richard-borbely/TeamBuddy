@@ -20,6 +20,7 @@ namespace TeamBuddy.App.ViewModels
         private readonly IMediator mediator;
         private readonly ITeamBuddyRepository teamBuddyRepository;
         private ObservableCollection<PostDetailModel> _posts = new ObservableCollection<PostDetailModel>();
+        private ObservableCollection<CommentDetailModel> _comments = new ObservableCollection<CommentDetailModel>();
 
         public static UserDetailModel Author = new UserDetailModel()
         {
@@ -86,23 +87,38 @@ namespace TeamBuddy.App.ViewModels
             }
         }
 
-        public ObservableCollection<CommentDetailModel> Comments { get; set; } = new ObservableCollection<CommentDetailModel>()
+        public ObservableCollection<CommentDetailModel> Comments
         {
-            new CommentDetailModel
+            get => _comments;
+            set
             {
-                Text = "First comment text",
-                CommentAdditionTime = DateTime.Now,
-                User = Author
-            },
-            new CommentDetailModel
-            {
-                Text = "Second comment text",
-                CommentAdditionTime = DateTime.Now,
-                User = Author
+                _comments = value;
+                OnPropertyChanged();
             }
-        };
+        }
+
+        //public ObservableCollection<CommentDetailModel> Comments { get; set; } = new ObservableCollection<CommentDetailModel>()
+        //{
+        //    new CommentDetailModel
+        //    {
+        //        Text = "First comment text",
+        //        CommentAdditionTime = DateTime.Now,
+        //        User = Author
+        //    },
+        //    new CommentDetailModel
+        //    {
+        //        Text = "Second comment text",
+        //        CommentAdditionTime = DateTime.Now,
+        //        User = Author
+        //    }
+        //};
+
+        public ObservableCollection<CommentDetailModel> Comment { get; set; } = null;
 
         public ICommand ShowAuthorCommand { get; set; }
+        public ICommand ShowCommentsCommand { get; set; }
+        public ICommand AddCommentCommand { get; set; }
+        public ICommand DeletePostCommand { get; set; }
 
         public SelectedTeamPostListViewModel(IMediator mediator, ITeamBuddyRepository teamBuddyRepository)
         {
@@ -110,9 +126,30 @@ namespace TeamBuddy.App.ViewModels
             this.teamBuddyRepository = teamBuddyRepository;
 
             ShowAuthorCommand = new RelayCommand(ShowAuthor);
+            ShowCommentsCommand = new RelayCommand(ShowComments);
+            AddCommentCommand = new RelayCommand(AddComment);
+            DeletePostCommand = new RelayCommand(DeletePost);
 
             mediator.Register<TeamSelectedMessage>(LoadPosts);
             mediator.Register<ReloadTeamPostsMessage>(ReloadTeamPosts);
+        }
+
+        private void DeletePost(object SelectedPostId)
+        {
+            teamBuddyRepository.DeletePost((Guid)SelectedPostId);
+            mediator.Send(new ReloadTeamPostsMessage());
+        }
+
+        private void AddComment(object SelectedPostId)
+        {
+            mediator.Send(new CreateNewCommentMessage{ Id = (Guid)SelectedPostId });
+        }
+
+        private void ShowComments(Object SelectedPostId)
+        {
+            Comments.Clear();
+            var comments = teamBuddyRepository.GetAllCommentsInPost((Guid)SelectedPostId);
+            Comments.AddRange(comments);
         }
 
         private void ShowAuthor(Object SelectedUsersUsername)
@@ -129,6 +166,7 @@ namespace TeamBuddy.App.ViewModels
 
         private void LoadPosts(TeamSelectedMessage selectedTeam)
         {
+            Posts.Clear();
             SelectedTeam = teamBuddyRepository.GetByName(selectedTeam.Name);
             var posts = teamBuddyRepository.GetAllPostsInTeam(SelectedTeam.Id);
             Posts.AddRange(posts);

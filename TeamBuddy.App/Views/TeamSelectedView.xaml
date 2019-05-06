@@ -26,5 +26,6 @@
         <local:SelectedTeamDetailView Grid.Column="1" Grid.Row="0" />
         <local:SelectedTeamCreatePostView Grid.Column="1" Grid.Row="1" />
         <local:SelectedTeamUserSettingsView Grid.Column="1" Grid.Row="1" />
+        <local:SelectedTeamCreateCommentView Grid.Column="1" Grid.Row="1"/>
     </Grid>
 </UserControl>
