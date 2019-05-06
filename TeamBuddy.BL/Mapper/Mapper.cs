@@ -1,6 +1,6 @@
-﻿using TeamBuddy.BL.Models;
+﻿using TeamBuddy.BL.Extensions;
+using TeamBuddy.BL.Models;
 using TeamBuddy.DAL.Entities;
-using TeamBuddy.DAL.Services;
 
 namespace TeamBuddy.BL.Mapper
 {
@@ -48,7 +48,7 @@ namespace TeamBuddy.BL.Mapper
                 Id = user.Id,
                 Username = user.Username,
                 Name = user.Name,
-                //Password = Hasher.GetHash(user.Password),
+                //Password = PasswordHasher.GetHash(user.Password),
                 Password = user.Password,
                 Gender = user.Gender,
                 Email = user.Email,
