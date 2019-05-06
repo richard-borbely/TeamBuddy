@@ -18,24 +18,12 @@ namespace TeamBuddy.DAL.Seed
 
         private static void SeedData(TeamBuddyDbContext dbContext)
         {
-            var userSuperser = new User
-            {
-                Id = Guid.NewGuid(),
-                Username = "Superuser",
-                Name = "Superuser",
-                Password = "f",
-                Gender = Gender.Male,
-                Email = "f",
-                Status = Status.Online
-            };
-            dbContext.Users.Add(userSuperser);
-
             var userIgorMjasojedov = new User
             {
                 Id = Guid.NewGuid(),
                 Username = "xmjaso00",
                 Name = "Igor Mjasojedov",
-                Password = "8EZofBDj",
+                Password = "mjasojedov",
                 Gender = Gender.Male,
                 Email = "xmjaso00@vutbr.cz",
                 Status = Status.Offline
@@ -47,7 +35,7 @@ namespace TeamBuddy.DAL.Seed
                 Id = Guid.NewGuid(),
                 Username = "xsporn01",
                 Name = "Alex Sporni",
-                Password = "HfCyRJRf",
+                Password = "sporni",
                 Gender = Gender.Male,
                 Email = "xsporn01@vutbr.cz",
                 Status = Status.Online
@@ -58,8 +46,8 @@ namespace TeamBuddy.DAL.Seed
             {
                 Id = Guid.NewGuid(),
                 Username = "xborbe00",
-                Name = "Richard Borbely",
-                Password = "WytZkYkg",
+                Name = "Richard Borbély",
+                Password = "borbely",
                 Gender = Gender.Male,
                 Email = "xborbe00@vutbr.cz",
                 Status = Status.DoNotDisturb
@@ -71,7 +59,7 @@ namespace TeamBuddy.DAL.Seed
                 Id = Guid.NewGuid(),
                 Username = "xweisd00",
                 Name = "Daniel Weis",
-                Password = "RBoGVLXo",
+                Password = "weis",
                 Gender = Gender.Male,
                 Email = "xweisd00@vutbr.cz",
                 Status = Status.Idle
@@ -83,7 +71,7 @@ namespace TeamBuddy.DAL.Seed
                 Id = Guid.NewGuid(),
                 Username = "xkocur00",
                 Name = "Pavel Kocourek",
-                Password = "VudnnGPQ",
+                Password = "kocourek",
                 Gender = Gender.Male,
                 Email = "xkocur00@vutbr.cz",
                 Status = Status.Invisible
@@ -97,30 +85,6 @@ namespace TeamBuddy.DAL.Seed
                 Description = "Members of this team are administrators."
             };
             dbContext.Teams.Add(teamTeamBuddyAdmins);
-
-            var teamIFJ = new Team
-            {
-                Id = Guid.NewGuid(),
-                Name = "IFJ",
-                Description = "Members of IFJ team."
-            };
-            dbContext.Teams.Add(teamIFJ);
-
-            var teamIPP = new Team
-            {
-                Id = Guid.NewGuid(),
-                Name = "IPP",
-                Description = "Members of IPP team."
-            };
-            dbContext.Teams.Add(teamIPP);
-
-            var teamICS = new Team
-            {
-                Id = Guid.NewGuid(),
-                Name = "ICS",
-                Description = "Members of ICS team."
-            };
-            dbContext.Teams.Add(teamICS);
 
             var firstPostInAdmins = new Post
             {
@@ -155,61 +119,6 @@ namespace TeamBuddy.DAL.Seed
             };
             dbContext.Posts.Add(thirdPostInAdmins);
 
-            var firstPostInIFJ = new Post
-            {
-                Id = Guid.NewGuid(),
-                Title = "Our First Post",
-                Text = "This subject is the true meaning of hell.",
-                PostAdditionTime = DateTime.Now,
-                Team = teamIFJ,
-                User = userRichardBorbely
-            };
-            dbContext.Posts.Add(firstPostInIFJ);
-
-            var secondPostInIFJ = new Post
-            {
-                Id = Guid.NewGuid(),
-                Title = "Our Second Post",
-                Text = "I wish I never done this project.",
-                PostAdditionTime = DateTime.Now,
-                Team = teamIFJ,
-                User = userPavelKocourek
-            };
-            dbContext.Posts.Add(secondPostInIFJ);
-
-            var firstPostInIPP = new Post
-            {
-                Id = Guid.NewGuid(),
-                Title = "Our First Post",
-                Text = "Dusan Kolar is a good guy",
-                PostAdditionTime = DateTime.Now,
-                Team = teamIPP,
-                User = userAlexSporni
-            };
-            dbContext.Posts.Add(firstPostInIPP);
-
-            var firstPostInICS = new Post
-            {
-                Id = Guid.NewGuid(),
-                Title = "Our First Post",
-                Text = "The most interesting project",
-                PostAdditionTime = DateTime.Now,
-                Team = teamICS,
-                User = userRichardBorbely
-            };
-            dbContext.Posts.Add(firstPostInICS);
-
-            var secondPostInICS = new Post
-            {
-                Id = Guid.NewGuid(),
-                Title = "Our Second Post",
-                Text = "My fingers are starting to hurt",
-                PostAdditionTime = DateTime.Now,
-                Team = teamICS,
-                User = userDanielWeis
-            };
-            dbContext.Posts.Add(secondPostInICS);
-
             var firstCommentInAdmins = new Comment
             {
                 Id = Guid.NewGuid(),
@@ -230,56 +139,6 @@ namespace TeamBuddy.DAL.Seed
             };
             dbContext.Comments.Add(secondCommentInAdmins);
 
-            var firstCommentInIFJ = new Comment
-            {
-                Id = Guid.NewGuid(),
-                Text = "What an amazing experience to be here.",
-                CommentAdditionTime = DateTime.Now,
-                User = userAlexSporni,
-                Post = firstPostInIFJ
-            };
-            dbContext.Comments.Add(firstCommentInIFJ);
-
-            var secondCommentInIFJ = new Comment
-            {
-                Id = Guid.NewGuid(),
-                Text = "The weather outside is very positive.",
-                CommentAdditionTime = DateTime.Now,
-                User = userDanielWeis,
-                Post = secondPostInIFJ
-            };
-            dbContext.Comments.Add(secondCommentInIFJ);
-
-            var firstCommentInICS = new Comment
-            {
-                Id = Guid.NewGuid(),
-                Text = "The weather outside is very positive.",
-                CommentAdditionTime = DateTime.Now,
-                User = userPavelKocourek,
-                Post = firstPostInICS
-            };
-            dbContext.Comments.Add(firstCommentInICS);
-
-            var secondCommentInICS = new Comment
-            {
-                Id = Guid.NewGuid(),
-                Text = "I dont feel so good Mr. Stark",
-                CommentAdditionTime = DateTime.Now,
-                User = userIgorMjasojedov,
-                Post = secondPostInICS
-            };
-            dbContext.Comments.Add(secondCommentInICS);
-
-            var firstCommentInIPP = new Comment
-            {
-                Id = Guid.NewGuid(),
-                Text = "The Space is infinite",
-                CommentAdditionTime = DateTime.Now,
-                User = userRichardBorbely,
-                Post = firstPostInIPP
-            };
-            dbContext.Comments.Add(firstCommentInIPP);
-
             var userIgorAdmins = new UserTeam
             {
                 Id = Guid.NewGuid(),
@@ -287,30 +146,6 @@ namespace TeamBuddy.DAL.Seed
                 Team = teamTeamBuddyAdmins
             };
             dbContext.UserTeams.Add(userIgorAdmins);
-
-            var userIgorIfj = new UserTeam
-            {
-                Id = Guid.NewGuid(),
-                User = userIgorMjasojedov,
-                Team = teamIFJ
-            };
-            dbContext.UserTeams.Add(userIgorIfj);
-
-            var userIgorIpp = new UserTeam
-            {
-                Id = Guid.NewGuid(),
-                User = userIgorMjasojedov,
-                Team = teamIPP
-            };
-            dbContext.UserTeams.Add(userIgorIpp);
-
-            var userIgorIcs = new UserTeam
-            {
-                Id = Guid.NewGuid(),
-                User = userIgorMjasojedov,
-                Team = teamICS
-            };
-            dbContext.UserTeams.Add(userIgorIcs);
 
             var userAlexAdmins = new UserTeam
             {
@@ -320,22 +155,6 @@ namespace TeamBuddy.DAL.Seed
             };
             dbContext.UserTeams.Add(userAlexAdmins);
 
-            var userAlexIpp = new UserTeam
-            {
-                Id = Guid.NewGuid(),
-                User = userAlexSporni,
-                Team = teamIPP
-            };
-            dbContext.UserTeams.Add(userAlexIpp);
-
-            var userAlexIcs = new UserTeam
-            {
-                Id = Guid.NewGuid(),
-                User = userAlexSporni,
-                Team = teamICS
-            };
-            dbContext.UserTeams.Add(userAlexIcs);
-
             var userRichardAdmins = new UserTeam
             {
                 Id = Guid.NewGuid(),
@@ -343,22 +162,6 @@ namespace TeamBuddy.DAL.Seed
                 Team = teamTeamBuddyAdmins
             };
             dbContext.UserTeams.Add(userRichardAdmins);
-
-            var userRichardIfj = new UserTeam
-            {
-                Id = Guid.NewGuid(),
-                User = userRichardBorbely,
-                Team = teamIFJ
-            };
-            dbContext.UserTeams.Add(userRichardIfj);
-
-            var userRichardIpp = new UserTeam
-            {
-                Id = Guid.NewGuid(),
-                User = userRichardBorbely,
-                Team = teamIPP
-            };
-            dbContext.UserTeams.Add(userRichardIpp);
 
             var userDanielAdmins = new UserTeam
             {
@@ -368,22 +171,6 @@ namespace TeamBuddy.DAL.Seed
             };
             dbContext.UserTeams.Add(userDanielAdmins);
 
-            var userDanielIfj = new UserTeam
-            {
-                Id = Guid.NewGuid(),
-                User = userDanielWeis,
-                Team = teamIFJ
-            };
-            dbContext.UserTeams.Add(userDanielIfj);
-
-            var userDanielIcs = new UserTeam
-            {
-                Id = Guid.NewGuid(),
-                User = userDanielWeis,
-                Team = teamICS
-            };
-            dbContext.UserTeams.Add(userDanielIcs);
-
             var userPavelAdmins = new UserTeam
             {
                 Id = Guid.NewGuid(),
@@ -392,17 +179,8 @@ namespace TeamBuddy.DAL.Seed
             };
             dbContext.UserTeams.Add(userPavelAdmins);
 
-            var userPavelIcs = new UserTeam
-            {
-                Id = Guid.NewGuid(),
-                User = userPavelKocourek,
-                Team = teamICS
-            };
-            dbContext.UserTeams.Add(userPavelIcs);
-
             dbContext.SaveChanges();
         }
-
 
         private static void ClearDatabase(TeamBuddyDbContext dbContext)
         {
@@ -412,7 +190,6 @@ namespace TeamBuddy.DAL.Seed
             dbContext.RemoveRange(dbContext.Comments);
             dbContext.SaveChanges();
         }
-
 
         private static TeamBuddyDbContext CreateDbContext()
         {
